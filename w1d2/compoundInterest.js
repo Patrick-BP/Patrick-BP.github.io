@@ -1,3 +1,15 @@
+/*                        Defining Table 
+
+          Input                  Processing                            Output
+   --------------------------------------------------------------------------------------------
+       prompt user:           |  compute compound intrest monthly              |   monthly compound
+        - initial Amount      |   - calculate monthly interest by              |
+        - annual Intrest Rate | dividing annual interest rate by 12 and 100    |
+        - number of year to   |     - loop through balance times monthly       |              
+            compound          |     interest until the number months           | 
+                                    is reached
+*/          
+
 "use strict";
 
 /** 

@@ -1,5 +1,5 @@
 "use strict";
-let message = "";
+
 /** 
 * 
 * @param {boolean} isSalaried The first number.
