@@ -1,4 +1,5 @@
 "use strict";
+
 module.exports = { isVowel };
 
 /**
@@ -23,4 +24,5 @@ console.log(isVowel("o"));
 console.log(isVowel("u"));
 console.log(isVowel("z"));
 console.log(isVowel("5"));
+
 
