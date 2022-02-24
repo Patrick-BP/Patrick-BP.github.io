@@ -22,12 +22,3 @@ function compoundInterest (initialAmount, annualInterestRate, numYearCompound){
       
 }
 
-const assert = require("assert");
-describe("compoundInterest", function () {
-    it("the monthly compound of : ", function () {
-        assert.equal(compoundInterest(100, 10, 1), 110.47);
-    });
-    it("", function () {
-        assert.equal(compoundInterest(10000, 5, 10), 16470.09);
-    });
-});
