@@ -14,10 +14,10 @@
 
 /** 
 * 
-* @param {int} initialAmount The first number.
-* @param {int} annualInterestRate The second number.
-* @param {int} numYearCompound the third number.
-* @returns {int} The compound Interest.
+* @param {Number} initialAmount The first number.
+* @param {Number} annualInterestRate The second number.
+* @param {Number} numYearCompound the third number.
+* @return {Number} The compound Interest.
 */
 function compoundInterest (initialAmount, annualInterestRate, numYearCompound){
     let balance = initialAmount;
