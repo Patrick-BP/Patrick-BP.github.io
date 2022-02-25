@@ -70,18 +70,23 @@ return reverseArr;
  * @return {object} the multiplication of all numbers.
  */
 function reverseArrayInPlace(arr){
-    let str="";
+    let str ="";
+    console.log(str);
     for (let i = 0; i < arr.length; i++) {
-        str += "" + arr[i];
+        str +=arr[i];
     }
    
     arr.length = 0;
     for (let j = str.length-1; j >=0; j--) {
-        arr.push(str[j]);
+
+        if(str[j].includes("0") || str[j].includes("1") ||str[j].includes("2") ||str[j].includes("3") ||str[j].includes("4") ||str[j].includes("5") ||str[j].includes("6") || str[j].includes("7") ||str[j].includes("8") ||str[j].includes("9") )
+        arr.push(Number(str[j]));
+        else arr.push(str[j]);
     }
     
     return arr;
 }
+
 
 
 
@@ -126,4 +131,4 @@ let arr = [];
     return arr;
 
 }
-   console.log(generateArray(3, 3));
+  
