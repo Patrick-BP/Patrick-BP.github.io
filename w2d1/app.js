@@ -104,9 +104,7 @@ function findTitles() {
       }
     return titles;
 }
-const title = document.getElementById("title").value; 
-const author = document.getElementById("author").value;
-const libraryId = document.getElementById("libraryid").value;
+
 /**
  * @param {String} title the title of the new book
  * @param {String} author the author of the new book
@@ -115,8 +113,9 @@ const libraryId = document.getElementById("libraryid").value;
  * Event handler for Add book button.  Creates and adds book to the library
  */
 function addBook(title, author, libraryID){
-
-    
+title = document.getElementById("title").value; 
+author = document.getElementById("author").value;
+libraryID = document.getElementById("libraryid").value;
     let newBook = {title,  author, libraryID};
         
     library.push(newBook);
