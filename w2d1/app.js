@@ -134,7 +134,7 @@ function scramble(){
     let str = sorter.toString();
 
 let strtoarr = str.split(/[, " "]/);
-strtoarr.sort((a,b)=>(a.length > b.length)? 1 : -1);
+strtoarr.sort((str1,str2)=>(str1.length > str2.length)? 1 : -1);
 
 const arrString = strtoarr.join("\n");
     let textArea = document.getElementById("displayArea");
