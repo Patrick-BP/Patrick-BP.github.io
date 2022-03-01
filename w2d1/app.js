@@ -104,9 +104,9 @@ function findTitles() {
       }
     return titles;
 }
-// const title = document.getElementById("title").value; 
-// const author = document.getElementById("author").value;
-// const libraryId = document.getElementById("libraryid").value;
+const title = document.getElementById("title").value; 
+const author = document.getElementById("author").value;
+const libraryId = document.getElementById("libraryid").value;
 /**
  * @param {String} title the title of the new book
  * @param {String} author the author of the new book
