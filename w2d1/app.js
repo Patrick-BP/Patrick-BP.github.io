@@ -28,7 +28,6 @@ function showTitles() {
     let textArea = document.getElementById("displayArea");
     textArea.innerHTML = titleString;
 
-
     return titles;
 }
 /**
