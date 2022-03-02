@@ -1,10 +1,10 @@
 "use strict";
 /* global assert Accumulator  Calculator*/
 /* */
-const assert = require("assert");  //always need this with node
-const myExports = require("./app.js");  //with node need the name of your file with your functions here
-const Accumulator = myExports.Accumulator;  //do this for all of the functions used in the Mocha tests
-const Calculator = myExports.Calculator;  //do this for all of the functions used in the Mocha tests
+// const assert = require("assert");  //always need this with node
+// const myExports = require("./app.js");  //with node need the name of your file with your functions here
+// const Accumulator = myExports.Accumulator;  //do this for all of the functions used in the Mocha tests
+// const Calculator = myExports.Calculator;  //do this for all of the functions used in the Mocha tests
 
 
 describe("calculator from constructor function", function () {
