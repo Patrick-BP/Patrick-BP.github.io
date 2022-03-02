@@ -119,8 +119,6 @@ libraryID = document.getElementById("libraryid").value;
     let newBook = {title,  author, libraryID};
         
     library.push(newBook);
-  
-
     return newBook;
 }
 /**
