@@ -1,7 +1,7 @@
 "use strict";
 
 /* You need the module.exports when testing in node.  Comment it out when you send your file to the browser */
-//module.exports = {findTitles, addBook, showTitles, findAuthors, findIDs, showAuthors}; //add all of your function names here that you need for the node mocha tests
+module.exports = {findTitles, addBook, showTitles, findAuthors, findIDs, showAuthors}; //add all of your function names here that you need for the node mocha tests
 
 
 let library = [
@@ -113,14 +113,28 @@ function findTitles() {
  * Event handler for Add book button.  Creates and adds book to the library
  */
 function addBook(title, author, libraryID){
-title = document.getElementById("title").value; 
-author = document.getElementById("author").value;
-libraryID = document.getElementById("libraryid").value;
+
     let newBook = {title,  author, libraryID};
         
     library.push(newBook);
     return newBook;
 }
+/**
+ * @param {String} title the title of the new book
+ * @param {String} author the author of the new book
+ * @param {Number} libraryID ID of the book
+ * @returns {object} return the new book
+ * Event handler for Add book button.  Creates and adds book to the library
+ */
+function addBook1(title, author, libraryID){
+    title = document.getElementById("title").value; 
+    author = document.getElementById("author").value;
+    libraryID = document.getElementById("libraryid").value;
+        let newBook = {title,  author, libraryID};
+            
+        library.push(newBook);
+        return newBook;
+    }
 /**
  * 
  * @return {object} array holding all titles as elements
