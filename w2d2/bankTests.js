@@ -2,9 +2,9 @@
 /* global assert bank */
 
 /* comment out the following for the browser */
-const assert = require("assert");  //always need this with node
-const myExports = require("./bank.js");  //with node need the name of your file with your functions here
-const bank = myExports.bank;  //do this for all of the functions used in the Mocha tests
+// const assert = require("assert");  //always need this with node
+// const myExports = require("./bank.js");  //with node need the name of your file with your functions here
+// const bank = myExports.bank;  //do this for all of the functions used in the Mocha tests
 
 describe("bank tests", function () {
 
