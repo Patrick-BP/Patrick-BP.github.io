@@ -1,5 +1,5 @@
 "use strict";
-/* global assert doubleNums  doubleAges filterEven filterOver10 findEvenNum findEvenAge */
+/* global assert doubleNums  doubleAges filterEven filterOver10 findEvenNum findEvenAge includesEvenNum includesEvenAge  */
 /* comment out the node specific code when going to the browser
 */
 // const assert = require("assert");  //always need this with node

@@ -1,7 +1,7 @@
-"use strict"
+"use strict";
 /* eslint-disable */
 /* You need the module.exports when testing in node.  Comment it out when you send your file to the browser */
-module.exports = { doubleNums, doubleAges, filterEven, filterOver10, findEvenNum, findEvenAge, includesEvenNum, includesEvenAge }; //add all of your function names here that you need for the node mocha tests
+//module.exports = { doubleNums, doubleAges, filterEven, filterOver10, findEvenNum, findEvenAge, includesEvenNum, includesEvenAge }; //add all of your function names here that you need for the node mocha tests
 
 
 function doubleNums(arr) {
@@ -66,7 +66,7 @@ function findMaxOfNums(arr){
 
 }
 function findMaxForAges(arr){
-    
+
 }
 
 let numArray = [5, 0, 7, 77, -20, 300, 51, 2];
