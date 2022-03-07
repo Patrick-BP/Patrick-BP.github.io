@@ -63,14 +63,31 @@ function findAverageOfNums(arr){
     return findSumOfNums(arr)/arr.length;;
 }
 function findMaxOfNums(arr){
+    return arr.reduce((max, current)=>{
+        if(current > max) {return current;}
+        else{return max};
+    }, -Infinity);
 
 }
 function findMaxForAges(arr){
+    return arr.reduce((max, current)=>{
+        if(current.age > max) {return current.age;}
+        else{return max};
+    }, -Infinity);
 
+    
 }
 
-let numArray = [5, 0, 7, 77, -20, 300, 51, 2];
-let peopleArray = [{ name: "Sam", age: 15 }, { name: "William", age: 6 }, { name: "Lucy", age: 13 }, { name: "Barney", age: 80 }];
+function findAverageOfEvenAges(arr){
+    let even = arr.filter(item => item.age % 2 ===0);
+    return (arr.filter(item => item.age % 2 ===0)
+    .map(item => item.age)
+    .reduce((sum, current)=> sum + current))/even.length;
+}
+function findAverageOfOddAges(arr){
+    let odd = arr.filter(item => item.age % 2 !==0);
+    return arr.filter(item => item.age % 2 !==0)
+    .map(item => item.age)
+    .reduce((sum, current)=> sum + current)/odd.length;
+}
 
-console.log(findSumOfNums(numArray));
-console.log(findAverageOfNums(numArray));

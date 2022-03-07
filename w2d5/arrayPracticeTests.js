@@ -1,5 +1,5 @@
 "use strict";
-/* global assert doubleNums  doubleAges filterEven filterOver10 findEvenNum findEvenAge includesEvenNum includesEvenAge  */
+/* global assert doubleNums  doubleAges filterEven filterOver10 findEvenNum findEvenAge includesEvenNum includesEvenAge findSumOfNums findAverageOfNums findMaxOfNums findMaxForAges findAverageOfEvenAges  findAverageOfOddAges */
 /* comment out the node specific code when going to the browser
 */
 // const assert = require("assert");  //always need this with node
@@ -77,3 +77,50 @@ describe("filter practice", function () {
 
 });
 
+
+describe("reduce practice", function () {
+    beforeEach(function () {
+        numArray = [5, 0, 7, 77, -20, 300, 51, 2];
+        peopleArray = [{ name: "Sam", age: 15 }, { name: "William", age: 6 }, { name: "Lucy", age: 13 }, { name: "Barney", age: 80 }];
+    });
+
+    it("find sum of numbers", function () {
+        assert.deepEqual(findSumOfNums(numArray), 422);
+       
+    });
+
+    it("find average of numbers", function () {
+        assert.deepEqual(findAverageOfNums(numArray), 52.75);
+    });
+
+    it("find max of numbers", function () {
+        assert.strictEqual(findMaxOfNums(numArray), 300);
+        
+    });
+    it("find max for ages", function () {
+        assert.deepEqual(findMaxForAges(peopleArray), 80);
+        
+    });
+
+  
+
+});
+
+
+describe("use a chain of map, filter, reduce ", function () {
+    beforeEach(function () {
+        numArray = [5, 0, 7, 77, -20, 300, 51, 2];
+        peopleArray = [{ name: "Sam", age: 15 }, { name: "William", age: 6 }, { name: "Lucy", age: 13 }, { name: "Barney", age: 80 }];
+    });
+
+    it("Average age of people with even number ages", function () {
+        assert.deepEqual(findAverageOfEvenAges(peopleArray), 43);
+       
+    });
+
+    it("Average age of people with odd number ages", function () {
+        assert.deepEqual(findAverageOfOddAges(peopleArray), 14);
+    });
+
+
+});
