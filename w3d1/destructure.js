@@ -1,7 +1,7 @@
 "use strict";
 /* eslint-disable */
 /* You need the module.exports when testing in node.  Comment it out when you send your file to the browser */
-module.exports = { topSalary }; //add all of your function names here that you need for the node mocha tests
+//module.exports = { topSalary }; //add all of your function names here that you need for the node mocha tests
 let salaries = {
   "John": 100,
   "Pete": 50,
@@ -23,6 +23,10 @@ function topSalary(salaries) {
     }  
   }
   return name;
+} 
+ // json this can be used to clone objects
+function clone(obj){
+  let json = JSON.stringify(obj);
+  console.log(json);
+  return JSON.parse(json);
 }
-
-function clone
