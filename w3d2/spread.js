@@ -3,7 +3,7 @@
 
 /* You need the module.exports when testing in node.  Comment it out when you send your file to the browser 
 */
-module.exports = {copyArray, concat, findMin, combineObjs, rest }; //add all of your function names here that you need for the node mocha tests
+//module.exports = {copyArray, concat, findMin, combineObjs, rest }; //add all of your function names here that you need for the node mocha tests
 
 
 
@@ -50,3 +50,45 @@ console.log(z);
 function rest([x, y, ...more]){
 return more;
 }
+
+// setInterval
+function printNumbers(from, to){
+    let timerId = setInterval(()=>{
+   console.log(from)
+    if(from === to){
+      clearInterval(timerId);
+    }
+      from++;
+  }, 1000);
+  
+  }
+  console.log(printNumbers(5,10))
+  
+  
+  //setTimeout 
+  
+  function printNumbers2(from, to) {
+    let num = from;
+    setTimeout(function fun1() {
+      console.log(num);
+      if (num < to) {
+        setTimeout(fun1, 1000);
+      }
+      num++;
+    }, 1000);
+  
+  }
+  
+  console.log(printNumbers2(5, 10));
+  
+  
+  
+  
+  //What will setTimeout show?
+  
+  let i = 0;
+  
+  setTimeout(() => alert(i), 100); // 100000000
+  for(let j = 0; j < 100000000; j++) {
+    i++;
+  }
