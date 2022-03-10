@@ -42,7 +42,7 @@ function askPassword(ok, fail, password) {
   
   
   
-  module.exports = {askPassword, user, user2, askPassword2 }; //add all of your function names here that you need for the node mocha tests
+  //module.exports = {askPassword, user, user2, askPassword2 }; //add all of your function names here that you need for the node mocha tests
 
 
 
