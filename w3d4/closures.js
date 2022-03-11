@@ -87,8 +87,9 @@ function byField(fieldName){
   
     let i = 0;
     while (i < 10) {
+      let x= i;
       let shooter = function() { // create a shooter function,
-        console.log( i ); // that should show its number
+        console.log( x ); // that should show its number
       };
       shooters.push(shooter); // and add it to the array
       i++;
