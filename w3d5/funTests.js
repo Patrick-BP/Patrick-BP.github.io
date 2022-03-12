@@ -5,33 +5,47 @@
 module.exports = { myMap, myFilter, myReduce }; //add all of your function names here that you need for the node mocha tests
 
 /**
- * 
- * @param {*} arr 
- * @param {*} func 
- * @returns 
+ * @param {Array} arr array
+ * @param {function} func function
+ * @returns {Array} return an array
  */
 function myMap(arr, func) {
-//IMPLEMENTATION NEEDED
+    let arr2 =[];
+    for (const elm of arr) {
+        arr2.push(func(elm));
+    }
+    return arr2;
 }
 
 /**
  * 
- * @param {*} arr 
- * @param {*} func 
- * @returns 
+ * @param {*} arr array
+ * @param {*} func function
+ * @returns {*} array
  */
 function myFilter(arr, func) {
-//IMPLEMENTATION NEEDED
+let arr2 = [];
+for (const elm of arr) {
+    if(func(elm)){
+        arr2.push(elm);
+    }
 }
+return arr2;
+}
+
 
 /**
  * 
- * @param {*} arr 
- * @param {*} func 
- * @param {*} initialValue 
- * @returns 
+ * @param {*} arr array
+ * @param {*} func function
+ * @param {*} initialValue initial
+ * @returns {*} number
  */
 function myReduce(arr, func, initialValue) {
-    //IMPLEMENTATION NEEDED
-    return  ;
+    
+    for (const elm of arr) {
+       initialValue = func(initialValue , elm);
+        
+    }
+    return initialValue ;
     }
