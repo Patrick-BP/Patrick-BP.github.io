@@ -84,5 +84,3 @@ quiz.getAverage = function(){
 
 /* comment out when running in browser */
 module.exports = {quiz}; 
-
-function func(...a){}

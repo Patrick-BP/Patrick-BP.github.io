@@ -44,4 +44,4 @@ and prints out:
 
 
 /* comment out when running in browser */
-module.exports = {Teacher, Student}; 
+//module.exports = {Teacher, Student}; 

@@ -1,7 +1,7 @@
 "use strict"
 /* You need the module.exports when testing in node.  Comment it out when you send your file to the browser.
 */
-module.exports = { MakeBank }; //add all of your function names here that you need for the node mocha tests
+//module.exports = { MakeBank }; //add all of your function names here that you need for the node mocha tests
 
 
 /* 2.	In the following code the transactionsDB is publicly accessible to any code that has access to the bank object.  
