@@ -42,7 +42,9 @@ quiz.key = [{ qid: 1, ans: "b" }, { qid: 2, ans: "a" }, { qid: 3, ans: "b" }];
  * @returns {number} difference of the identifiers
  */
 function answerComparator(ans1, ans2) {
-//IMPLEMENT THIS
+if(ans1.qid > ans2.qid){ return 1;}
+else if(ans1.qid === ans2.qid){ return 0;}
+else {return -1;}
 }
 
 /**
@@ -54,7 +56,14 @@ function answerComparator(ans1, ans2) {
  * compare them against key and add up matches
  */
 quiz.scoreStudent = function (sid) {
-//IMPLEMENT THIS
+const std = quiz.students.find(item => item.sid === sid);
+const sortedanswers = std.answers.sort(answerComparator);
+let count =0;
+for (let i=0; i< quiz.key.length; i++) {
+  if(sortedanswers[i].ans === quiz.key[i].ans){count++;}
+}
+return count;
+
 };
 
 /**
@@ -62,11 +71,18 @@ quiz.scoreStudent = function (sid) {
  * go through list of students and get score of each, then the average
  */
 quiz.getAverage = function(){
-//IMPLEMENT THIS
+let arr =[];
+  for (const std of quiz.students) {
+    arr.push(quiz.scoreStudent(std.sid));
+  }
+
+  let sum = arr.reduce((sum, current)=> sum + current);
+
+  return (sum / (arr.length));
 
 };
 
 
 
 /* comment out when running in browser */
-module.exports = {quiz}; 
+//module.exports = {quiz}; 
