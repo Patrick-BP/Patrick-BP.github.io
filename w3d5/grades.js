@@ -83,4 +83,4 @@ quiz.getAverage = function(){
 
 
 /* comment out when running in browser */
-module.exports = {quiz}; 
+//module.exports = {quiz}; 
