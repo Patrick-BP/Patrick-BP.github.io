@@ -71,18 +71,18 @@ return count;
  * go through list of students and get score of each, then the average
  */
 quiz.getAverage = function(){
-let arr =[];
-  for (const std of quiz.students) {
-    arr.push(quiz.scoreStudent(std.sid));
-  }
 
-  let sum = arr.reduce((sum, current)=> sum + current);
+  let stdGradesArray =  quiz.students.map(item => quiz.scoreStudent(item.sid));
 
-  return (sum / (arr.length));
+  let sum = stdGradesArray.reduce((sum, current)=> sum + current);
+
+  return (sum / (stdGradesArray.length));
 
 };
 
 
 
 /* comment out when running in browser */
-//module.exports = {quiz}; 
+module.exports = {quiz}; 
+
+function func(...a){}
