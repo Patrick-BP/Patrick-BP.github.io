@@ -87,4 +87,4 @@ class Account{
 
 /* You need the module.exports when testing in node.  Comment it out when you send your file to the browser 
 */
-exports.Account = Account;
+//exports.Account = Account;
