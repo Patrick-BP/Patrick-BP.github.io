@@ -27,14 +27,16 @@ class Clock{
 
     start(){
         this.render();
-     return setInterval(this.render, 3000);
+     return setInterval(this.render, 1000);
 
     }
     stop(){
-        clearInterval(this.start());
+
+        return clearInterval(this.start());
 
     }
 }
 
 let clock = new Clock({template: 'h:m:s'});
   clock.start();
+  setTimeout(clock.stop, 4000 );
