@@ -86,3 +86,69 @@ nav ul li a{
    
  
 }
+#contentLeftB{
+    margin-left: 20px;
+    margin-right: 131px;
+    flex:1.9;
+    font-size: 1em;
+    line-height: 2;;
+    
+}
+#contentRightB{
+    flex:1;
+    
+    
+    
+}
+#patpictureB{
+    width: 503px;
+    border-radius: 50%;
+    position: relative;
+    right: 137px;
+    top: 120px;
+}
+#contentLeftB h1{
+margin: 109px 0 10px 0;
+    font-size: 47px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #fff;
+    font-family: "Jost", sans-serif;
+}
+#contentLeftB h2{
+color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 151px;
+    font-size: 24px;
+    font-family: "Jost", sans-serif;
+}
+#contentLeftB button{
+   font-family: "Jost", sans-serif;
+font-weight: 500;
+font-size: 16px;
+letter-spacing: 1px;
+padding: 10px 28px 11px 28px;
+border-width: 0px;
+margin: 10px 0 0 0;
+color: #fff;
+background: #47b2e4; 
+}
+#wrapperB{
+    display:flex;
+    background-color: #37517e;
+    width: 70%;
+    margin:auto;
+    box-shadow: 3px;
+    -webkit-box-shadow: 0px 0px 29px 0px #000000;
+       -moz-box-shadow: 0px 0px 29px 0px #000000;
+            box-shadow: 0px 0px 29px 0px #000000;
+    
+}
+#contentLeftB button a{
+    font-family: "Jost", sans-serif;
+ font-weight: 500;
+ font-size: 16px;
+ letter-spacing: 1px;
+ padding: 10px 28px 11px 28px;
+ text-decoration: none;
+ color: white;
+ }
