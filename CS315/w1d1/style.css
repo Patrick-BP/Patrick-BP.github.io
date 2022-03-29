@@ -4,6 +4,7 @@ body{
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
 #wrapper{
+    display:flex;
     background-color: white;
     width: 70%;
     margin:auto;
@@ -14,9 +15,9 @@ body{
     
 }
 #connect{
-    border: 1px solid gray;
+    
     margin-right: 20px;
-    margin-top: 50px;
+    margin-top: 347px;
     margin-bottom: 20px;
 }
 #connect h3{
@@ -37,17 +38,30 @@ header{
 
 #contentLeft{
     margin-left: 20px;
-    float: left;
-    width: 50%;
+    margin-right: 131px;
+    flex:1.9;
+    font-size: 1em;
+    line-height: 2;;
+    
 }
 #contentRight{
-    float: right;
-    width: 40%;
+    flex:1;
+    background-color: black;
+    
+    
 }
 #patpicture{
-    width: 314px;
+    width: 379px;
     border-radius: 50%;
+    position: relative;
+    right: 137px;
+    top: 140px;
 }
 ul{
     list-style: none;
+}
+li{
+    display: inline-flex;
+    justify-content: space-evenly;
+    flex-direction: column-reverse
 }
