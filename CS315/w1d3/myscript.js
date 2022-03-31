@@ -3,19 +3,26 @@
 
 let input = document.querySelector("input");
 let textArea = document.querySelector("textarea");
+let buttons = document.getElementsByTagName("button")[0];
+
+
+buttons.onclick = add;
+
 function add(){
 textArea.append(input.value + "\n");
 input.value = " ";
 }
 
 
+
+
+// my calculator =========================
+
 let firstValue = document.getElementById("first");
 let secondValue = document.getElementById("second");
 let result = document.getElementById("result");
 
-// my calculator =========================
-
-function add(){
+function adds(){
 result.innerText = ( Number(firstValue.value) + Number(secondValue.value))
 }
 function sub(){
