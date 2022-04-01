@@ -21,15 +21,27 @@
         <input type="text" value="0" id="rating"> <br><br>
         <button  id="btnAdd"> add </button> 
         <button  id="btnSave"> save </button><br><br>
+
+        Sort by:
+        <select name="sort">
+            <option></option>
+            <option>Name</option>
+            <option>Quantity</option>
+        </select>
+        Filter by:
+        <select name="filter">
+            <option></option>
+            <option value="pname">Name</option>
+            <option value="qty">Quantity</option>
+        </select>
     
         <table id = "tab">
             <tr>
                 <td>Product Name</td>
                 <td>Category</td>
                 <td>Quantity</td>
-                <td>Rating</td>
-                
-            
+                <td>Ratings</td>
+            </tr>
             
             
         </table>
