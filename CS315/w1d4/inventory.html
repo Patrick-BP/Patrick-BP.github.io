@@ -24,26 +24,29 @@
 
         Sort by:
         <select name="sort">
-            <option></option>
+            <option>-</option>
             <option>Name</option>
             <option>Quantity</option>
         </select>
         Filter by:
         <select name="filter">
-            <option></option>
-            <option value="pname">Name</option>
+            <option>-</option>
             <option value="qty">Quantity</option>
-        </select>
+            <option value="rating">Rating</option>
+        </select><br><br>
     
         <table id = "tab">
-            <tr>
-                <td>Product Name</td>
-                <td>Category</td>
-                <td>Quantity</td>
-                <td>Ratings</td>
-            </tr>
-            
-            
+            <thead>
+                     <tr>
+                        <td>Product Name</td>
+                        <td>Category</td>
+                        <td>Quantity</td>
+                        <td>Ratings</td>
+                        <td>Edit Row</td>
+                        <td>Delete Row</td>
+                    </tr>
+            </thead>
+             <tbody id = "trdata"></tbody>    
         </table>
         </div>
         <footer>
@@ -59,6 +62,6 @@
             src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" /></a>
             </div>
         </footer>
-    <script src="myscript.js"></script>
+    <script src="myscript2.js"></script>
 </body>
 </html>

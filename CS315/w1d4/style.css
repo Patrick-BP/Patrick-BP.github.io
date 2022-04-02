@@ -11,13 +11,16 @@ table td, table th {
     border: 1px solid #ddd;
     padding: 3px;
   }
-table tr:first-child{
-    background-color: blue;
+#tab thead {
+    background-color: rgb(137, 137, 184);
     color: white;
 }
-  table tr:nth-child(even){background-color: #f2f2f2;}
+  #trdata > tr:nth-child(even){background-color: #b1a2a2;}
 
-  
+  #trdata > tr:hover{
+    background-color: #120505;
+    color:white;
+  }
   table th {
     padding-top: 12px;
     padding-bottom: 12px;
@@ -45,3 +48,4 @@ body > div {
 .alert{
   background-color: red;
 }
+
