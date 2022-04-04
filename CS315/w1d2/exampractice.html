@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <label>input:</label>
+    <input type="text" id="input"/>
+    <button id="addbtn">Add</button>
+<br><br>
+    <label>source</label>
+    <select id="selectSource" multiple>
+       
+    </select>
+<button id="todest"> > </button>
+<button id="tosource"> < </button>
+
+    <label>destination:</label>
+    <select id="selectDest" multiple>
+        
+    </select>
+    <br><br>
+    <button id="sort">Sort</button>
+
+
+    <script>
+        let textField = document.getElementById("input");
+        let addbtn = document.getElementById("addbtn");
+        let selectSource = document.getElementById("selectSource");
+        
+        let todestbtn = document.getElementById("todest");
+        let tosourcebtn = document.getElementById("tosource");
+        let selectDest = document.getElementById("selectDest");
+        let sortbtn = document.getElementById("sort");
+
+
+        addbtn.onclick = addItem;
+        todestbtn.onclick = todest;
+        tosourcebtn.onclick = tosource;
+        sortbtn.onclick = sortItem;
+
+        let sourceArr=[];
+        let destArr = [];
+        window.onload = function(){
+            updatedData(sourceArr,destArr);
+        }
+
+        function updatedData(arr1, arr2){
+            selectSource.innerHTML = " ";
+            arr1.forEach(element => {
+               let optionFiled =  document.createElement("option");
+               optionFiled.innerHTML = element;
+               selectSource.append(optionFiled);
+            });
+        }
+
+
+
+        function addItem(){
+            sourceArr.push(textField.value);
+            updatedData(sourceArr);
+        }
+        function todest(){
+            let arr3 = []
+            for (const option of selectSource.options) {
+                if(option.selected){
+                    arr3.push(option);
+
+                }
+            }
+            console.log(arr3)
+
+        }
+        function tosource(){}
+        function sortItem(){}
+
+
+        
+    </script>
+</body>
+</html>
