@@ -46,15 +46,28 @@
         let sourceArr=[];
         let destArr = [];
         window.onload = function(){
-            updatedData(sourceArr,destArr);
+            updatedsource(sourceArr);
+            updatedest(destArr)
         }
 
-        function updatedData(arr1, arr2){
+        function updatedsource(arr){
             selectSource.innerHTML = " ";
-            arr1.forEach(element => {
-               let optionFiled =  document.createElement("option");
-               optionFiled.innerHTML = element;
-               selectSource.append(optionFiled);
+            arr.forEach(element => {
+               let optionFiledSource =  document.createElement("option");
+               optionFiledSource.innerHTML = element;
+               selectSource.append(optionFiledSource);
+            });
+
+            
+        }
+
+        function updatedest(arr){
+            selectDest.innerHTML = " ";
+            arr.forEach(element => {
+               let optionFiledDest =  document.createElement("option");
+               optionFiledDest.innerHTML = element;
+               selectDest.append(optionFiledDest);
+               
             });
         }
 
@@ -62,17 +75,31 @@
 
         function addItem(){
             sourceArr.push(textField.value);
-            updatedData(sourceArr);
+            updatedsource(sourceArr);
         }
+
+
         function todest(){
-            let arr3 = []
+            let arr3 = [];
+            let arr4 =[];
             for (const option of selectSource.options) {
                 if(option.selected){
-                    arr3.push(option);
-
+                    arr3.push(option.innerText);
+                    arr4.push(sourceArr.indexOf(option.innerHTML))
+                    for (let i = 0; i < arr4.length; i--) {
+                        const element = array[i];
+                        
+                    }
                 }
             }
-            console.log(arr3)
+            arr3.forEach(function(element){
+                destArr.push(element);
+                updatedest(destArr)
+                
+            });
+            
+            
+            console.log(arr4)
 
         }
         function tosource(){}
