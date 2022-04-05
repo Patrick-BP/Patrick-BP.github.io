@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Midterm</title>
+    <style>
+      #validation  {
+            color: red;
+        }
+        span{
+            color: red;
+            
+        }
+
+        table{
+            
+            border-collapse:collapse ;
+        }
+        td{
+            border: 1px solid;
+        }
+        thead{
+            background-color:green;
+            color: white;
+            font-size: 20px;
+
+        }
+        thead td{
+            padding: 10px;
+        }
+    
+       
+    </style>
+</head>
+<body>
+    <div><input type="text"  placeholder="Enter Site name" id="name">
+    <input type="text" placeholder="Enter Address" id="address">
+    <input type="text" placeholder="Enter keyword" id="keyword">
+    <button id="addbtn">Add</button></div>
+    <div id="validation"></div>
+    <div id="optionDiv">
+        
+    </div>
+
+    <div id="listDiv">
+        <a href="#">Google</a>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>
+
+    <br><br>
+    <div id="tableDiv">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <td>Site Name</td>
+                    <td>keywords</td>
+                </tr>
+                
+            </thead>
+        </table>
+    </div>
+<button id="remove">Remove</button>
+<script>
+let tableArr =[];
+let keywordArr =[];
+
+window.onload = function(){
+   updateData(tableArr);
+}
+function updateData(arr){
+for (const elem of arr) {
+
+    
+}
+
+
+}
+
+    let nameField = document.getElementById("name");
+    let addressField = document.getElementById("address");
+    let keywordField = document.getElementById("keyword");
+    let addBtn = document.getElementById("addbtn");
+let optionDiv = document.getElementById("optionDiv");
+let listDiv = document.getElementById("listDiv");
+let tableDiv = document.getElementById("tableDiv");
+    let warningDiv = document.getElementById("validation");
+    addBtn.onclick = addFunc;
+
+    let warningMessage = document.createElement("p");
+   
+    
+    let asterix = document.createElement("span");
+    asterix.innerText = "*";
+
+    let checkTablein;
+    let checkListin;
+    // Question 2 add button and validation 
+    function addFunc(){
+        if(nameField.value ===""){  
+            nameField.style.borderColor = "red";
+            warningMessage.innerHTML = "Please Enter the site name";
+            nameField.before(asterix);
+            warningDiv.innerHTML = warningMessage.innerHTML;
+            return;
+
+        }else if(addressField.value ===""){
+            keywordField.style.borderColor = "";
+            nameField.style.borderColor ="black";
+            addressField.style.borderColor="red";
+            warningMessage.innerHTML = "Please Enter the address";
+            addressField.before(asterix);
+            warningDiv.innerHTML = warningMessage.innerHTML;
+            return;
+
+        }else if(keywordField.value ===""){
+            addressField.style.borderColor = "";
+            nameField.style.borderColor = "";
+            keywordField.style.borderColor="red";
+            warningMessage.innerHTML = "Please Enter a Keyword";
+            keywordField.before(asterix);
+            warningDiv.innerHTML = warningMessage.innerHTML;
+            return;
+        }else{
+            warningDiv.style.display="none";
+            asterix.style.display ="none";
+            keywordField.style.borderColor = "";
+           
+            
+        }
+       
+        keywordArr = keywordField.value.split(",");
+        console.log(keywordArr);
+
+
+        tableArr.push(nameField.value);
+        tableArr.push(addressField.value);
+        tableArr.push(keywordArr);
+        console.log(tableArr);
+
+let labelAdd = document.createElement("label");
+labelAdd.innerHTML = "<label>Add To</label>";
+optionDiv.append(labelAdd);
+
+checkTablein = document.createElement("input");
+checkTablein.setAttribute("type","checkbox");
+checkTablein.id = "tablecheck";
+checkTablein.setAttribute("name","tablecheck");
+checkTablein.setAttribute("value","table")
+optionDiv.append(checkTablein);
+optionDiv.append("Table");
+
+checkListin = document.createElement("input")
+ checkListin.setAttribute("type","checkbox");
+ checkListin.id="listcheck";
+ checkListin.setAttribute("name","listcheck");  
+ checkListin.setAttribute("value","list");
+optionDiv.append(checkListin);
+optionDiv.append("List");
+
+nameField.value = "";
+addressField.value = "";
+keywordField.value = "";    
+    
+    }
+
+</script>
+</body>
+</html>
