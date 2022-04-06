@@ -13,16 +13,22 @@
         }
 
         table{
-            
-            border-collapse:collapse ;
+            width: 400px;
+             
         }
         td{
-            border: 1px solid;
+            border: 1px solid gray;
         }
+
         tr:nth-child(3){
-            background-color: blue;
+            background-color: blue !important;
+            color:white;
+        }
+       tbody tr:nth-child(odd){
+            background-color: rgb(247, 244, 244);
             color:white
         }
+
         tr:nth-child(3) a{
             color:white
         }
@@ -35,8 +41,32 @@
         thead td{
             padding: 10px;
         }
-    
-       
+    input{
+        font-size: 1.5em;
+        margin-right: 10px;
+    }
+    button{
+        font-weight: bolder;
+        padding: 10px 20px;
+        font-size: 1em;
+        margin: 40px;
+    }
+   #listDiv a{
+        font-size: 1.4em;
+        font-weight: bolder;
+   }
+   #tableDiv tbody {
+        color:black;
+        font-weight: bolder;
+        padding: 20px;
+   }
+   #tableDiv tbody td{
+    color:black;
+        font-size: 1.4em;
+        font-weight: bolder;
+        padding: 20px;
+   }
+   
     </style>
 </head>
 <body>
@@ -51,7 +81,7 @@
         <input type="checkbox" name="check2" value="list" />List
     </div>
 
-    <h2>List</h2>
+    <h2 id="listtitle">List</h2>
     <div id="listDiv"></div>
 
     <br><br>
@@ -84,11 +114,20 @@
     let tableDiv = document.getElementById("tableDiv");
     let warningDiv = document.getElementById("validation");
     let remove = document.getElementById("remove");
+    let listtitle = document.getElementById("listtitle")
+    
+
 
     const ascending = (a, b) => (a.siteName > b.siteName) ? 1 : -1;
     const descending = (a, b) => (a.siteName > b.siteName) ? -1 : 1;
+
+    optionDiv.style.display = "none";
+    listDiv.style.display = "none";
+    tableDiv.style.display = "none";
+    remove.style.display = "none"; 
+    listtitle.style.display = "none";
     
-    
+
 let tableArr =[];
 let listArr =[];
 
@@ -101,7 +140,7 @@ function updateTable(arr){
 for (const elem of arr) {
     let tr = document.createElement("tr");
     if(elem.siteName === "amazon"){
-        tr.innerHTML = `<td><a style="color:green;text-decoration:none;" href="${elem.siteAddress}" >${elem.siteName}</a></td><td style='color:blue;'>${elem.keyword}</td>`;
+        tr.innerHTML = `<td><a target="_blank" style="color:green;text-decoration:none;" href=http://${elem.siteAddress}>${elem.siteName}</a></td><td style='color:blue;'>${elem.keyword}</td>`;
         
     }else{
         tr.innerHTML = `<td><a href="${elem.siteAddress}">${elem.siteName}</a></td><td>${elem.keyword}</td>`;
@@ -175,12 +214,9 @@ let asterix = document.createElement("span");
     addBtn.onclick = validationFunc;
     
     function addFunc(){
-    
-        
-asterix.innerText = "";
-// nameField.value = "";
-// addressField.value = "";
-// keywordField.value = "";    
+        optionDiv.style.display = "";
+        asterix.innerText = "";
+  
  
     }
 
@@ -188,20 +224,29 @@ asterix.innerText = "";
     let OptionsTable = document.getElementsByName("check1")[0];
     OptionsTable.onchange = checkedTableFunc;
     function checkedTableFunc(){
+        if(OptionsTable.checked){
+        tableDiv.style.display = "";
+        remove.style.display = ""; 
         tableArr.push({siteName:nameField.value, siteAddress:addressField.value, keyword:keywordField.value});
         tbody.innerHTML = "";
        updateTable(tableArr);
+        }
+        
        
     }
 
 let OptionsList = document.getElementsByName("check2")[0];
     OptionsList.onclick = checkedListFunc;
     function checkedListFunc(){
+        if(OptionsList.checked){
+        listtitle.style.display = "";
+        listDiv.style.display = "";
         keys = keywordField.value;
         keyArr =keys.split(",");
         listArr.push({name:nameField.value, address:addressField.value, keywords:keyArr});
         listDiv.innerHTML = "";
         updateList(listArr);
+        }
     }
   
     namesort.onclick = sortByName;
@@ -222,7 +267,6 @@ let OptionsList = document.getElementsByName("check2")[0];
          
     }
 
-   
 
 
 remove.onclick = removeItem;
