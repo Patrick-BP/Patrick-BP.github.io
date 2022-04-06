@@ -20,6 +20,8 @@
             border: 1px solid gray;
         }
 
+        /* 10. Change the background color of 3 row to blue ( use selectors other than id /class) */
+
         tr:nth-child(3){
             background-color: blue !important;
             color:white;
@@ -69,6 +71,8 @@
    
     </style>
 </head>
+
+ <!-- 1. Design the above HTML page (Fig 1) -->
 <body>
     <div><input type="text"  placeholder="Enter Site name" id="name">
     <input type="text" placeholder="Enter Address" id="address">
@@ -100,7 +104,7 @@
             </tbody>
         </table>
     </div>
-<button id="remove">Remove</button>
+<button id="remove">Remove Site</button>
 <script>
 
     let nameField = document.getElementById("name");
@@ -135,8 +139,10 @@ window.onload = function(){
    updateTable(tableArr);
    updateList(listArr);
 }
+
+// 9. If the site name is amazon , show the site link in green color and its keywords in blue color. ( use selectors other than id /class)
 function updateTable(arr){
- 
+
 for (const elem of arr) {
     let tr = document.createElement("tr");
     if(elem.siteName === "amazon"){
@@ -151,6 +157,7 @@ for (const elem of arr) {
 
 }
 function updateList(arr){
+    arr.sort(ascending);
 for (const elem of arr) {
     let link = document.createElement("a");
     link.href = elem.address;
@@ -171,6 +178,10 @@ for (const elem of arr) {
 
  let warningMessage = document.createElement("p");
 let asterix = document.createElement("span");
+
+
+// 2. Once User hits the add button, if the Name/address/keywords is empty
+addBtn.onclick = validationFunc;
 
     function validationFunc(){
         
@@ -211,14 +222,20 @@ let asterix = document.createElement("span");
     }
 
 
-    addBtn.onclick = validationFunc;
+
     
+    // 3. If User enters information and hits 'add' again, the validation message and the border should disappear.
     function addFunc(){
         optionDiv.style.display = "";
         asterix.innerText = "";
   
  
     }
+
+  /*  4. Based on the User selection, add the Site to either List or Table or both. (Fig 4)
+Site should be added as a Link Element
+Note that inside the List, the keywords are added as each item in the list
+Add the sites in ascending order in both table and list */
 
     let keys;
     let OptionsTable = document.getElementsByName("check1")[0];
@@ -229,7 +246,14 @@ let asterix = document.createElement("span");
         remove.style.display = ""; 
         tableArr.push({siteName:nameField.value, siteAddress:addressField.value, keyword:keywordField.value});
         tbody.innerHTML = "";
+        tableArr.sort(ascending);
        updateTable(tableArr);
+       setTimeout(function(){
+    nameField.value="";
+    addressField.value="";
+    keywordField.value="";
+    
+},5000);
         }
         
        
@@ -246,12 +270,22 @@ let OptionsList = document.getElementsByName("check2")[0];
         listArr.push({name:nameField.value, address:addressField.value, keywords:keyArr});
         listDiv.innerHTML = "";
         updateList(listArr);
+
+        setTimeout(function(){
+    nameField.innerHTML="";
+    addressField.innerHTML="";
+    keywordField.innerHTML="";
+    },5000);
         }
     }
   
+
+/* Clicking the SiteName in the table(not list) should toggle the sort order, i.e. they should be sorted in
+ascending order if they are in descending order and vice versa. */
     namesort.onclick = sortByName;
     let newarr;
-    let type;
+    let type="ascending";
+
     function sortByName(){
     if(type ==="ascending"){
         newarr = tableArr.sort(descending);
@@ -268,7 +302,7 @@ let OptionsList = document.getElementsByName("check2")[0];
     }
 
 
-
+// 8. Remove Site should prompt the User for the Site Name, remove all matching sites.
 remove.onclick = removeItem;
 
 function removeItem(){
@@ -284,6 +318,8 @@ function removeItem(){
     updateTable(tableArr); 
     
 }
+
+
 
 </script>
 </body>
