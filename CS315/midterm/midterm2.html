@@ -40,23 +40,12 @@
     <div id="validation"></div>
     <div id="optionDiv">
         <label>Add to:</label>
-        <input type="checkbox" name="check"/>Table
-        <input type="checkbox" name="check"/>List
+        <input type="checkbox" name="check1" value="table"/>Table
+        <input type="checkbox" name="check2" value="list" />List
     </div>
 
-    <div id="listDiv">
-        <h2>List</h2>
-        <a href="#">Google</a>
-        <ul>
-            <li>java</li>
-            <li>javascript</li>
-        </ul>
-        <a href="#">Paypal</a>
-        <ul>
-            <li>Account</li>
-        </ul>
-
-    </div>
+    <h2>List</h2>
+    <div id="listDiv"></div>
 
     <br><br>
     <div id="tableDiv">
@@ -64,20 +53,13 @@
             <h2>Table</h2>
             <thead>
                 <tr>
-                    <td>Site Name</td>
+                    <td id="nameid">Site Name</td>
                     <td>keywords</td>
                 </tr>
                 
             </thead>
-            <tbody>
-                <tr>
-                    <td><a href="www.google.com">google</a></td>
-                    <td>java, javascript</td>
-                </tr>
-                <tr>
-                    <td><a href="www.paypal.com">paypal</a></td>
-                    <td>Account</td>
-                </tr>
+            <tbody id="Tbody">
+                
             </tbody>
         </table>
     </div>
@@ -88,28 +70,56 @@
     let addressField = document.getElementById("address");
     let keywordField = document.getElementById("keyword");
     let addBtn = document.getElementById("addbtn");
-
-    
+    let tbody = document.getElementById("Tbody");
+    let namesort = document.getElementById("namid");
     let optionDiv = document.getElementById("optionDiv");
     let listDiv = document.getElementById("listDiv");
     let tableDiv = document.getElementById("tableDiv");
     let warningDiv = document.getElementById("validation");
 
-
+    
+    
+    
 let tableArr =[];
+let listArr =[];
 
 window.onload = function(){
-   updateData(tableArr);
+   updateTable(tableArr);
+   updateList(listArr);
 }
-function updateData(arr){
-for (const elem of arr) {}
+function updateTable(arr){
+
+for (const elem of arr) {
+    let tr = document.createElement("tr");
+   tr.innerHTML = ` <td><a href="${elem.siteAddress}">${elem.siteName}</a></td><td>${elem.keyword}</td>`;
+   tbody.append(tr);
+}
+
+}
+function updateList(arr){
+for (const elem of arr) {
+    let link = document.createElement("a");
+    link.href = elem.address;
+    link.innerHTML = elem.name
+    listDiv.append(link);
+
+    let ul = document.createElement("ul");
+   
+    for(let element of elem.keywords){
+        ul.innerHTML += `<li>${element}</li>`;
+    }
+   
+   listDiv.append(ul);
+        
+}
 
 }
 
+ let warningMessage = document.createElement("p");
+        let asterix = document.createElement("span");
 
     function validationFunc(){
-         let warningMessage = document.createElement("p");
-        let asterix = document.createElement("span");
+        
         asterix.innerText = "*";
         if(nameField.value ===""){  
             nameField.style.borderColor = "red";
@@ -150,17 +160,47 @@ for (const elem of arr) {}
     addBtn.onclick = validationFunc;
     
     function addFunc(){
-        keywordArr = keywordField.value.split(",");
-        tableArr.push(nameField.value);
-        tableArr.push(addressField.value);
-        tableArr.push(keywordArr);
-
-asterix.innerText = "";
-nameField.value = "";
-addressField.value = "";
-keywordField.value = "";    
     
+        
+asterix.innerText = "";
+// nameField.value = "";
+// addressField.value = "";
+// keywordField.value = "";    
+ 
+    }
 
+    let keys;
+    let OptionsTable = document.getElementsByName("check1")[0];
+    OptionsTable.onchange = checkedTableFunc;
+    function checkedTableFunc(){
+        tableArr.push({siteName:nameField.value, siteAddress:addressField.value, keyword:keywordField.value});
+        tbody.innerHTML = "";
+       updateTable(tableArr);
+       
+    }
+
+let OptionsList = document.getElementsByName("check2")[0];
+    OptionsList.onclick = checkedListFunc;
+    function checkedListFunc(){
+        keys = keywordField.value;
+        keyArr =keys.split(",");
+        listArr.push({name:nameField.value, address:addressField.value, keywords:keyArr});
+        listDiv.innerHTML = "";
+        updateList(listArr);
+    }
+  
+    namesort.onclick = sortByName;
+
+    function sortByName(){
+        let newarr = tableArr.sort((a, b)=>{
+            if(a.name > b.name){return 1}
+            else if(a.name < b.name){return -1}  
+            else{return 0} 
+            
+        });
+        updateTable(newarr);
+
+        
     }
 
 </script>
