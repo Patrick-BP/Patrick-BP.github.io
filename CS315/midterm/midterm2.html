@@ -248,10 +248,12 @@ Add the sites in ascending order in both table and list */
         tbody.innerHTML = "";
         tableArr.sort(ascending);
        updateTable(tableArr);
+
        setTimeout(function(){
     nameField.value="";
     addressField.value="";
     keywordField.value="";
+    optionDiv.style.display = "none";
     
 },5000);
         }
@@ -272,9 +274,10 @@ let OptionsList = document.getElementsByName("check2")[0];
         updateList(listArr);
 
         setTimeout(function(){
-    nameField.innerHTML="";
-    addressField.innerHTML="";
-    keywordField.innerHTML="";
+    nameField.value="";
+    addressField.value="";
+    keywordField.value="";
+    optionDiv.style.display = "none";
     },5000);
         }
     }
@@ -310,7 +313,7 @@ function removeItem(){
     promptItem = prompt("Enter a site name", "");
     tableArr.forEach(function(element){
         if(element.siteName === promptItem){
-            tableArr.splice(tableArr.indexOf(element));
+            tableArr.splice(tableArr.indexOf(element),1);
         }
 
     });
