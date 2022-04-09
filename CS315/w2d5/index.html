@@ -12,7 +12,7 @@
         #header-wrapper{
             overflow: auto;
             width: 100%;
-            height: 97px;
+            height: 104px;
         }
         #logo{
             float: left;
@@ -31,9 +31,10 @@
         }
         #menu-bar ul li{
             display: inline-block;
-            margin: 7px 26px;
-            background-color: gray;
+            margin: 19px 29px;
+            background-color: #ecdbdb;
             padding: 10px;
+            box-shadow: 1px 2px 17px #888888
         }
         #content-wrapper{
             overflow: auto;
@@ -50,7 +51,6 @@
             margin:10px 5px 10px 10px;
             float:right;
             width: 27%;
-            background-color: rgb(255, 0, 174);
 
         }
         #logo h2{
@@ -65,17 +65,17 @@
             background-color: beige;
             width: 95%;
             padding: 20px;
-
+            box-shadow: 3px 1px 5px #888888;
         }
         .side-block{
             margin-bottom: 5px;
             background-color: beige;
-            height: 100px;
             width: 100%;
+            padding: 5px 10px 20px 10px;
+
+
         }
-        #menu-bar ul{
-            
-        }
+      
         .article-block h2{
             margin: 18px 10px 20px 10px;
         }
@@ -102,6 +102,7 @@
 
         }
         .paragrah{
+            
             width: 67%;
             float: right;
             margin: 10px;
@@ -113,9 +114,20 @@
             border-radius: 5px;
             color: white;
         }
-        
+        .par{
+            float: none !important;
+            width: 100% !important;
+            margin: 0px !important;
+        }
 
-        
+       .par p {
+        margin-top: 3px;
+       }
+       #lign{
+           border-bottom: 1px solid;
+           margin-bottom: 17px;
+       }
+
     </style>
 </head>
 <body>
@@ -149,33 +161,33 @@
                     est numquam ratione est architecto delectus At consectetur alias. Qui voluptate internos non 
                     facilis ducimus aut similique voluptas ut ipsam ipsam cum quaerat tenetur.
                 </p>
-                <button class="readmore">Read Mode </div> 
+                <button class="readmore">Read Mode &#x02192</div> 
             </div>  
         </div>
            
         <div class="article-block">
-            <h2>An Example Post #3</h2>
+            <h2>An Example Post #2</h2>
             <h6>By: Exmple Author name Date: May, 1, 2021 </h6>
 
          <div class="content"> 
-            <div class="img"><img src="images/Lauren.webp" alt=""></div> 
-            <div class="paragrah"><p>
+           
+            <div class="par paragrah"><p>
                 Lorem ipsum dolor sit amet. Ut distinctio voluptatum in doloremque vitae 
                 qui velit molestias eum soluta quae id repudiandae voluptatibus eum vero totam. 
                 Ut ipsa voluptatem sit dolorem praesentium quo galisum laborum et suscipit sunt 
                 est numquam ratione est architecto delectus At consectetur alias. Qui voluptate internos non 
                 facilis ducimus aut similique voluptas ut ipsam ipsam cum quaerat tenetur.
             </p>
-            <button class="readmore">Read Mode </div> 
+            <button class="readmore">Read Mode &#x02192</div> 
         </div>  
     </div>
        
     <div class="article-block">
-        <h2>An Example Post #3</h2>
+        <h2>An Example Post #1</h2>
         <h6>By: Exmple Author name Date: May, 1, 2021 </h6>
 
      <div class="content"> 
-        <div class="img"><img src="images/Lauren.webp" alt=""></div> 
+        <div class="img"><img src="images/Skyy-Clark.webp" alt=""></div> 
         <div class="paragrah"><p>
             Lorem ipsum dolor sit amet. Ut distinctio voluptatum in doloremque vitae 
             qui velit molestias eum soluta quae id repudiandae voluptatibus eum vero totam. 
@@ -183,7 +195,7 @@
             est numquam ratione est architecto delectus At consectetur alias. Qui voluptate internos non 
             facilis ducimus aut similique voluptas ut ipsam ipsam cum quaerat tenetur.
         </p>
-        <button class="readmore">Read Mode </div> 
+        <button class="readmore">Read Mode &#x02192</div> 
     </div>  
 </div>
    
@@ -191,11 +203,54 @@
             
         </div>
         <di id="right-content">
-            <div class=" search side-block"></div>
-            <div class="side-block"></div>
-            <div class="side-block"></div>
-            <div class="side-block"></div>
-            <div class="side-block"></div>
+            <div class=" search side-block">
+                <h2>search</h2>
+                <div id="lign"></div>
+                <label>Search for:</label>
+                <input type="text"><button>search</button>
+            </div>
+            <div class="side-block">
+                <h2>Recent Posts</h2>
+                <div id="lign"></div>
+                <ul>
+                    <li>An Example Post #1</li>
+                    <li>An Example Post #2</li>
+                    <li>An Example Post #3</li>
+                    <li>An Example Post #4</li>
+                </ul>
+            </div>
+            <div class="side-block">
+                <h2>Pages</h2>
+                <div id="lign"></div>
+                <ul>
+                    <li>About Me</li>
+                    <li>Contact Me</li>
+                    <li>Cookies & Privacy Policy</li>
+                    <li>Terms & Conditions</li>
+                </ul>
+            </div>
+            <div class="side-block">
+                <h2>Categories</h2>
+                <div id="lign"></div>
+                <ul>
+                    <li>Blog Post</li>
+                    <li>Example Post</li>
+                    <li>Nature</li>
+                    <li>Terms & Conditions</li>
+                    
+                </ul>
+
+            </div>
+            <div class="side-block">
+                <h2>Recent Posts</h2>
+                <div id="lign"></div>
+                <ul>
+                    <li>An Example Post #1</li>
+                    <li>An Example Post #2</li>
+                    <li>An Example Post #3</li>
+                    <li>An Example Post #4</li>
+                </ul>
+            </div>
 
         </di>
     </div>
