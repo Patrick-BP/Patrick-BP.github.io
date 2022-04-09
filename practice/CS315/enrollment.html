@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enrollment</title>
+    <style>
+      /* name */
+      p input {
+        margin-left: 60px;
+        padding: auto;
+      }
+      /* Select Country */
+      div ~ select {
+      }
+      /* select state */
+      p select {
+        margin-left: 20px;
+      }
+      /* zip code */
+      span input {
+        margin-left: 35px;
+      }
+      /* submit */
+      p + button {
+        padding: 4px 10px;
+        font-size: medium;
+        border-radius: 4px;
+        border-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+   
+      <h1>Enrollment</h1>
+
+      <p>
+        <label for="input">Name</label>
+        <input type="text " id="nameId" placeholder="Enter Name" />
+      </p>
+      <div>
+        <label for="">Select Country</label>
+        <select name="countryBox" id="countryBox">
+          <option value="">USA</option>
+          <option value="">Other</option>
+        </select>
+      </div>
+      <p id="sl " name=" sl">
+        <label id="l1">Select State</label>
+        <select name="stateBox1" id="stateBox">
+          <option value="">Alabama</option>
+          <option value="">Alaska</option>
+          <option value="">California</option>
+          <option value="">Other</option>
+        </select>
+      </p>
+      <span>
+        <label for="">Zip Code</label>
+        <input type="text" placeholder="Enter Zip" />
+      </span>
+     
+        <button id="btnSubmit">Submit</button>
+     
+    
+
+    <script>
+      let labelOne = document.getElementById("l1");
+      let selectBox = document.getElementById("stateBox");
+
+      //let country = document.getElementsByTagName("countryBox")[0];
+      let countryBox = document.getElementById("countryBox");
+      countryBox.onchange = checkcountry;
+
+      function checkcountry() {
+        for (let option of countryBox.options) {
+          if (option.selected) {
+            if (option.innerHTML == "Other") {
+              labelOne.style.display = "none";
+              selectBox.style.display = "none";
+            } else {
+              labelOne.style.display = "";
+              selectBox.style.display = "";
+            }
+          }
+        }
+      }
+
+      let submitBtn = document.getElementById("btnSubmit");
+
+      submitBtn.onclick = submitFunc;
+
+      let nameInput = document.getElementById("nameId");
+
+      function submitFunc() {
+        nameInput.replaceWith(nameInput.value);
+        countryBox.replaceWith(countryBox.value);
+        submitBtn.innerHTML = "Done";
+
+      }
+
+      
+    </script>
+  </body>
+</html>

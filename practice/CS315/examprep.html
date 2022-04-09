@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>plants</title>
+    <style>
+        #container{
+            width: 300px;
+            display:flex;
+        }
+        #left{
+            flex:1
+        }
+        #center{
+            position: relative;
+            align-items: right;
+            flex:2;
+            
+        }
+        #tosourcebtn {
+            position:absolute;
+            left: 53px;
+            bottom:10px;
+        }
+        #todestbtn {
+            position:absolute;
+            right: 66px;
+            bottom:10px;
+        }
+
+        #right{
+            flex:1
+        }
+    </style>
+    
+</head>
+<body>
+   <h1>Add plant</h1>
+   <label>Plant Name</label>
+   <input type="text" id="input" >
+   <button id="addbtn">Add</button><br><br><br>
+
+   <div id="container">
+<div id="left">
+    <label>Source</label><br><br>
+    <select id="sourceEl" style="width:100px; height: 200px;" multiple>
+    
+    </select>
+</div>
+
+
+<div id="center">
+    <button id="tosourcebtn">  <  </button>
+    <button id="todestbtn">  > </button>
+    
+</div>
+
+
+<div id="right">
+   <label>Destination</label><br><br>
+   <select id="destinationEl" style="width:100px; height: 200px;" multiple></select>
+</div>
+   </div>
+   <br><br>
+   <button id="sort">Sort</button>
+
+   <script>
+       let sourceArr = [];
+let destArr = [];
+let sourceEl = document.getElementById("sourceEl");
+let destEl = document.getElementById("destinationEl");
+
+        window.onload = function(){
+            sourceData(sourceArr);
+            destinationData(destArr);
+       
+        }
+        
+       
+
+
+function sourceData(arr){
+  sourceEl.innerHTML = "";
+  arr.forEach(function(element){
+    let newOption = document.createElement("option");
+    newOption.innerHTML = element
+    sourceEl.append(newOption);
+  });
+  
+
+    
+}
+function destinationData(arr){
+  destEl.innerHTML ="";
+  arr.forEach(function(element){
+    let newOption = document.createElement("option");
+    newOption.innerHTML = element
+    destEl.append(newOption);
+  });
+
+}
+
+let inputField = document.getElementById("input");
+let addbtn = document.getElementById("addbtn");
+
+addbtn.onclick = addPlants;
+
+function addPlants(){
+    sourceArr.push(inputField.value);
+    
+    sourceData(sourceArr);
+
+   
+}
+
+let sendToDestBtn = document.getElementById("todestbtn");
+let sendToSourceBtn = document.getElementById("tosourcebtn");
+
+sendToDestBtn.onclick = sendItemToDest
+sendToSourceBtn.onclick = sendItemToSource
+
+function sendItemToDest(){
+   for (const option of sourceEl.children) {
+       console.log(sourceEl.children)
+       if(option.selected){
+        let index = sourceArr.indexOf(option.innerText);
+        destArr.push(sourceArr[index]);
+        sourceArr.splice(index, 1);
+        sourceData(sourceArr);
+        destinationData(destArr);
+        
+       }
+   } 
+}
+
+function sendItemToSource(){
+    for (const option of destEl.children) {
+        console.log(destEl.children)
+        if(option.selected){
+            
+        // let index = destArr.indexOf(option.innerText);
+        sourceArr.push(destArr[index]);
+         destArr.splice(index, 1);
+        
+        
+         sourceData(sourceArr);
+         destinationData(destArr);
+         
+        }
+    } 
+ }
+
+let sortBtn = document.getElementById("sort");
+sortBtn.onclick = sortItems;
+
+function sortItems(){
+    let newsource = sourceArr.sort((a, b)=>{
+        if(a > b){return 1 ;}
+        else if(a < b){return -1;}
+        else{return 0;}
+    });
+sourceData(newsource);
+    let newdest = destArr.sort((a, b)=>{
+        if(a > b){return 1 ;}
+        else if(a < b){return -1;}
+        else{return 0;}
+    });
+
+ destinationData(newdest);
+}
+   </script>
+</body>
+</html>

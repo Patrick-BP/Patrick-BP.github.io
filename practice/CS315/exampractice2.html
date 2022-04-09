@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 2em;
+            margin-left: 40px;
+        }
+        body  div:first-child  input{
+            border:0;
+            background-color: white;
+            font-weight: bolder;
+        }
+        div{
+            position:relative;
+            margin-bottom: 20px;
+        }
+        input, select{
+            position: absolute;
+            left:350px;
+            font-size: 1em;
+            
+        }
+button{
+    font-size: 1em;
+    padding:10px;
+    border-radius: 5px
+
+}
+
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Enrollment</h1>
+       <div><label>Name</label> <input type="text" id="name" ></input></div>
+       <div><label> Select Country</label> <input type="text" id="country" > </div>
+        <div><label id="statel">Select State</label><input type="text" id="state" ></div>
+        <div><label>Zip Code</label> <input type="text" id="zipcode" > </div>
+    </div>
+    <div>
+        <h1>Enrollment</h1>
+        <div></div><label>Name</label><input type="text" name="name" id="namefield"></div>
+       <div> <label>Selection Country</label>
+        <select name="country" id="countrySelect">
+            
+            <option>USA</option>
+            <option>Other</option>
+        </select></div>
+
+       <div><label id="statelabel">Select State</label>
+        <select  name="state" id="stateSelect">
+            <option>Alabama</option>
+            <option>Alaska</option>
+            <option>California</option>
+        </select></div> 
+       <div><label>Zip code</label><input type="text" name="zip" id="zipField"></div>
+        <button id="submitbtn">Submit</button>
+    </div>
+    
+   <script>
+       let namefield = document.getElementById("namefield");
+       let countrySelect = document.getElementById("countrySelect");
+       let stateSelect = document.getElementById("stateSelect");
+       let zipCode = document.getElementById("zipField");
+       let submitBtn = document.getElementById("submitbtn");
+
+       countrySelect.onchange = countryFunc;
+
+       function countryFunc(){
+          console.log() ;
+          for (const option of countrySelect.options) {
+              if(option.selected){
+            if(option.value === "Other"){
+                 stateSelect.style.display = "none";
+                 document.getElementById("statelabel").style.display = "none";
+                 }else{
+                 stateSelect.style.display = "";
+                document.getElementById("statelabel").style.display = ""
+
+                 }
+              }
+             
+          }
+       }
+submitBtn.onclick = submitFunc;
+
+function submitFunc(){
+    submitBtn.innerHTML = "Done";
+    let nam = document.getElementById("name");
+   let statelab = document.getElementById("statel");
+    let country = document.getElementById("country");
+    let state = document.getElementById("state");
+    let zipcode = document.getElementById("zipcode");
+     nam.value = namefield.value;
+    country.value = countrySelect.value;
+        
+
+    if(countrySelect.value === "Other"){    
+        state.style.display = "none";
+        statelab.style.display = "none";
+    }else{
+        state.value = stateSelect.value;
+        state.style.display = "";
+        statelab.style.display = "";
+    }
+    zipcode.value = zipCode.value;
+
+
+    namefield.value = " ";
+    zipCode.value = " ";
+
+}
+
+
+   </script>
+</body>
+</html>
