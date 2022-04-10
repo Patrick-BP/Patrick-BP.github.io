@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+        
+        /* Nested Flex Items */
+        #wrapper {
+            display: flex;
+           
+
+        }
+
+        .article:nth-of-type(3) div:first-child {
+            flex: 1 100px;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .article:nth-of-type(3) {
+            flex: 3 200px;
+            display: flex;
+            flex-flow: column;
+            
+        }
+
+        .article {
+            flex: 1 200px;
+            padding: 10px 15px;
+            margin: 10px;
+            background-color: aquamarine;
+
+        }
+
+        button {
+            line-height: 2;
+            flex: 1 auto;
+            margin: 4px;
+            font-size: 15px;
+
+        }
+
+        button:last-child {
+            order: -1;
+        }
+
+        button:first-child {
+            order: 1;
+        }
+
+        /* NavBar 1 */
+        #nav-bar{
+            padding: 20px 28px;
+            background-color: gray;
+        }
+        #menu-wrapper {
+            margin-top: 10px;
+            height: 40px;
+            background-color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 7px 5%;
+            box-shadow: 8px 4px 6px #060606b3
+
+        }
+        #menu-wrapper  li , #menu-wrapper a, #menu-wrapper button{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            list-style: none;
+        }
+        #menu-wrapper li{
+            display: inline;
+            padding: 0px 20px;
+        }
+        #menu-wrapper li a:hover{
+            color:rgb(13 122 147) ;
+        }
+       #logo{
+        color:#edf0f1 ;
+       }
+       
+       #menu-wrapper button{
+            padding: 1px 18px;
+            background-color:rgb(13 122 147);
+            border: none;
+            border-radius: 50px;
+       }
+
+
+
+       /* nav-bar 3 */
+
+
+       #menu-wrapper3 {
+            margin-top: 50px;
+            height: 40px;
+            background-color: black;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 7px 5%;
+            box-shadow: 8px 4px 6px #060606b3
+
+        }
+        #menu-wrapper3  li , #menu-wrapper2 a, #menu-wrapper2 button{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            list-style: none;
+        }
+        #menu-wrapper3 li{
+            display: inline;
+            padding: 0px 20px;
+        }
+        #menu-wrapper3 li a:hover{
+            color:rgb(13 122 147) ;
+        }
+        #menu-wrapper3 #logo{
+           margin-right: auto;
+        color:#edf0f1 ;
+       }
+       
+       #menu-wrapper3 button{
+            padding: 1px 18px;
+            background-color:rgb(13 122 147);
+            border: none;
+            border-radius: 50px;
+       }
+        /* nav-bar 2 */
+
+        #menu-wrapper2 {
+            margin-top: 50px;
+            height: 40px;
+            background-color: black;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 7px 5%;
+            box-shadow: 8px 4px 6px #060606b3
+
+        }
+        #menu-wrapper2  li , #menu-wrapper3 a, #menu-wrapper3 button{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: #edf0f1;
+            text-decoration: none;
+            list-style: none;
+        }
+        #menu-wrapper2 li{
+            display: inline;
+            padding: 0px 20px 0 0;
+        }
+        #menu-wrapper3 li a:hover{
+            color:rgb(13 122 147) ;
+        }
+        #menu-wrapper2 #logo{
+           margin-left: auto;
+           order: 3;
+        color:#edf0f1 ;
+       }
+       
+       #menu-wrapper2 button{
+            padding: 1px 18px;
+            background-color:rgb(13 122 147);
+            border: none;
+            border-radius: 50px;
+       }
+       #menu-wrapper2 ul{
+        padding: 0px;
+
+        }
+      
+
+        /* Photo Layout */
+        #photo-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            width: 1000px;
+            margin-top: 50px;
+        }
+        #photo-wrapper div {
+            height: 200px;
+            flex-grow: 1;
+        }
+        #photo-wrapper div{
+            transition: all 0.3s ease 0s;
+            
+        }
+        #photo-wrapper div:hover {
+            height: 500px;
+        }
+
+        #photo-wrapper img {
+            max-height: 100%;
+            min-width: 100%;
+            object-fit: cover;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- +++++++++++++++++ Nested Flex Items +++++++++++++++++++++ -->
+    <div id="wrapper">
+        <div class="article">
+            <h2>First article</h2>
+            <p> ut perspiciatis unde omnis iste natus error sit
+                voluptatem accusantium doloremque laudantium, totam rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et
+                quasi architecto beatae vitae dicta sunt explicabo.
+                Nemo enim ipsam voluptatem quia voluptas
+                consectetur, adipisci velit, sed quia non
+                numquam eius modi tempora incidunt ut labore
+                et dolore magnam aliquam quaerat voluptatem.
+                Ut enim ad minima veniam,</p>
+        </div>
+        <div class="article">
+            <h2>Second article</h2>
+            <p> ut perspiciatis unde omnis iste natus error sit
+                voluptatem accusantium doloremque laudantium, totam rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et
+                est, qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit, sed quia non
+                numquam eius modi tempora incidunt ut labore
+                et dolore magnam aliquam quaerat voluptatem.
+                Ut enim ad minima veniam,</p>
+        </div>
+        <div class="article">
+
+            <div id="btnDiv">
+                <button>smile</button>
+                <button>Laugh</button>
+                <button>Wink</button>
+                <button>Shrug</button>
+                <button>Blush</button>
+            </div>
+            <p> ut perspiciatis unde omnis iste natus error sit
+                voluptatem accusantium doloremque laudantium, totam rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et
+                Nemo enim ipsam voluptatem quia voluptas
+                sit aspernatur aut odit aut fugit, sed quia</p>
+            <p>consequuntur magni dolores eos qui ratione
+                voluptatem sequi nesciunt. Neque porro quisquam
+                est, qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit, sed quia non
+                Ut enim ad minima veniam,</p>
+        </div>
+    </div>
+
+
+
+    <!-- +++++++++ NavBar +++++++++++++++++++++  -->
+<div id="nav-bar">
+<div id="menu-wrapper">
+        <div id="logo"><h3>LOGOBAKERY</h3></div>
+        <div id="nav">
+            <ul>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+        <div id="btn"><a href="#"></a><button>Contact</button></div>
+    </div>
+
+    <div id="menu-wrapper2">
+        <div id="logo"><h3>LOGOBAKERY</h3></div>
+        <div id="nav">
+            <ul>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+        <div id="btn"><a href="#"></a><button>Contact</button></div>
+    </div>
+    <div id="menu-wrapper3">
+        <div id="logo"><h3>LOGOBAKERY</h3></div>
+        <div id="nav">
+            <ul>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+        <div id="btn"><a href="#"></a><button>Contact</button></div>
+    </div>
+
+
+</div>
+    
+
+
+    <!-- ++++++++++++++ Photo Layout ++++++++++++++++++++ -->
+
+
+    <div id="photo-wrapper">
+       <div><img src="images/1.png"></div> 
+        <div><img src="images/10.png"></div>
+        <div><img src="images/6.png"></div>
+        <div><img src="images/3.png"></div>
+        <div><img src="images/7.png"></div>
+        <div><img src="images/9.png"></div>
+        <div><img src="images/2.png"></div>
+        <div><img src="images/8.png"></div>
+        <div><img src="images/13.png"></div>
+        <div><img src="images/4.png"></div>
+        <div><img src="images/14.png"></div>
+        <div><img src="images/11.png"></div>
+        <div><img src="images/12.png"></div>     
+    </div>
+</body>
+
+</html>
