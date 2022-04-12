@@ -10,15 +10,16 @@
  <style>
  .col-2{
      font-size:12px;
-     border: 0.5px solid rgb(155, 150, 150);
-     background-color: rgb(210, 208, 208);
+     border: 0.5px solid rgb(227 221 221);
+    background-color: rgb(236 232 232);
      width: 184px;
     height: 106px;
     }
 
- .col-10{
-    
-     background-color: brown;
+ .col-6{
+  /* margin-left: -26px;
+    padding-right: 75px; */
+ 
  }
  .row{
      margin: 30px 0px;
@@ -28,6 +29,18 @@
      padding: 20px;
      border-left: 2px solid  rgb(155, 150, 150);;
  }
+ .img-thumbnail {
+    
+    height: 207px ;
+  
+}
+thead{
+  font-weight: bolder;
+}
+.cont span{
+  color: gray;
+  font-size: 13px;
+}
  </style>
 </head>
 <body>
@@ -46,18 +59,18 @@
                 Uh Oh! Have you had your daily dose ofveggies today??
               </div>
               <div class="cont">
-                  <h1>Wild & Wacky Vegatables</h1>
+                  <h1 class="h1">Wild & Wacky Vegatables</h1>
                 <p>The beet is most intense of vegetables. The radish, admittedly, is more feverish, but the fire of
                 radish is a cold fire, the fire of discontent not of passion. Tomatoes are lustly enough, yet there runs
                 through tomatoes an undercurrent of frivolity. Beets are deadly serious.</p>
-                <span>--Tom Robbins</span>
+                <span > --Tom Robbins</span>
               </div>
 
-              <div>
-                  <h4>Some Diseases</h4>
+              <div style="margin-top: 20px;">
+                  <h4 class="display-6">Some Diseases</h4>
                 
-                  <div class="table-responsive">
-                    <table class="table align-middle">
+                  <div class="table-responsive table-light">
+                    <table class="table table-responsive table-light  table-bordered">
                       <thead>
                         <tr>
                           <td>Veggie</td>
@@ -80,13 +93,34 @@
 
               </div>
 
-              <div class="container">
-                    <div><img src=""></div>
-                    <div><img src=""></div>
-                    <div><img src=""></div>
-                    <div><img src=""></div>
+              <div class="row">
+                    <div class="col-3"><img src="images/2.png" class="img-thumbnail"></div>
+                    <div class="col-3"><img src="images/1.png" class="img-thumbnail"></div>
+                    <div class="col-3"><img src="images/3.png"class="img-thumbnail"></div>
+                    <div class="col-3"><img src="images/4.png" class="img-thumbnail"></div>
                     
               </div>
+              <div class="container">
+                
+                <div class="row">
+                <div class="col-6">
+                  <h4 class="display-6">Really Informative info</h4>
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit 
+                    voluptatem accusantium doloremque laudantium, totam rem aperiam, 
+                    eaque ipsa quae ab illo inventore veritatis et quasi architecto 
+                    beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia 
+                   
+
+                  </p>
+                </div>
+                <div class="col-6">
+                  <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+
+                  </p>
+                </div>
+              </div>
+              </div>
+              
 
         </div>
     </div>
