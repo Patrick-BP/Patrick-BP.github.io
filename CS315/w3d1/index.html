@@ -7,31 +7,36 @@
     <title>Document</title>
 </head>
 <style>
+   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+    body{
+        font-family: 'Inter', sans-serif;
+    }
     .wrapper{
+        margin: auto;
         background-color: black;
-        width: 92%;
-        padding: 50px;
+        width: 68%;
+        padding: 50px 50px 0px 50px;
     }
     .wrapper-content{
         display: grid;
         grid-gap: 20px;
         grid-row-gap: 50px;
-        grid-template-columns: auto;
-        grid-template-areas: "aboutus tweet instagram"
-        "navbar navbar navbar";
+        grid-template-columns: 2fr 2fr 1fr;
+        grid-template-areas: "aboutus tweet instagram";
+        width: 100%;
+        margin: auto;
 
     }
     .aboutus{
         grid-area:aboutus ;
 
     }
-    .aboutus label{
-
-    }
+   
     .aboutus p{
         color: #87868B;
         font-size: 12px;
         margin: 20px 0px;
+        font-weight: 400;
     }
     .tweet{
         grid-area: tweet;
@@ -44,15 +49,34 @@
         grid-area: instagram;
     }
     .nav-bar{
-        grid-area: navbar;
+        width: 89%;
+    margin: auto;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+
+        border-top: 1px solid rgb(49, 47, 47);
+       width: 100%;
+    }
+    .nav-bar li{
+        margin-left: 3%;
+        display: inline-block;
+    }
+    .nav-bar ul{
+        margin-left: -55px;
+        
+    }
+    .nav-bar div:first-child{
+        padding: 10px;
+        width: 70%;
+    }
+    .nav-bar div:last-child{
+        padding: 30px;
     }
 
     .box{
-        
             color: #fff;
-            padding: 20px;
-            
-        
+            padding: 20px;       
     }
     .tweet ul{
         list-style-image: url("images/twitter-16.ico");
@@ -80,6 +104,7 @@
         justify-content: space-between;
         border-radius: 20px;
         background-color: #2A2B30;
+        width: 80%;
     }
 
     .input input{
@@ -100,14 +125,31 @@
     }
 
     .photo-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            grid-gap: 10px;
-            width: 279px;
-            margin:50px auto ;
+        margin-top: 20px;
+            display:grid;
+            grid-gap: 20px;
+            grid-row-gap: 18px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: "one two"
+            "three four";
+           
         }
+        .one{
+            grid-area: one;
+        }
+        .two{
+            grid-area: two;
+        }
+        .three{
+            grid-area: three;
+        }
+        .four{
+            grid-area: four;
+        }
+
         .photo-wrapper div {
-            height: 150px;
+            max-width: 88px;
+            max-height: 100px;
             flex-grow: 1;
         }
 
@@ -116,6 +158,11 @@
             min-width: 100%;
             object-fit: cover;
             vertical-align: bottom;
+        }
+        
+        label{
+            font-size: 1.3em;
+            font-weight: bolder;
         }
 
 </style>
@@ -145,16 +192,31 @@
                 </ul>
             </div>
             <div class="box instagram">
-                <label>instagram</label>
+                <label>Instagram</label>
                 <div class="photo photo-wrapper">
-                    <div><img src="images/1.png"></div>
-                    <div><img src="images/2.png"></div>
-                    <div><img src="images/3.png"></div>
-                    <div><img src="images/9.png"></div>
+                    <div class="one"><img src="images/1.png"></div>
+                    <div class="two"><img src="images/2.png"></div>
+                    <div class="three"><img src="images/3.png"></div>
+                    <div class="four"><img src="images/9.png"></div>
             </div>
-            <div class="box nav-bar"></div>
+            
         </div>
+        
     </div>
-   
+   <div class="nav-bar">
+       <div>
+           <ul>
+               <li>Home</li>
+               <li>About</li>
+               <li>Our works</li>
+               <li>Services</li>
+               <li>Blog</li>
+               <li>Contact</li>
+           </ul>
+       </div>
+       <div>ColorLib</div>
+   </div>
+</div>
+
 </body>
 </html>
