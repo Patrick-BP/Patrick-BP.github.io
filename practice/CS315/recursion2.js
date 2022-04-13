@@ -19,17 +19,22 @@ let simpleObject = {a:1, b:2,c:{a:[1,2]}};
 //  }
 // console.log(countKeys(simpleObject));
 
-function listLeaves(obj){
-let arr =[];
-for (const elem of Object.keys(obj)) {
-            if(typeof obj[elem] ==="object" && !(Array.isArray(obj[elem]))){
+// function listLeaves(obj){
+// let arr =[];
+// for (const elem of Object.keys(obj)) {
+//             if(typeof obj[elem] ==="object" && !(Array.isArray(obj[elem]))){
             
-               arr =  arr.concat(listLeaves(obj[elem]));
+//                arr =  arr.concat(listLeaves(obj[elem]));
                  
-            } else{
-                arr.push({[elem]: obj[elem]}); 
-            }  
-        }
-        return arr;
+//             } else{
+//                 arr.push({[elem]: obj[elem]}); 
+//             }  
+//         }
+//         return arr;
+// }
+// console.log(listLeaves(simpleObject));
+
+
+function findAllKeysWithGivenValue(simpleObject,1){
+
 }
-console.log(listLeaves(simpleObject));
