@@ -64,7 +64,7 @@ let simpleObject = {a:1, b:2,c:{a:[1,2]}};
 //         return arr;
 // }
 
-// console.log(findAllKeysWithGivenValue(simpleObject, 1))
+//  console.log(findAllKeysWithGivenValue(simpleObject, 1))
 
 // ======================== Question 4 ===================================
 let json = {
