@@ -21,3 +21,18 @@
         }, false)
       })
   })()
+
+  let email = document.getElementById("validationCustom01");
+  let pass1 = document.getElementById("validationCustom02");
+  let pass2 = document.getElementById("validationCustom03");
+  let firstName = document.getElementById("validationCustom04");
+  let lastName = document.getElementById("validationCustom05");
+  let gender = document.getElementsByName("inlineRadioOptions");
+  let country = document.getElementById("validationCustom06");
+  let selectconditions =document.getElementsByName("agreement")[0];
+  let selectnewsletter =document.getElementsByName("newsletter")[0];
+  let subimtBtn = document.querySelector('button[type="submit"]');
+  
+  function passwordValidation(){
+
+  }
