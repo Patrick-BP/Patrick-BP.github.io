@@ -138,9 +138,7 @@ if(Array.isArray(obj.children)){
   console.log(findNames(nodeObj)) 
 
 
-// ======================== Question 2 ====================== NOT WORKING
-
-
+// ======================== Question 2 ====================
 
 
 
