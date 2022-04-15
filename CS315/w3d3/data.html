@@ -10,7 +10,7 @@
     <div>
         <div id="info">
 
-        </div>
+        </div><br>
         <div>
             <button id="savebtn">Save</button>
             <button id="editbtn" >Edit</button>
@@ -26,23 +26,26 @@ savebtn.onclick = save;
 
 const urlParams = new URLSearchParams(window.location.search);
 
+
         const email = urlParams.get('email');
         const firstname = urlParams.get('firstname');
         const lastname = urlParams.get('lastname');
-        // const  = urlParams.get('');
-        // const email = urlParams.get('email');
+        const pass = urlParams.get('pass');
+        const gender = urlParams.get('inlineRadioOptions');
+        const country = urlParams.get('select');
+        const agreement = urlParams.get('agreement')
+        const agreement2 = urlParams.get('agreement2')
 
-let arr =[email, firstname, lastname];
-for (const elem of arr) {
+
+
     let label = document.createElement("label");
-        label.innerText= elem;
+        label.innerText= "Email : " + email +"\n" + "Password : " + pass +"\n"+ "First Name :" + firstname +"\n"+ "Last Name :" + lastname+"\n"+ "Gender : " + gender +"\n"+ "Country : "+ country +"\n"+ "Terms and conditions : " + agreement +"\n"+ "Newsletter : " + agreement2;
         info.append(label) 
-}
+
         
            
          function edit(){
-             window.location.href= 
-             "index.html" + window.location.search;
+             window.location.href= "index.html" + window.location.search;
          }  
 
          function save(){

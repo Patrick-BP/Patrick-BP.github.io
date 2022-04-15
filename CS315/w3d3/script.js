@@ -5,29 +5,33 @@ let email = document.getElementsByName("email")[0];
   let pass1 = document.getElementById("validationCustom02");
   let pass11 = document.getElementsByName("pass")[0];
   let pass2 = document.getElementById("validationCustom03");
+ let pass22 =  document.getElementsByName("pass22")[0];
   let firstName = document.getElementsByName("firstname")[0];
   let lastName = document.getElementsByName("lastname")[0];
   let gender = document.getElementsByName("inlineRadioOptions");
   let country = document.getElementsByName("validationCustom06");
-  let selectconditions = document.getElementsByName("agreement")[0];
-  let selectnewsletter = document.getElementsByName("newsletter")[0];
+  
   let subimtBtn = document.querySelector('button[type="submit"]');
 
 
 window.addEventListener('load', function () {
     const urlParams = new URLSearchParams(window.location.search);
-    console.log(window.location.search);
-    console.log(urlParams);
+   
     if(urlParams.entries().length==0)
         return;
     email.value = urlParams.get('email');
     firstName.value =  urlParams.get('firstname');
     lastName.value =  urlParams.get('lastname');
-    selectconditions.value =  urlParams.get('agreement');
-    selectnewsletter.value = urlParams.get('newsletter');
-    
-
-
+    pass11.value = urlParams.get('pass');
+    pass22.value = urlParams.get('pass22')
+    const genderM = document.getElementById("inlineRadio1")
+    const genderF = document.getElementById("inlineRadio2")
+    if(urlParams.get('inlineRadioOptions') === "Male"){
+        gender.value = genderM.checked ;
+    }else{
+        gender.value = genderF.checked
+    }
+ 
     
     if(urlParams.get('select').length==0)
         return;
