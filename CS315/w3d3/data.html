@@ -5,15 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<style>
+    .wrapper{
+        max-width: 25%;
+        border-top: 4px solid #ECBC46;
+        border-left:1px solid #CED4DA;
+        border-right:1px solid #CED4DA;
+        border-bottom:1px solid #CED4DA;
+        
+    }
+    
+   
+</style>
+</head>
 </head>
 <body>
-    <div>
+    <div class="wrapper container pt-3 pb-3 mt-4">
+        <h1>Preview:</h1>
         <div id="info">
 
-        </div>
+        </div><br>
         <div>
-            <button id="savebtn">Save</button>
-            <button id="editbtn" >Edit</button>
+            <button id="savebtn" class="btn btn-primary">Save</button>
+            <button id="editbtn" class="btn btn-success">Edit</button>
         </div>
     </div>
     <script>
@@ -26,23 +42,26 @@ savebtn.onclick = save;
 
 const urlParams = new URLSearchParams(window.location.search);
 
+
         const email = urlParams.get('email');
         const firstname = urlParams.get('firstname');
         const lastname = urlParams.get('lastname');
-        // const  = urlParams.get('');
-        // const email = urlParams.get('email');
+        const pass = urlParams.get('pass');
+        const gender = urlParams.get('inlineRadioOptions');
+        const country = urlParams.get('select');
+        const agreement = urlParams.get('agreement')
+        const agreement2 = urlParams.get('agreement2')
 
-let arr =[email, firstname, lastname];
-for (const elem of arr) {
+
+
     let label = document.createElement("label");
-        label.innerText= elem;
+        label.innerText= "Email : " + email +"\n" + "Password : " + pass +"\n"+ "First Name :" + firstname +"\n"+ "Last Name :" + lastname+"\n"+ "Gender : " + gender +"\n"+ "Country : "+ country +"\n"+ "Terms and conditions : " + agreement +"\n"+ "Newsletter : " + agreement2;
         info.append(label) 
-}
+
         
            
          function edit(){
-             window.location.href= 
-             "index.html" + window.location.search;
+             window.location.href= "index.html" + window.location.search;
          }  
 
          function save(){

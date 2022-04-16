@@ -5,31 +5,36 @@ let email = document.getElementsByName("email")[0];
   let pass1 = document.getElementById("validationCustom02");
   let pass11 = document.getElementsByName("pass")[0];
   let pass2 = document.getElementById("validationCustom03");
+ let pass22 =  document.getElementsByName("pass22")[0];
   let firstName = document.getElementsByName("firstname")[0];
   let lastName = document.getElementsByName("lastname")[0];
-  let gender = document.getElementsByName("inlineRadioOptions");
+  let genderM = document.getElementsByName("inlineRadioOptions")[0];
+  let genderF = document.getElementsByName("inlineRadioOptions")[1];
+  let check1 =  document.getElementsByName("agreement")[0];
+  let check2 =  document.getElementsByName("agreement2")[0];
   let country = document.getElementsByName("validationCustom06");
-  let selectconditions = document.getElementsByName("agreement")[0];
-  let selectnewsletter = document.getElementsByName("newsletter")[0];
+  
   let subimtBtn = document.querySelector('button[type="submit"]');
 
 
 window.addEventListener('load', function () {
     const urlParams = new URLSearchParams(window.location.search);
-    console.log(window.location.search);
-    console.log(urlParams);
+   
     if(urlParams.entries().length==0)
         return;
     email.value = urlParams.get('email');
     firstName.value =  urlParams.get('firstname');
     lastName.value =  urlParams.get('lastname');
-    selectconditions.value =  urlParams.get('agreement');
-    selectnewsletter.value = urlParams.get('newsletter');
-    
+    pass11.value = urlParams.get('pass');
+    pass22.value = urlParams.get('pass22')
 
+   if(urlParams.get('inlineRadioOptions') === "Male"){
+     genderM.checked = true
+   }else if(urlParams.get('inlineRadioOptions') === "Female"){
+    genderF.checked = true
+   }
 
-    
-    if(urlParams.get('select').length==0)
+   if(urlParams.get('select').length==0)
         return;
     for(let eachOption of document.getElementsByName("select")[0].options){
         if(urlParams.get('select').split(",").includes(eachOption.value))
@@ -37,44 +42,55 @@ window.addEventListener('load', function () {
         else
             eachOption.selected= false;
     }
+
+   if(urlParams.get('agreement') !== null){
+    check1.checked = true;
+  }
+
+ 
+  if(urlParams.get('agreement2') !== null){
+   check2.checked = true;
+  }
+    
+    
 });
 
 
 
-// (function () {
-//     'use strict'
+(function () {
+    'use strict'
   
-//     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//     var forms = document.querySelectorAll('.needs-validation')
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
   
-//     // Loop over them and prevent submission
-//     Array.prototype.slice.call(forms)
-//       .forEach(function (form) {
-//         form.addEventListener('submit', function (event) {
-//           if (!form.checkValidity()) {
-//             event.preventDefault()
-//             event.stopPropagation()
-//           }
-//    if(!passwordValidation()){
-//             event.preventDefault()
-//             event.stopPropagation();
-//           }
-//           form.classList.add('was-validated')
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+   if(!passwordValidation()){
+            event.preventDefault()
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated')
          
           
-//         }, false)
-//       })
+        }, false)
+      })
       
-//   })()
+  })()
 
   
   
-//   function passwordValidation(){
-//     if(pass1.value !== pass2.value){
-//         alert ("Please enter confirm password");
-//         pass2.value = "";
-//         return false;
-//     }
-//     return true;
+  function passwordValidation(){
+    if(pass1.value !== pass2.value){
+        alert ("Please enter confirm password");
+        pass2.value = "";
+        return false;
+    }
+    return true;
 
-//   }
+  }
