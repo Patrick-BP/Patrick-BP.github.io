@@ -1,18 +1,19 @@
 "use strict";
 /* eslint-disable */
-let company = {
-    sales: [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 600 }],
-    development: {
-        sites: [{ name: 'Peter', salary: 2000 }, { name: 'Alex', salary: 1800 }], //subdepartments
-        internals: [{ name: 'Jack', salary: 1300 }]
-    }
-};
+// let company = {
+//     sales: [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 600 }],
+//     development: {
+//         sites: [{ name: 'Peter', salary: 2000 }, { name: 'Alex', salary: 1800 }], //subdepartments
+//         internals: [{ name: 'Jack', salary: 1300 }]
+//     }
+// };
 // ["sales","development","sites","internals"]
 // Returns 6700
-function sumSalaries(department){
+// function sumSalaries(department){
 
-}
-console.log(sumSalaries(company));
+
+// }
+// console.log(sumSalaries(company));
 
 // [
 //     { name: 'John' },
@@ -55,3 +56,27 @@ console.log(sumSalaries(company));
 //   }  
 // }
 // console.log(getEmployeeNameInArray(company));
+let company = {
+    sales: [{ name: 'John', salary: 1000 }, { name: 'Alice', salary: 600 }],
+    development: {
+        sites: [{ name: 'Peter', salary: 2000 }, { name: 'Alex', salary: 1800 }], //subdepartments
+        internals: [{ name: 'Jack', salary: 1300 }]
+    }
+};
+
+function getDeptnames(obj){
+    let arr = [];
+    if(typeof obj ==="object"){
+        for (const key in obj) {
+            arr.push(key)
+            if(obj[key]){
+
+            }
+        }
+    }
+
+
+    return arr;
+
+}
+console.log(getDeptnames(company))
