@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <title>Final Exam</title>
+
+    <style>
+        body{
+            font-size: 13px;
+            padding: 20px;
+            background-color: blanchedalmond;
+        }
+        .wrapper{
+            padding: 20px;
+            border: 1px solid blue;
+            width: 90%;
+            display:grid;
+            margin: auto;
+        }
+        .menu{
+            grid-column: 1/7;
+            grid-row: 1/2 ;
+        }
+        .flower1{
+            padding: 10px;
+            grid-column: 1/2;
+            grid-row: 2/3 ;
+
+        }
+        .orangepara{
+            padding:10px ;
+            text-align: justify;
+            background-color: #FB7F50;
+            grid-column: 2/6;
+            grid-row: 2/3 ;
+            height: 80px;
+        }
+        .flower2{
+            padding: 10px;
+            grid-column: 6/7;
+            grid-row: 2/3 ;
+        }
+        .paragra{
+            margin-top: 20px;
+            grid-column: 1/7;
+            grid-row: 3/4;
+        }
+        .imgpara1{
+            grid-column: 2/3;
+            grid-row: 4/5 ;
+        }
+        .imgpara2{
+            grid-column: 3/4;
+            grid-row: 4/5 ;
+        }
+        .imgpara3{
+            grid-column: 4/5;
+            grid-row: 4/5 ;
+        }
+        .imgpara4{
+            grid-column: 5/6;
+            grid-row: 4/5 ;
+        }
+        .menu >ul > li{
+            display: inline-block;
+        }
+        .menu >ul {
+            background-color:aqua;
+        }
+
+        .flower1 img, .flower2 img{
+            width: 83%;
+            border-radius: 50%;
+            
+        }
+        .menu ul{
+            font-size: 14px;
+            display: flex;
+            justify-content: space-around;
+        }
+        p{
+            padding: 10px;
+        }
+        img{
+            object-fit: contain;
+        }
+
+        a{
+            color: black;
+            text-decoration: none;
+        }
+
+    @media only screen and (max-width: 800px){
+        body{
+            font-size: 20px;
+        }
+        .wrapper{
+            width: 95%;
+            display:grid;
+            margin: auto;
+        }
+        .menu{
+            grid-column: 1/7;
+            grid-row: 1/2 ;
+        }
+        .flower1{
+            padding: 10px;
+            align-self: center;
+            grid-column: 1/3;
+            grid-row: 2/3 ;
+
+        }
+        .orangepara{
+            font-size: 20px;
+            padding:10px ;
+            text-align: justify;
+            background-color: #FB7F50;
+            grid-column: 3/5;
+            grid-row: 2/3 ;
+            height: 100%;
+        }
+        .flower2{
+            padding: 10px;
+            grid-column: 5/7;
+            grid-row: 2/3 ;
+            align-self: center;
+        }
+        .paragra{
+           
+            margin-top: 20px;
+            grid-column: 1/7;
+            grid-row: 3/4;
+        }
+        .imgpara1{
+            grid-column: 3/4;
+            grid-row: 4/5 ;
+        }
+        .imgpara2{
+            grid-column: 4/5;
+            grid-row: 4/5 ;
+        }
+        .imgpara3{
+            grid-column: 3/4;
+            grid-row: 5/6 ;
+        }
+        .imgpara4{
+            grid-column: 4/5;
+            grid-row: 5/6 ;
+        }
+        .menu ul{
+            font-size: 25px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .flower1 img, .flower2 img{
+            width: 100% !important;
+            border-radius: 50%;
+            
+        }
+        
+    }    
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="menu">
+            <ul>
+                <li><a href="#">Mission</a></li>
+                <li><a href="#">About</a></li>
+                <li> <a href="#">Blog</a></li>
+                <li> <a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="flower1">
+            <img src="images/image2.png" alt="flower1">
+        </div>
+        <div class="orangepara">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, molestiae vero natus porro assumenda dignissimos. Tenetur sed esse quod vero harum eum minima libero alias, et vitae sapiente fuga quae?</p>
+        </div>
+        <div class="flower2">
+            <img src="images/image2.png" alt="flower2">
+        </div>
+        <div class="paragra">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vitae tempore, excepturi reiciendis voluptates, doloribus distinctio eveniet dolorum obcaecati corrupti voluptatibus. Ea non quod animi molestias, sed perferendis blanditiis possimus.</p>
+        </div>
+        <div class="imgpara1" class="clearfix">
+            <img src="images/image2.png" alt="flower4" class="col-5 float-lg-start  float-md-none m-2 ms-md-3">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quia a deleniti molestiae modi minus quas quis quidem nemo magnam pariatur vero tempora, maxime sapiente, nostrum consequatur fugit facere dicta?</p>
+        </div>
+        <div class="imgpara2" class="clearfix">
+            <img src="images/image2.png" class="col-5 float-lg-start float-md-none m-2 ms-md-3" alt="flower5">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo minima, commodi inventore iusto tempore assumenda nemo voluptas amet? Voluptate, delectus in optio consequatur eveniet quae veritatis odit consequuntur sed nostrum?</p>
+        </div>
+        <div class="imgpara3" class="clearfix">
+            <img src="images/image2.png" class="col-5 float-lg-start  float-md-none m-2 ms-md-3" alt="flower6">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, velit? Vel, expedita libero architecto itaque adipisci labore aperiam, alias id quasi fuga iusto doloribus ratione provident, nemo earum laudantium molestiae?</p>
+        </div>
+        <div class="imgpara4" class="clearfix">
+            <img src="images/image2.png" class="col-5 float-ms-none float-lg-start  m-2 ms-md-2" alt="flower7">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio repudiandae, consequatur dolorem neque possimus nostrum explicabo numquam sunt deserunt repellendus impedit ratione facilis suscipit rem iusto eaque sint magni. Non!</p>
+        </div>
+    </div>
+</body>
+</html>
