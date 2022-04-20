@@ -51,7 +51,7 @@ function displayProduct(arr){
         newproduct.className ="box2 products";
 
         newproduct.innerHTML =`<img src='images/${element.image}'> 
-        <p style='font-size:13px'>${element.name}</p>
+        <a href="#"><p style='font-size:13px'>${element.name}</p></a>
         <span class='fa fa-star checked'></span>
        <span class='fa fa-star checked'></span>
        <span class='fa fa-star checked'></span>
