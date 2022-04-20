@@ -123,6 +123,18 @@ function sortByRatings(arr){
   
 }
 function sortHightToLow(arr){
+  let newArr =[];
+  newArr = arr.sort( (a, b) =>{
+if(a.price  < b.price){
+    return 1;
+}
+else if(a.price > b.price){
+    return -1;
+}
+else{
+    return 0;
+}
+    });
   dept.innerHTML ="";
   displayProduct(newArr);
 }
