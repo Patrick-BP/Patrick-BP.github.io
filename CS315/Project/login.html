@@ -62,8 +62,8 @@
             window.location.href = "signup.html";
         }
         let people = [
-            { name: "Taye Lemma", email: "taye@yahoo.com", password: "12345", role: "Manager" },
-            { name: "Patric B", email: "patric@gmail.com", password: "123", role: "user" },
+            { name: "Taye Lemma", email: "manager@gmail.com", password: "manager", role: "Manager" },
+            { name: "Patric B", email: "user@gmail.com", password: "user", role: "user" },
           
         ];
 
@@ -82,7 +82,7 @@
                 window.location.href = "inventory.html";
             }
             else {
-                window.location.href = "main.html";
+                window.location.href = "product.html";
             }
         }
     </script>
@@ -118,8 +118,7 @@
 
                  <div class="d-grid gap-2 mb-3">
                     <input class="btn btn-secondary btn-lg" type="button" value="Create new account" name="sign" id="sign_up" onclick="createAccount()">
-                    
-                    
+                      
                 </div>
                
 
@@ -132,7 +131,7 @@
                         style="color: dodgerblue;">Privacy Notice</a>.</p>
 
             </form>
-        </div>
+        </div><br>
         <div id="footer"></div>
     </div>
 
