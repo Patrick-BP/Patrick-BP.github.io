@@ -30,80 +30,38 @@
         .tsize{
             font-size: 12px;
         }
+        .numberItems{
+            position:relative;
+            bottom: 115px;
+            left: 1655px;
+
+        }
         </style>
 </head>
 <body>
     <div id="header"></div>
     
     <div class="container ">
+        <div class="numberItems  fw-bold"></div>
         <h3 class="mt-4">Shoping Cart</h1>
-        <div class="border mb-4"></div>
-                <div class="d-flex">
-                    <div class="row">
-                        <div class="col-9 ">
-                            <div class="row border-bottom pb-4">
-                                <div class="col-1">
-                                        <img src="images/clothe3.jpg" >
-                                    </div>
-                                    <div class="col-9 ">
-                                        <h6 class="fw-bold"> WanNiu Sport 3 Pack Tshirts for Men Cool Casual Quick Dry Tennis Tees Tops Men Large WhiteWanNiu Sport 3 Pack Tshirts for Men Cool Casual Quick Dry Tennis Tees Tops Men Large White</h6>
-                                        
-                                        <span class=" text-success tsize">In stock</span>
-                                        <div class="tsize">Eligible for FREE Shipping & FREE Returns</div>
-                                    
-                                        <input type="checkbox" id="checkbox">
-                                        <label for="checkbox" class="tsize">This is a gift Learn more</label>
-                                    <div class="tsize mb-3 mt-3"><span class="fw-bold ">color:</span> black</div> 
+        <div class="border-top mb-4 cardpage">
 
-                                    <select>
-                                        <option>Qty: 1</option>
-                                        <option>Qty: 2</option>
-                                        <option>Qty: 3</option>
-                                        <option>Qty: 4</option>
-                                        <option>Qty: 5</option>
-                                        <option>Qty: 6</option>
-                                        <option>Qty: 7</option>
-                                        <option>Qty: 8</option>
-                                    </select>
-                                    <a href="#" class="text-primary p-4 tsize">delete </a> |
-                                    <a href="#" class="text-primary p-4 tsize">Save for later</a> | 
-                                    <a href="#" class="text-primary p-4 tsize">Compare with similar items</a> 
-                                    
-                                    </div> 
-                                    <div class="col-2 ">
-                                        <div>$29.99</div>
-                                        save 20%
-                                    clip Coupon
-                                    </div>
-                            </div>
-                                    
-                            
-                            
-                            
-                        </div>
-                        
-                
-                        <div class="col-3">
-                            <div class="p-4">
-                                <div class="border rounded p-2"  style="width: 90%; background-color:#e7eaef;">
-                                    <div class="">Price:<span class="fs-4 text-danger">$25.99</span></div>
-                                    <div class="text-danger p-2"><p>This item cannot be shipped to your selected delivery location. Please choose a different  delivery location</p></div>
-                                    <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
-                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                    </svg><span class="text-primary">deliver to India </span></div>
-                                    <button class="btn btn-warning mt-4 w-100 rounded-pill" type="button">Add to Cart</button>
-                                </div>
+            <div class="d-flex">
+                <div class="row" >
+                    <!-- ========================== -->
+                    <div id="items"></div>
+                <!-- =============================== -->
                     
-                            </div>
-                        </div>
-
-                    </div>
+                
                 </div>
+                </div>
+        </div>
+               
      
 
         
     </div>
     <div id="footer"></div>
+    <script src="shoppingcard.js"></script>
 </body>
 </html>

@@ -60,7 +60,7 @@ function displayProduct(arr){
         newproduct.className ="box2 products";
 
         newproduct.innerHTML =`<img src='images/${element.image}'> 
-        <a href="#"><p style='font-size:13px'>${element.name}</p></a>
+        <a href="selectproduct.html?name=${element.name}&image=${element.image}&price=${element.price}&rating=${element.rating}"><p style='font-size:13px'>${element.name}</p></a>
         <span class='fa fa-star checked'></span>
        <span class='fa fa-star checked'></span>
        <span class='fa fa-star checked'></span>
