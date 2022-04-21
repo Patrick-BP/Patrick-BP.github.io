@@ -15,7 +15,6 @@ let totalPrice = shoppingcardArr.reduce((sum, current)=>sum + current.price,0);
 function addtocardfunc(){
     if(names){
     shoppingcardArr.push({name: names, price: price, image: image});
-    console.log(" Here I am inside addtoCart")
     totalPrice = shoppingcardArr.reduce((sum, current)=>sum + current.price,0);
     }
     
