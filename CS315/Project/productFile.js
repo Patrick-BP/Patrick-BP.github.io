@@ -71,8 +71,6 @@ function displayProduct(arr){
     }
 }
 
-
-
 // ========================= sorting Events =============================
 let select = document.getElementsByClassName("form-select")[0];
 select.onchange = sortProd;
