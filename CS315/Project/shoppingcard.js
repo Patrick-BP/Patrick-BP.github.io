@@ -4,7 +4,8 @@
 const urlParams = new URLSearchParams(window.location.search);
 
 const names = urlParams.get('name');
-const price = urlParams.get('price');
+const price = Number(urlParams.get('price'));
+
 const image = urlParams.get('image');
 
 let shoppingcardArr = [{name: 'Arducam 4K USB Camera Bundle, 12MP IMX477 HQ Webca…Mount Lens, Metal Enclosure, Tripod and USB Cable', price: 194, image: 'camera.jpg'}, 
@@ -13,7 +14,9 @@ let totalPrice = shoppingcardArr.reduce((sum, current)=>sum + current.price,0);
 
 function addtocardfunc(){
     if(names){
-    shoppingcardArr.push({name: names, price: price, image: image})
+    shoppingcardArr.push({name: names, price: price, image: image});
+    console.log(" Here I am inside addtoCart")
+    totalPrice = shoppingcardArr.reduce((sum, current)=>sum + current.price,0);
     }
     
 }
@@ -21,12 +24,14 @@ addtocardfunc();
 
 window.onload = function(){
     displayProduct(shoppingcardArr);
+    console.log(" Lenght in onload is ")
   }
 let cardpage = document.getElementById("items");
 let subtotal = document.getElementById("subtotal")
 
 function displayProduct(arr){
     for(let element of arr){
+        console.log(" Here dislay ",element);
 cardpage.innerHTML+=`<div class="row m-3">
 <div class="col-12 ">
     <div class="row border-bottom pb-4">
@@ -89,4 +94,4 @@ cardpage.innerHTML+=`<div class="row m-3">
 
 let numberItems = document.getElementsByClassName("numberItems")[0];
 console.log(numberItems);
-numberItems.innerHTML = `<p style="color:#DB8803; font-size:20px">${shoppingcardArr.length}</p>`;
+numberItems.innerHTML = `<p style="color:#DB8803; font-size:20px; ">${shoppingcardArr.length}</p>`;
