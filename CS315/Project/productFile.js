@@ -151,7 +151,7 @@ function review5func(){
 // ================================= Helpper Functions =================
 
 function reviewFunc(arr, target){
-  let newArr = arr.filter(item => item.rating === target);
+  let newArr = arr.filter(item => item.rating >= target);
   dept.innerHTML =""
   displayProduct(newArr);
   

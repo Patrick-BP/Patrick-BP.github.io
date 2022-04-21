@@ -38,7 +38,7 @@ container.innerHTML = ` <div class="p-2 w-25">
 
 </div>
 <div class="p-4 w-25">
-<div class="border rounded p-2"  style="width: 90%; background-color:#e7eaef;">
+<div class="border rounded p-2"  style="width: 90%; background-color:#e7eaef30;">
     <div class="">Price:<span class="fs-4 text-danger">$${price}</span></div>
     <div class="text-danger p-2"><p>This item cannot be shipped to your selected delivery location. Please choose a different  delivery location</p></div>
     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">

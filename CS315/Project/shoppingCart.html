@@ -24,43 +24,38 @@
             object-fit: cover;
         }
         .container {
+            background-color: white;
             max-width: 1600px !important;
 
         }
         .tsize{
             font-size: 12px;
         }
-        .numberItems{
+        /* .numberItems{
             position:relative;
             bottom: 115px;
             left: 1655px;
 
-        }
+        } */
         </style>
 </head>
 <body>
     <div id="header"></div>
     
     <div class="container ">
-        <div class="numberItems  fw-bold"></div>
-        <h3 class="mt-4">Shoping Cart</h1>
-        <div class="border-top mb-4 cardpage">
+             <div class="numberItems  fw-bold"></div>
+                <h3 class="mt-4">Shoping Cart</h1>
+        <div class="border-top mb-4 d-flex">
+            <div class="d-grid " id="items"></div>
+            <div class="" id="subtotal"></div>
 
-            <div class="d-flex">
-                <div class="row" >
-                    <!-- ========================== -->
-                    <div id="items"></div>
-                <!-- =============================== -->
-                    
-                
-                </div>
-                </div>
         </div>
                
      
 
         
     </div>
+
     <div id="footer"></div>
     <script src="shoppingcard.js"></script>
 </body>
