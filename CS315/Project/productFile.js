@@ -1,54 +1,55 @@
 "use strict";
 /*eslint-disable*/
 
-
+let shoppingCart = [];
+if(localStorage.getItem("cart")==null){
+localStorage.setItem("cart",JSON.stringify(shoppingCart));
+}
 
 
 let productArray =[
 {name: "Active noise cancellation for immersive sound Transparency mode for hearing and connecting with the world around you Three sizes of soft,tapered silicone tips for a customizable fit",
-rating: 5 , price: 203.00, image: "airpord.jpg", department: "electronics"},
+rating: 5 , price: 203.00, image: "airpord.jpg", department: "electronics",id:876},
 
 {name: "Offer from a Gentleman, An: Bridgerton (Bridgertons, 3) ",
-rating: 3, price: 12.34, image: "book2.webp", department: "books"},
+rating: 3, price: 12.34, image: "book2.webp", department: "books",id:276},
 
 {name: "Amazon Essentials Boys and Toddlers' Short-Sleeve Woven Poplin Chambray Button-Down Shirts",
-rating: 3, price: 14.34, image: "clothe2.jpg", department: "clothing"},
-
+rating: 3, price: 14.34, image: "clothe2.jpg", department: "clothing",id:176},
 
 {name: "What the Wind Knows ",
-rating: 5, price: 8.99, image: "book4.jpg", department: "books"},
+rating: 5, price: 8.99, image: "book4.jpg", department: "books",id:87},
 
 {name: "Arducam 4K USB Camera Bundle, 12MP IMX477 HQ Webcam with Audio, 6mm CS-Mount Lens, Metal Enclosure, Tripod and USB Cable",  
-rating: 4, price: 194.00, image: "camera.jpg", department: "electronics"},
+rating: 4, price: 194.00, image: "camera.jpg", department: "electronics",id:394},
 
 {name: "2Bunnies Girl Vintage Lace Boho Party Princess Flower Girl Dress",  
-rating: 1, price: 29.00, image: "clothe3.jpg", department: "clothing"},
+rating: 1, price: 29.00, image: "clothe3.jpg", department: "clothing",id:823},
 
 {name: "BLENCOT Women's Lightweight Color Block Hooded Sweaters Drawstring Hoodies Pullover Sweatshirts",  
-rating: 3, price: 45.00, image: "clothe1.jpg", department: "clothing"},
+rating: 3, price: 45.00, image: "clothe1.jpg", department: "clothing",id:123},
 
 {name: "The Sign for Home: A Novel Kindle Edition",  
-rating: 2, price: 9.00, image: "book3.jpg", department: "books"},
+rating: 2, price: 9.00, image: "book3.jpg", department: "books",id:498},
 
 {name: "Apple iMac 27-Inch Desktop, 3.4 GHz Intel Core i7 Processor, 16 GB memory, 1TB HDD (Renewed), Stereo speakers, Dual microphones, Headphone port. ",  
-rating: 1, price: 1594.00, image: "imac.jpg", department: "electronics"},
+rating: 1, price: 1594.00, image: "imac.jpg", department: "electronics",id:987},
 
 {name: "Apple iPhone 13 Pro Max (128GB, Sierra Blue) [Locked] + Carrier Subscription",  
-rating: 4, price: 1099.00, image: "iphone.webp", department: "electronic"},
+rating: 4, price: 1099.00, image: "iphone.webp", department: "electronic",id:834},
 
 {name: "Hood Crew Men’s Casual Stand Collar PU Faux Leather Zip-Up Motorcycle Bomber Jacket With a Removable Hood",  
-rating: 1, price: 25.00, image: "clothe4.jpg", department: "clothing"},
+rating: 1, price: 25.00, image: "clothe4.jpg", department: "clothing" ,id:582},
 
 {name: "MOCVOO Drone with 4K Dual Camera for Adults Beginners Kids,Foldable RC",  
-rating: 5, price: 159.00, image: "drone.jpg", department: "electronics"},
+rating: 5, price: 159.00, image: "drone.jpg", department: "electronics",id:764},
 
 {name: "Those Three Little Words Kindle Edition",  
-rating: 4, price: 17.00, image: "book1.jpg", department: "books"}
+rating: 4, price: 17.00, image: "book1.jpg", department: "books",id:921}
 ];
 window.onload = function(){
   displayProduct(productArray);
 }
-
 
 let dept = document.getElementsByClassName("product")[0];
 
@@ -60,7 +61,7 @@ function displayProduct(arr){
         newproduct.className ="box2 products";
 
         newproduct.innerHTML =`<img src='images/${element.image}'> 
-        <a href="selectproduct.html?name=${element.name}&image=${element.image}&price=${element.price}&rating=${element.rating}"><p style='font-size:13px'>${element.name}</p></a>
+        <a href="selectproduct.html?id=${element.id}&name=${element.name}&image=${element.image}&price=${element.price}&rating=${element.rating}"><p style='font-size:13px'>${element.name}</p></a>
         <span class='fa fa-star checked'></span>
        <span class='fa fa-star checked'></span>
        <span class='fa fa-star checked'></span>
@@ -116,6 +117,16 @@ function clearFilter(){
   location.reload();
 }
 
+// ==================== Search =======================
+let searchfield = document.getElementById("searchfield");
+let searchbtn = document.getElementsByClassName("searchbtn")[0]
+
+searchbtn.onclick = searchprod
+
+function searchprod(){
+  searchFunc(productArray, searchfield.value)
+}
+
 //======================== reviews ======================
 
 let review1 = document.getElementById("review1");
@@ -147,6 +158,11 @@ function review5func(){
 }
 
 // ================================= Helpper Functions =================
+function searchFunc(arr, target){
+  let newArr = arr.filter(item => item.name.includes(target));
+  dept.innerHTML =""
+  displayProduct(newArr);
+}
 
 function reviewFunc(arr, target){
   let newArr = arr.filter(item => item.rating >= target);

@@ -9,6 +9,7 @@ const names = urlParams.get('name');
 const price = urlParams.get('price');
 const image = urlParams.get('image');
 const rating = urlParams.get('rating');
+const id = urlParams.get('id');
 
 
 let container = document.getElementsByClassName("container")[0];
