@@ -1,7 +1,6 @@
 "use strict";
 /* eslint-disable */
 
-
 let input1 = document.getElementById("num1");
 let op = document.getElementById("op");
 let input2 = document.getElementById("num2");
