@@ -1,0 +1,21 @@
+body{
+    margin: 0 !important;
+}
+.container{
+    max-width: 900px !important;
+}
+.logo {
+    height: 100%;
+    width: 100%;
+    
+  }
+
+  #top-bar-wrapper{
+      height: 200px;
+      margin: 0 !important;
+      overflow: visible;
+  }
+  .container-fluid{
+      background-color: black !important;
+
+  }
