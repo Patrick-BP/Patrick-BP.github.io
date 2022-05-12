@@ -29,7 +29,7 @@ fetch(`https://randomuser.me/api/?results=3`)
     data.results.forEach(element => {
         console.log(element)
          let temp = `<div id="container" class="container d-flex border-top justify-content-between pt-4 mb-4 ">
-        <div><img src="${element.picture.large}" class="p-4" alt=""></div>
+        <div><img src="${element.picture.large}" class="img-thumbnail " alt=""></div>
         <div class="text-end align-middle fs-5">
         <div class="fw-bold"> ${element.name.first} ${element.name.last}</div>
         <div>phone: ${element.phone} </div>
