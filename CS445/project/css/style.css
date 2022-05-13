@@ -1,24 +1,53 @@
+
+
+/* ================================================================================ */
 body{
-    margin: 0 !important;
+    margin: 0 !important; 
+     min-width: 1127px;
 }
 
-.logo {
-    height: 100%;
-    width: 100%;
-    
-  }
-
   .logo-name{
-    font-family: 'Great Vibes', cursive;
-
+      font-size: 3em;
+      font-family: 'Rubik Puddles', cursive;
   }
 
   #top-bar-wrapper{
-      height: 200px;
+      height: 90px;
       margin: 0 !important;
       overflow: visible;
   }
   .container-fluid{
+      height: 900px;
       background-color: black !important;
 
   }
+  .login input{
+    max-width: 100px;
+  }
+  .content{
+      margin-top: 26px;
+  }
+  .logo{
+      width: 230px;
+      background-color: #000000 !important;
+  }
+  #search .input-group input{
+      width: 300px;
+  }
+
+  #basic-addon2, .input-group-text{
+    cursor:pointer;
+    
+  }
+  audio {
+    width: 100%;
+    height: 54px;
+    border-radius: 0;
+  
+    
+}
+  @media only screen and (max-width:1199px) {
+    #search .input-group input{
+        width: 200px;
+  }
+}
