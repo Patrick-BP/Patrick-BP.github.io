@@ -108,12 +108,12 @@ function fetchMusic() {
 
             });
 
-            // ====================================Add music inplaylist ====================================
+            // ==================================== Add music inplaylist ====================================
             let divs = document.querySelectorAll('.plusbtn');
             let tbody2 = document.getElementById("tbody2");
             tbody2.innerHTML = "";
             for (let i = 0; i < divs.length; i++) {
-                divs[i].onclick = function () {
+                divs[i].onclick = function(){
                     let id = this.getAttribute("data-music");
                     tbody2.innerHTML = "";  
                 fetch('http://localhost:3000/api/playlist/add',{
@@ -141,7 +141,7 @@ function fetchMusic() {
 }
 
 
-function fetchPlayList() {
+function fetchPlayList(){
 
     fetch('http://localhost:3000/api/playlist', {
         headers: {
@@ -158,14 +158,42 @@ function fetchPlayList() {
                 data.forEach(element => {
                 
                     displayplaylistTable(element);
-
+                
                 });
+                 // ================= Delete song ================================
+                 let divs = document.querySelectorAll('.deletebtn');
+                 let tbody2 = document.getElementById("tbody2");
+                
+                 for(let i = 0; i < divs.length; i++){
+                     divs[i].onclick = function () {
+                         let id = this.getAttribute("data-playlist");
+                         tbody2.innerHTML = "";  
+                     fetch('http://localhost:3000/api/playlist/remove',{
+                         method: 'POST',
+                         body:JSON.stringify({
+                             songId:id,
+                         }),
+                         headers:{
+                             'Content-type': 'application/json; charset=UTF-8',
+                             'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
+                         }
+                     }).then(res => res.json())
+                     .then(data => {
+                         data.forEach(function(element){
+                             displayplaylistTable(element);            
+                         });
+                     })
+                     }
+             
+                 }
+ 
+                 // ==========================End Delete song ========================
+
 
             } else {
                 document.getElementsByClassName("playlistTable")[0].style.display = "none";
                 document.getElementById("noplaylist").style.display = "block";
             }
-
 
         });
 }
@@ -184,7 +212,7 @@ function searchsong() {
             tbody.innerHTML = " ";
             data.forEach(element => {
 
-                displayMusicTable();
+                displayMusicTable(element);
                 
                 ++id;
             });
@@ -216,7 +244,7 @@ function searchsong() {
         <td>${element.title}</td>
         
         <td>
-            <span>
+            <span class="deletebtn" data-playlist="${element.songId}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
                                 <path
@@ -224,7 +252,7 @@ function searchsong() {
                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
                             </svg>
             </span>
-            <span>
+            <span class="playbtn" data-play="${element.songId}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
                                 <path

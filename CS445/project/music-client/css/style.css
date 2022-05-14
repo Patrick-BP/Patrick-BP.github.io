@@ -33,7 +33,7 @@ body{
       width: 300px;
   }
 
-  #basic-addon2, .input-group-text{
+  #basic-addon2, .input-group-text, .deletebtn, .playbtn{
     cursor:pointer;
     
   }
