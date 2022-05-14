@@ -166,8 +166,6 @@ function fetchPlayList() {
                 document.getElementById("noplaylist").style.display = "block";
             }
 
-            
-
 
         });
 }
@@ -211,6 +209,7 @@ function searchsong() {
         </tr>`;
         tbody.innerHTML += tr;
      }
+
      function displayplaylistTable(element){
         let tr2 = `<tr>
         <td>${element.orderId}</td>
