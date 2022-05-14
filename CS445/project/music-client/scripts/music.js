@@ -1,8 +1,8 @@
 "use strict";
 /* eslint-disable */
-
-window.onload = function () {
-
+  
+window.onload = function(){
+  
     if (sessionStorage.getItem('tokenLogin')) {
         loggedin();
         fetchMusic();
@@ -43,29 +43,9 @@ window.onload = function () {
     document.getElementById("logout").onclick = logout;
     document.getElementsByClassName("searchBtn")[0].onclick = searchsong;
 
-    //   element.onclick = function(){
-    //     let songid = this.getAttribute("data-music");
-    //     console.log(songid);
-    //     fetch('http://localhost:3000/api/play/add',{
-    //         method: 'POST',
-    //         body:JSON.stringify({
-    //             songId: songid
-    //         }),
-    //         headers:{
-    //             'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
-    //         }
-    //     }).then(res => res.json())
-    //     .then(data => {
-    //         console.log(data);
-    //     })
-    //   }
-    
-       
-       
-    
-     
-
 }
+
+
 function invalidLogin(msg) {
 
     let warning = document.getElementById("msg");
@@ -74,7 +54,7 @@ function invalidLogin(msg) {
     // document.getElementById("password").value= "";
 }
 function loggedin() {
-    
+
     document.getElementById("loginwrapper").style.display = "none";
     document.getElementById("logout").style.display = "block";
     document.getElementById("search").style.display = "block";
@@ -90,11 +70,11 @@ function logout() {
     document.getElementById("search").style.display = "none";
     document.getElementsByClassName("welcome")[0].style.display = "block";
     document.getElementsByClassName("tableContent")[0].style.display = "none";
-    
+
 }
 
 function fetchMusic() {
-   
+
     fetch('http://localhost:3000/api/music', {
         headers: {
             'Authorization': `Bear ${sessionStorage.getItem('tokenLogin')}`
@@ -125,7 +105,37 @@ function fetchMusic() {
                         </tr>`;
                 tbody.innerHTML += tr;
                 ++id;
+
             });
+
+            // ====================================Add music inplaylist ====================================
+            let divs = document.querySelectorAll('.plusbtn');
+            let tbody2 = document.getElementById("tbody2");
+            tbody2.innerHTML = "";
+            for (let i = 0; i < divs.length; i++) {
+                divs[i].onclick = function () {
+                    let id = this.getAttribute("data-music");
+                    tbody2.innerHTML = "";  
+                fetch('http://localhost:3000/api/playlist/add',{
+                    method: 'POST',
+                    body:JSON.stringify({
+                        songId:id,
+                    }),
+                    headers:{
+                        'Content-type': 'application/json; charset=UTF-8',
+                        'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
+                    }
+                }).then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    data.forEach(function(element){
+                        displayplaylistTable(element);            
+                    });
+                })
+                }
+        
+            }
+            // ==================================== End Add music inplaylist ====================================
 
         })
 }
@@ -140,86 +150,89 @@ function fetchPlayList() {
     }).then(res => res.json())
         .then(data => {
             document.getElementById("playlist").style.display = "intial";
-            if(!data.length == 0){
-                
+            if (!data.length == 0) {
+
                 document.getElementById("tbody2").innerHTML = " ";
                 document.getElementsByClassName("playlistTable")[0].style.display = "block";
                 document.getElementById("noplaylist").style.display = "none";
                 data.forEach(element => {
-                    let tr2 = `<tr>
-                            <td>${element.orderId}</td>
-                            <td>${element.title}</td>
-                            
-                            <td>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-                                                </svg>
-                                </span>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
-                                                </svg></span>
-                                        </td>
-    
-                            </tr>`;
-                            document.getElementById("tbody2").innerHTML += tr2;
-                });
                 
-            }else{
+                    displayplaylistTable(element);
+
+                });
+
+            } else {
                 document.getElementsByClassName("playlistTable")[0].style.display = "none";
                 document.getElementById("noplaylist").style.display = "block";
-            } 
+            }
+
+            
+
 
         });
 }
 
 
-function searchsong(){
+function searchsong() {
     let searchinput = document.getElementById("searchField");
-    fetch(`http://localhost:3000/api/music?search=${searchinput.value}`,{
-        headers:{
+    fetch(`http://localhost:3000/api/music?search=${searchinput.value}`, {
+        headers: {
             'Authorization': `Bear ${sessionStorage.getItem('tokenLogin')}`
         }
     }).then(res => res.json())
-    .then(data => {
-        let id = 1;
+        .then(data => {
+            let id = 1;
             let tbody = document.getElementById("tbody");
             tbody.innerHTML = " ";
             data.forEach(element => {
-                
-                let tr = `<tr>
-                        <td>${id}</td>
-                        <td>${element.title}</td>
-                        <td>${element.releaseDate}</td>
-                        <td><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                    <path
-                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                </svg></span></td>
 
-                        </tr>`;
-                tbody.innerHTML += tr;
+                displayMusicTable();
+                
                 ++id;
             });
             searchinput.value = "";
-    })
+        })
 }
 
-function addToPlaylist(){
-    
-}
 
-let divs = document.getElementsByClassName("plusbtn");  
-    console.log(divs);
-for (let i = 0; i < divs.length; i++) {
-    console.log(divs[i]); ;
-    
-}
+     function displayMusicTable(){
+        let tr = `<tr>
+        <td>${id}</td>
+        <td>${element.title}</td>
+        <td>${element.releaseDate}</td>
+        <td><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path
+                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg></span></td>
+
+        </tr>`;
+        tbody.innerHTML += tr;
+     }
+     function displayplaylistTable(element){
+        let tr2 = `<tr>
+        <td>${element.orderId}</td>
+        <td>${element.title}</td>
+        
+        <td>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                            </svg>
+            </span>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
+                            </svg></span>
+                    </td>
+
+        </tr>`;
+document.getElementById("tbody2").innerHTML += tr2;
+     }
