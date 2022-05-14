@@ -161,31 +161,7 @@ function fetchPlayList(){
                 
                 });
                  // ================= Delete song ================================
-                 let divs = document.querySelectorAll('.deletebtn');
-                 let tbody2 = document.getElementById("tbody2");
-                
-                 for(let i = 0; i < divs.length; i++){
-                     divs[i].onclick = function () {
-                         let id = this.getAttribute("data-playlist");
-                         tbody2.innerHTML = "";  
-                     fetch('http://localhost:3000/api/playlist/remove',{
-                         method: 'POST',
-                         body:JSON.stringify({
-                             songId:id,
-                         }),
-                         headers:{
-                             'Content-type': 'application/json; charset=UTF-8',
-                             'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
-                         }
-                     }).then(res => res.json())
-                     .then(data => {
-                         data.forEach(function(element){
-                             displayplaylistTable(element);            
-                         });
-                     })
-                     }
-             
-                 }
+                 
  
                  // ==========================End Delete song ========================
 
@@ -221,7 +197,29 @@ function searchsong() {
 }
 
 
-     function displayMusicTable(){
+function deletefunc(obj){
+    let tbody2 = document.getElementById("tbody2");
+            let id = obj.getAttribute("data-playlist");
+            tbody2.innerHTML = "";  
+        fetch('http://localhost:3000/api/playlist/remove',{
+            method: 'POST',
+            body:JSON.stringify({
+                songId:id,
+            }),
+            headers:{
+                'Content-type': 'application/json; charset=UTF-8',
+                'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
+            }
+        }).then(res => res.json())
+        .then(data => {
+            data.forEach(function(element){
+                displayplaylistTable(element);            
+            });
+        })
+
+ }
+
+     function displayMusicTable(element){
         let tr = `<tr>
         <td>${id}</td>
         <td>${element.title}</td>
@@ -244,7 +242,7 @@ function searchsong() {
         <td>${element.title}</td>
         
         <td>
-            <span class="deletebtn" data-playlist="${element.songId}">
+            <span class="deletebtn" data-playlist="${element.songId}" onclick="deletefunc(this)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
                                 <path
@@ -263,3 +261,5 @@ function searchsong() {
         </tr>`;
 document.getElementById("tbody2").innerHTML += tr2;
      }
+
+
