@@ -1,9 +1,7 @@
-
-
-/* ================================================================================ */
 body{
     margin: 0 !important; 
      min-width: 1127px;
+     background-color: #000000 !important;
 }
 
   .logo-name{
@@ -17,7 +15,6 @@ body{
       overflow: visible;
   }
   .container-fluid{
-      height: 900px;
       background-color: black !important;
       
 
@@ -29,7 +26,7 @@ body{
       /* margin-top: 26px; */
   }
   .logo{
-      width: 230px;
+      width: 178px;
       background-color: #000000 !important;
   }
   #search .input-group input{
@@ -45,6 +42,9 @@ body{
     height: 54px;
     border-radius: 0; 
 }
+.player{
+  display: none;
+}
 
 #logout, #search{
   display: none;
@@ -52,8 +52,35 @@ body{
 #noplaylist{
   display: none;
 }
+.first{
+  font-size:9em;
+  font-family: 'Staatliches', cursive;
+  color: rgb(234, 177, 21);
+}
+.second{
+  font-size: 9em;
+  font-family: 'Staatliches', cursive;
+  color: rgb(217, 42, 176); 
+  line-height: 44px;
+}
+.third{
+  font-size: 1.5em;
+  color: rgb(248, 248, 248);
+  font-family: 'Alfa Slab One', cursive;
+  line-height: 134px;
+ 
+}
+.plusbtn{
+  cursor: pointer;
+}
+.welcomewrapper{
+  margin-top: 6%;
+}
   @media only screen and (max-width:1199px) {
     #search .input-group input{
         width: 200px;
   }
 }
+
+
+
