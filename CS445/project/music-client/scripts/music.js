@@ -1,8 +1,10 @@
+
+
 "use strict";
 /* eslint-disable */
-  
-window.onload = function(){
-  
+
+window.onload = function () {
+
     if (sessionStorage.getItem('tokenLogin')) {
         loggedin();
         fetchMusic();
@@ -90,7 +92,7 @@ function fetchMusic() {
                         <td>${element.title}</td>
                         <td>${element.releaseDate}</td>
                         <td>
-                            <div class="plusbtn" data-music="${element.id}" >
+                            <div class="plusbtn" data-music="${element.id}" onclick="addfunc(this)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                     fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                     <path
@@ -101,7 +103,6 @@ function fetchMusic() {
                             </div>
                             
                         </td>
-
                         </tr>`;
                 tbody.innerHTML += tr;
                 ++id;
@@ -109,39 +110,14 @@ function fetchMusic() {
             });
 
             // ==================================== Add music inplaylist ====================================
-            let divs = document.querySelectorAll('.plusbtn');
-            let tbody2 = document.getElementById("tbody2");
-            tbody2.innerHTML = "";
-            for (let i = 0; i < divs.length; i++) {
-                divs[i].onclick = function(){
-                    let id = this.getAttribute("data-music");
-                    tbody2.innerHTML = "";  
-                fetch('http://localhost:3000/api/playlist/add',{
-                    method: 'POST',
-                    body:JSON.stringify({
-                        songId:id,
-                    }),
-                    headers:{
-                        'Content-type': 'application/json; charset=UTF-8',
-                        'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
-                    }
-                }).then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    data.forEach(function(element){
-                        displayplaylistTable(element);            
-                    });
-                })
-                }
-        
-            }
+
             // ==================================== End Add music inplaylist ====================================
 
         })
 }
 
 
-function fetchPlayList(){
+function fetchPlayList() {
 
     fetch('http://localhost:3000/api/playlist', {
         headers: {
@@ -156,15 +132,10 @@ function fetchPlayList(){
                 document.getElementsByClassName("playlistTable")[0].style.display = "block";
                 document.getElementById("noplaylist").style.display = "none";
                 data.forEach(element => {
-                
-                    displayplaylistTable(element);
-                
-                });
-                 // ================= Delete song ================================
-                 
- 
-                 // ==========================End Delete song ========================
 
+                    displayplaylistTable(element);
+
+                });
 
             } else {
                 document.getElementsByClassName("playlistTable")[0].style.display = "none";
@@ -189,55 +160,88 @@ function searchsong() {
             data.forEach(element => {
 
                 displayMusicTable(element);
-                
+
                 ++id;
             });
             searchinput.value = "";
         })
 }
 
+function addfunc(obj) {
 
-function deletefunc(obj){
     let tbody2 = document.getElementById("tbody2");
-            let id = obj.getAttribute("data-playlist");
-            tbody2.innerHTML = "";  
-        fetch('http://localhost:3000/api/playlist/remove',{
-            method: 'POST',
-            body:JSON.stringify({
-                songId:id,
-            }),
-            headers:{
-                'Content-type': 'application/json; charset=UTF-8',
-                'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
-            }
-        }).then(res => res.json())
+    tbody2.innerHTML = "";
+    let id = obj.getAttribute("data-music");
+    tbody2.innerHTML = "";
+    fetch('http://localhost:3000/api/playlist/add', {
+        method: 'POST',
+        body: JSON.stringify({
+            songId: id,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
+        }
+    }).then(res => res.json())
         .then(data => {
-            data.forEach(function(element){
-                displayplaylistTable(element);            
+            console.log(data);
+            data.forEach(function (element) {
+                displayplaylistTable(element);
+            });
+        })
+}
+
+
+
+function deletefunc(obj) {
+    let tbody2 = document.getElementById("tbody2");
+    let id = obj.getAttribute("data-playlist");
+    tbody2.innerHTML = "";
+    fetch('http://localhost:3000/api/playlist/remove', {
+        method: 'POST',
+        body: JSON.stringify({
+            songId: id,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
+        }
+    }).then(res => res.json())
+        .then(data => {
+            data.forEach(function (element) {
+                displayplaylistTable(element);
             });
         })
 
- }
+}
 
-     function displayMusicTable(element){
-        let tr = `<tr>
+function displayMusicTable(element) {
+    let id = 1;
+    let tr = `<tr>
         <td>${id}</td>
         <td>${element.title}</td>
         <td>${element.releaseDate}</td>
-        <td><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                    <path
-                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                    <path
-                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                </svg></span></td>
-
+        <td>
+        
+                            <div class="plusbtn" data-music="${element.id}" onclick="addfunc(this)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                    <path
+                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                </svg>
+                            </div>
+                            
+                        
+        </td>
         </tr>`;
-        tbody.innerHTML += tr;
-     }
+    tbody.innerHTML += tr;
+    ++id;
+}
 
-     function displayplaylistTable(element){
-        let tr2 = `<tr>
+function displayplaylistTable(element) {
+    let tr2 = `<tr>
         <td>${element.orderId}</td>
         <td>${element.title}</td>
         
@@ -257,9 +261,7 @@ function deletefunc(obj){
                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
                             </svg></span>
                     </td>
-
         </tr>`;
-document.getElementById("tbody2").innerHTML += tr2;
-     }
-
+    document.getElementById("tbody2").innerHTML += tr2;
+}
 
