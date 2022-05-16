@@ -79,7 +79,7 @@ function fetchMusic() {
 
     fetch('http://localhost:3000/api/music', {
         headers: {
-            'Authorization': `Bear ${sessionStorage.getItem('tokenLogin')}`
+            'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
         }
     }).then(res => res.json())
         .then(data => {
@@ -118,13 +118,13 @@ function fetchPlayList() {
 
     fetch('http://localhost:3000/api/playlist', {
         headers: {
-            'Authorization': `Bear ${sessionStorage.getItem('tokenLogin')}`
+            'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
         }
     }).then(res => res.json())
         .then(data => {
             document.getElementById("playlist").style.display = "intial";
             if (!data.length == 0) {
-
+                document.getElementsByClassName("player")[0].style.display = "block";
                 document.getElementById("tbody2").innerHTML = " ";
                 document.getElementsByClassName("playlistTable")[0].style.display = "block";
                 document.getElementById("noplaylist").style.display = "none";
@@ -137,6 +137,7 @@ function fetchPlayList() {
             } else {
                 document.getElementsByClassName("playlistTable")[0].style.display = "none";
                 document.getElementById("noplaylist").style.display = "block";
+                document.getElementsByClassName("player")[0].style.display = "none";
             }
 
         });
@@ -220,15 +221,15 @@ function displayMusicTable(element) {
         <td>${element.releaseDate}</td>
         <td>
         
-                            <div class="plusbtn" data-music="${element.id}" onclick="addfunc(this)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                    <path
-                                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                </svg>
-                            </div>
+            <div class="plusbtn" data-music="${element.id}" onclick="addfunc(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path
+                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+            </div>
                             
                         
         </td>
@@ -251,7 +252,7 @@ function displayplaylistTable(element) {
                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
                             </svg>
             </span>&ensp;
-            <span class="playbtn" data-play="${element.songId}">
+            <span class="playbtn" data-play="${element.title}" onclick="playfunc(this)" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
                                 <path
@@ -260,5 +261,24 @@ function displayplaylistTable(element) {
                     </td>
         </tr>`;
     document.getElementById("tbody2").innerHTML += tr2;
+}
+
+function playfunc(obj){
+    let title = obj.getAttribute("data-play");
+    console.log(title);
+    fetch(`http://localhost:3000/api/music?search=${title}`, {
+        headers: {
+            'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
+        }
+    }).then(res => res.json())
+        .then(data => {
+            console.log(data);
+            let player = document.getElementsByClassName("player")[0];
+            player.innerHTML = `<audio controls autoplay>
+            <source id="toplay" src="http://localhost:3000/${data[0].urlPath}" type="audio/mpeg">
+        </audio>`;
+        //    src.value = `http://localhost:3000/${playsong[0].urlPath}`;
+          
+        });
 }
 
