@@ -252,7 +252,7 @@ function displayplaylistTable(element) {
                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
                             </svg>
             </span>&ensp;
-            <span class="playbtn" data-play="${element.title}" onclick="playfunc(this)" >
+            <span class="playbtn" data-play="${element.urlPath}" onclick="playfunc(this)" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
                                 <path
@@ -264,21 +264,11 @@ function displayplaylistTable(element) {
 }
 
 function playfunc(obj){
-    let title = obj.getAttribute("data-play");
-    console.log(title);
-    fetch(`http://localhost:3000/api/music?search=${title}`, {
-        headers: {
-            'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
-        }
-    }).then(res => res.json())
-        .then(data => {
-            console.log(data);
-            let player = document.getElementsByClassName("player")[0];
-            player.innerHTML = `<audio controls autoplay>
-            <source id="toplay" src="http://localhost:3000/${data[0].urlPath}" type="audio/mpeg">
+    let title = obj.getAttribute("data-play"); 
+    let player = document.getElementsByClassName("player")[0];
+    player.innerHTML = `<audio controls autoplay>
+            <source id="toplay" src="http://localhost:3000/${title}" type="audio/mpeg">
         </audio>`;
         
-          
-        });
 }
 
