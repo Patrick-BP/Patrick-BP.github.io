@@ -277,7 +277,7 @@ function playfunc(obj){
             player.innerHTML = `<audio controls autoplay>
             <source id="toplay" src="http://localhost:3000/${data[0].urlPath}" type="audio/mpeg">
         </audio>`;
-        //    src.value = `http://localhost:3000/${playsong[0].urlPath}`;
+        
           
         });
 }

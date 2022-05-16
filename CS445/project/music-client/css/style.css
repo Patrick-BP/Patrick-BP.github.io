@@ -76,6 +76,7 @@ body{
 .welcomewrapper{
   margin-top: 6%;
 }
+
   @media only screen and (max-width:1199px) {
     #search .input-group input{
         width: 200px;
