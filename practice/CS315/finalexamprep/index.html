@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <input type="text" name="gender" id="filterCondition"  value="female"/>
+    <button id="getusers">get user</button>
+    <!-- <input id="input1" />
+    <input id="input2" />
+    <button id="btn">Swap</button> -->
+    <script>
+        
+        document.getElementById('getusers').addEventListener('click', ()=>{
+            fetch('https://randomuser.me/api/?results=10')
+            .then(res => res.json())
+            .then(data => {
+                let input = document.getElementById('filterCondition').value
+             let gender = data.results.filter(item=> item.gender === input);
+             
+             gender.forEach(element => {
+                
+                console.log(element.name.first, element.name.last);
+             });
+             
+            })
+        })
+
+        
+
+        // let input1 = document.getElementById('input1');
+        // let input2 = document.getElementById('input2');
+        // let btn = document.getElementById('btn');
+
+        // btn.onclick = ()=>{
+        //     let tempo = input1.value;
+        //     input1.value = input2.value;
+        //     input2.value = tempo
+        // }
+    </script>
+</body>
+
+</html>

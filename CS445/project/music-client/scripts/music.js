@@ -51,12 +51,15 @@ window.onload = function () {
 function invalidLogin(msg) {
 
     let warning = document.getElementById("msg");
+    warning.style.display = "block";
     warning.innerHTML = msg.message;
-    // document.getElementById("username").value = "";
-    // document.getElementById("password").value= "";
+    document.getElementById("username").value = "";
+    document.getElementById("password").value= "";
 }
 function loggedin() {
-
+    document.getElementById("username").value = "";
+    document.getElementById("password").value= "";
+    document.getElementById("msg").style.display = "none";
     document.getElementById("loginwrapper").style.display = "none";
     document.getElementById("logout").style.display = "block";
     document.getElementById("search").style.display = "block";
@@ -127,9 +130,9 @@ function fetchPlayList() {
                 document.getElementsByClassName("player")[0].style.display = "block";
                 document.getElementById("tbody2").innerHTML = " ";
                 document.getElementsByClassName("playlistTable")[0].style.display = "block";
-                document.getElementById("noplaylist").style.display = "none";
+                
                 data.forEach(element => {
-                 
+                 document.getElementById("noplaylist").style.display = "none";
                     displayplaylistTable(element);
 
                 });
@@ -167,6 +170,7 @@ function searchsong() {
 
 function addfunc(obj) {
     document.getElementById("playlist").style.display = " ";
+    document.getElementsByClassName("playlistTable")[0].style.display = "block";
     let tbody2 = document.getElementById("tbody2");
     tbody2.innerHTML = "";
     let id = obj.getAttribute("data-music");
@@ -184,6 +188,7 @@ function addfunc(obj) {
         .then(data => {
             console.log(data);
             data.forEach(function (element) {
+                document.getElementById("noplaylist").innerHTML = " ";
                 displayplaylistTable(element);
             });
         })
@@ -264,6 +269,7 @@ function displayplaylistTable(element) {
 }
 
 function playfunc(obj){
+    document.getElementsByClassName("player")[0].style.display = "block"
     let title = obj.getAttribute("data-play"); 
     let player = document.getElementsByClassName("player")[0];
     player.innerHTML = `<audio controls autoplay>
