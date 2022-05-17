@@ -12,6 +12,8 @@ window.onload = function () {
     } else {
         logout();
     }
+
+    // ============================================ LOGIN =======================================
     let loginBtn = document.getElementById("loginbtn");
 
     loginBtn.onclick = function () {
@@ -39,15 +41,17 @@ window.onload = function () {
                 }
             })
 
-
     };
+
 
     document.getElementById("logout").onclick = logout;
     document.getElementsByClassName("searchBtn")[0].onclick = searchsong;
 
 }
 
+// ============================================ END LOGIN =======================================
 
+// ============================================ INVALID LOGIN =======================================
 function invalidLogin(msg) {
 
     let warning = document.getElementById("msg");
@@ -56,6 +60,10 @@ function invalidLogin(msg) {
     document.getElementById("username").value = "";
     document.getElementById("password").value= "";
 }
+// ============================================ END INVALID LOGIN =======================================
+
+
+// ============================================ AFTER LOGIN =======================================
 function loggedin() {
     document.getElementById("username").value = "";
     document.getElementById("password").value= "";
@@ -68,6 +76,11 @@ function loggedin() {
     document.getElementById("playlist").style.display = "inline-table";
 
 }
+// ============================================ END AFTER LOGIN =======================================
+
+
+
+// ============================================ AFTER LOGOUT =======================================
 function logout() {
     sessionStorage.removeItem('tokenLogin');
     document.getElementById("loginwrapper").style.display = "";
@@ -77,7 +90,11 @@ function logout() {
     document.getElementsByClassName("tableContent")[0].style.display = "none";
 
 }
+// ============================================ END AFTER LOGOUT =======================================
 
+
+
+// ============================================ FETCH TO MUSIC TABLE=======================================
 function fetchMusic() {
 
     fetch('http://localhost:3000/api/music', {
@@ -116,7 +133,11 @@ function fetchMusic() {
         })
 }
 
+// ============================================ END FETCH TO MUSIC TABLE=======================================
 
+
+
+// ============================================ FETCH  MUSIC TO PLAYLIST TABLE=======================================
 function fetchPlayList() {
 
     fetch('http://localhost:3000/api/playlist', {
@@ -145,8 +166,12 @@ function fetchPlayList() {
 
         });
 }
+// ============================================ END FETCH  MUSIC TO PLAYLIST TABLE=======================================
 
 
+
+
+// ============================================ SEARCH SONG FUNCTION =======================================
 function searchsong() {
     let searchinput = document.getElementById("searchField");
     fetch(`http://localhost:3000/api/music?search=${searchinput.value}`, {
@@ -167,7 +192,12 @@ function searchsong() {
             searchinput.value = "";
         })
 }
+// ============================================ END SEARCH SONG FUNCTION =======================================
 
+
+
+
+// ============================================ ADD TO PLAYLIST =======================================
 function addfunc(obj) {
     document.getElementById("playlist").style.display = " ";
     document.getElementsByClassName("playlistTable")[0].style.display = "block";
@@ -194,8 +224,11 @@ function addfunc(obj) {
         })
 }
 
+// ============================================ END ADD TO PLAYLIST =======================================
 
 
+
+// ============================================ DELETE SONG FUNCTION =======================================
 function deletefunc(obj) {
     let tbody2 = document.getElementById("tbody2");
     let id = obj.getAttribute("data-playlist");
@@ -217,7 +250,12 @@ function deletefunc(obj) {
         })
 
 }
+// ============================================ END DELETE SONG FUNCTION =======================================
 
+
+
+
+// ============================================  DISPLAY MUSIC  =======================================
 function displayMusicTable(element) {
     let id = 1;
     let tr = `<tr>
@@ -243,6 +281,11 @@ function displayMusicTable(element) {
     ++id;
 }
 
+// ============================================ END DISPLAY MUSIC  =======================================
+
+
+
+// ============================================  DISPLAY MUSIC PLAYLIST =======================================
 function displayplaylistTable(element) {
     let tr2 = `<tr>
         <td>${element.orderId}</td>
@@ -267,7 +310,11 @@ function displayplaylistTable(element) {
         </tr>`;
     document.getElementById("tbody2").innerHTML += tr2;
 }
+// ============================================ END DISPLAY MUSIC PLAYLIST =======================================
 
+
+
+// ============================================  PLAY MUSIC =======================================
 function playfunc(obj){
     document.getElementsByClassName("player")[0].style.display = "block"
     let title = obj.getAttribute("data-play"); 
@@ -278,3 +325,4 @@ function playfunc(obj){
         
 }
 
+// ============================================ END PLAY MUSIC =======================================
