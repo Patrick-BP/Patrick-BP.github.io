@@ -129,11 +129,11 @@ function fetchPlayList() {
                 document.getElementsByClassName("playlistTable")[0].style.display = "block";
                 document.getElementById("noplaylist").style.display = "none";
                 data.forEach(element => {
-
+                 
                     displayplaylistTable(element);
 
                 });
-
+                
             } else {
                 document.getElementsByClassName("playlistTable")[0].style.display = "none";
                 document.getElementById("noplaylist").style.display = "block";
