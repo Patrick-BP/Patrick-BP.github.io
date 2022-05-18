@@ -3,6 +3,7 @@
 "use strict";
 /* eslint-disable */
 
+
 window.onload = function () {
 
     if (sessionStorage.getItem('tokenLogin')) {
@@ -75,6 +76,9 @@ function loggedin() {
     document.getElementsByClassName("tableContent")[0].style.display = "block";
     document.getElementById("playlist").style.display = "inline-table";
 
+    
+    
+
 }
 // ============================================ END AFTER LOGIN =======================================
 
@@ -82,6 +86,7 @@ function loggedin() {
 
 // ============================================ AFTER LOGOUT =======================================
 function logout() {
+    
     sessionStorage.removeItem('tokenLogin');
     document.getElementById("loginwrapper").style.display = "";
     document.getElementById("logout").style.display = "none";
@@ -139,13 +144,15 @@ function fetchMusic() {
 
 // ============================================ FETCH  MUSIC TO PLAYLIST TABLE=======================================
 function fetchPlayList() {
-
+    
     fetch('http://localhost:3000/api/playlist', {
         headers: {
             'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
         }
     }).then(res => res.json())
         .then(data => {
+            
+          
             document.getElementById("playlist").style.display = "intial";
             if (!data.length == 0) {
                 document.getElementsByClassName("player")[0].style.display = "block";
@@ -157,7 +164,8 @@ function fetchPlayList() {
                     displayplaylistTable(element);
 
                 });
-                
+
+               
             } else {
                 document.getElementsByClassName("playlistTable")[0].style.display = "none";
                 document.getElementById("noplaylist").style.display = "block";
@@ -165,7 +173,9 @@ function fetchPlayList() {
             }
 
         });
+
 }
+
 // ============================================ END FETCH  MUSIC TO PLAYLIST TABLE=======================================
 
 
@@ -216,7 +226,7 @@ function addfunc(obj) {
         }
     }).then(res => res.json())
         .then(data => {
-            console.log(data);
+            
             data.forEach(function (element) {
                 document.getElementById("noplaylist").innerHTML = " ";
                 displayplaylistTable(element);
@@ -300,7 +310,7 @@ function displayplaylistTable(element) {
                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
                             </svg>
             </span>&ensp;
-            <span class="playbtn" data-play="${element.urlPath}" onclick="playfunc(this)" >
+            <span class="playbtn" data-play="${element.urlPath}" data-current="${element.orderId}" onclick="playfunc(this)" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
                                 <path
@@ -316,13 +326,171 @@ function displayplaylistTable(element) {
 
 // ============================================  PLAY MUSIC =======================================
 function playfunc(obj){
+   
     document.getElementsByClassName("player")[0].style.display = "block"
     let title = obj.getAttribute("data-play"); 
+    let orderid = obj.getAttribute("data-current"); 
     let player = document.getElementsByClassName("player")[0];
     player.innerHTML = `<audio controls autoplay>
             <source id="toplay" src="http://localhost:3000/${title}" type="audio/mpeg">
-        </audio>`;
+        </audio><div class="navigation" >
+        
+        <button id="prev" data-currentprev="${orderid}" onclick="prevSong(this)" class="action-btn">
+              <i class="fas fa-backward"></i>
+        </button>
+        
+        
+        <button id="next" data-current="${orderid}" onclick="nextSong(this)" class="action-btn">
+              <i class="fas fa-forward"></i>
+        </button>
+       
+        <button id='shuffle' onclick="shuffle()" class="action-btn">
+              <i class="fas fa-shuffle"></i>
+        </button>
+
+        <button id='repeat' onclick="repeat()" class="action-btn">
+                  <i class="fas fa-repeat"></i>
+            </button>
+
+  </div>`;
         
 }
 
+
+
+
 // ============================================ END PLAY MUSIC =======================================
+
+const prevBtn = document.querySelector('#prev');
+ const nextBtn = document.querySelector('#next');
+
+ function prevSong(obj) {
+    let orderid= obj.getAttribute('data-currentprev')
+  
+   fetch('http://localhost:3000/api/playlist', {
+    headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
+    }
+}).then(res => res.json())
+    .then(data => {
+        
+       let prevsong = data.filter(item => item.orderId == Number(orderid)-1);
+
+       let player = document.getElementsByClassName("player")[0];
+       
+       player.innerHTML = `<audio controls autoplay>
+            <source id="toplay" src="http://localhost:3000/${prevsong[0].urlPath}" type="audio/mpeg">
+        </audio><div class="navigation" >
+        
+        <button id="prev" data-currentprev="${prevsong[0].orderId}" onclick="prevSong(this)" class="action-btn">
+              <i class="fas fa-backward"></i>
+        </button>
+        
+        
+        <button id="next" data-current="${prevsong[0].orderId}" onclick="nextSong(this)" class="action-btn">
+              <i class="fas fa-forward"></i>
+        </button>
+       
+        <button id='shuffle' onclick="shuffle()" class="action-btn">
+              <i class="fas fa-shuffle"></i>
+        </button>
+
+        <button id='repeat' onclick="repeat()" class="action-btn">
+                  <i class="fas fa-repeat"></i>
+            </button>
+
+
+  </div>`;
+    });
+}
+function nextSong(obj) {
+    let orderid= obj.getAttribute('data-current')
+   console.log(orderid);
+   
+   fetch('http://localhost:3000/api/playlist', {
+    headers: {
+        'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
+    }
+}).then(res => res.json())
+    .then(data => {
+        
+       let nextsong = data.filter(item => item.orderId == Number(orderid)+1);
+       let player = document.getElementsByClassName("player")[0];
+       player.innerHTML = `<audio controls autoplay>
+            <source id="toplay" src="http://localhost:3000/${nextsong[0].urlPath}" type="audio/mpeg">
+        </audio><div class="navigation" >
+        
+        <button id="prev" data-currentprev="${nextsong[0].orderId}" onclick="prevSong(this)" class="action-btn">
+              <i class="fas fa-backward"></i>
+        </button>
+        
+        
+        <button id="next" data-current="${nextsong[0].orderId}" onclick="nextSong(this)" class="action-btn">
+              <i class="fas fa-forward"></i>
+        </button>
+       
+        <button id='shuffle' onclick="shuffle()" class="action-btn">
+              <i class="fas fa-shuffle"></i>
+        </button>
+
+        <button id='repeat' onclick="repeat()" class="action-btn">
+                  <i class="fas fa-repeat"></i>
+            </button>
+
+
+  </div>`;
+    });
+}
+
+
+function shuffle(){
+    
+    
+
+    fetch('http://localhost:3000/api/playlist', {
+     headers: {
+         'Authorization': `Bearer ${sessionStorage.getItem('tokenLogin')}`
+     }
+ }).then(res => res.json())
+     .then(data => {
+         
+        let shuffleNum = Math.floor((Math.random() * data.length) + 1)
+
+        let nextsong = data.filter(item => item.orderId == shuffleNum);
+        let player = document.getElementsByClassName("player")[0];
+        player.innerHTML = `<audio controls autoplay>
+
+             <source id="toplay" src="http://localhost:3000/${nextsong[0].urlPath}" type="audio/mpeg">
+         </audio>
+         <div class="navigation" >
+         
+         <button id="prev" data-currentprev="${nextsong[0].orderId}" onclick="prevSong(this)" class="action-btn">
+               <i class="fas fa-backward"></i>
+         </button>
+         
+         
+         <button id="next" data-current="${nextsong[0].orderId}" onclick="nextSong(this)" class="action-btn">
+               <i class="fas fa-forward"></i>
+         </button>
+        
+         <button id='shuffle' onclick="shuffle(this)" class="action-btn">
+               <i class="fas fa-shuffle"></i>
+         </button>
+        
+         <button id='repeat' onclick="repeat()" class="action-btn">
+                  <i class="fas fa-repeat"></i>
+            </button>
+
+   </div>`;
+     });
+
+}
+
+function repeat(){
+    let player = document.querySelector("audio");
+    let repeat = document.querySelector("#repeat > i ");
+    repeat.setAttribute("class","fa-solid fa-arrow-rotate-right");
+    
+    player.loop = true
+
+}
