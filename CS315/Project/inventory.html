@@ -2,7 +2,23 @@
 <html>
 
 <head>
-<style>X
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
+<script>
+  $(function () {
+    $("#header2").load("header.html");
+
+    $("#footer").load("footer.html");
+  });
+</script>
+<style>
+
+    body{
+        background: lightcyan;
+    }
     #items {
   border-collapse: collapse;
 
@@ -37,8 +53,8 @@ table{
   color: white;
 }
 
-input[type="text"],
-select {
+ .inputlabel input[type="text"],
+ .inputlabel select {
   width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -52,66 +68,69 @@ select {
   padding: 12px 20px;
   
 }
+.input1{
+    position: relative;
+    left: 100px;
+    
+    
+}
+.inputLable input{
+    margin-top: -5px;
+    border: 3px solid black;
+}
 
 </style>
 
     <link rel="stylesheet" href="myStyle.css">   
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      $(function () {
-        $("#header2").load("header2.html");
-
-        $("#footer").load("footer.html");
-      });
-    </script>
+   
 </head>
 
 <body>
+  <div class="header"></div>
   <div class="position-sticky top-0" style="z-index: 4;" id="header2">      
   </div>
 
   <div class="inventory">
   <h1>Inventory</h1>
   <div style="margin: auto; ">
-    <p>
-        <label style="margin-right:50px;" for="input">Item Name</label>
-      <input type="text" value="" id="itemName" />
-    </p>
-    <p>
-        <label style="margin-right:30px;" for="input">Item Category</label>
-      <input type="text" value="" id="category" />
-    </p>
-    <p>
-        <label style="margin-right:67px;" for="input">Quantity</label>
-      <input type="text" value="" id="quantity" />
-    </p>
-    <label style="margin-right:90px;" for="input">Price</label>
-    <input type="text" value="" id="price" />
-    </p>
-    <p>
-        <label style="margin-right:87px;"for="input">Brand</label>
-      <input type="text" value="" id="brand" />
-    </p>
-    <p>
-        <label style="margin-right:114px;" for="input">Id</label>
-      <input type="text" value="" id="Id" />
-    </p>
-    <p>
-        <label style="margin-right:87px;" for="input">Rating</label>
-      <input type="text" value="" id="ratings" />
-    </p>
-    <p>
-        <label style="margin-right:57px;" for="input">Description</label>
-      <input type="text" value="" id="description" />
-    </p>
-    <p>
-        <label style="margin-right:52px;" for="input">Image Name</label>
-      <input type="text" id="itemImage" />   
-    </p>
+    <div class="inputLable inputlabel" style="display: grid; grid-template-columns: 170px 2fr; gap: 20px;"> 
+    
+        <label  for="input">Item Name</label>
+      <input class="input1" type="text" value="" id="itemName" />
+ 
+  
+        <label for="input">Item Category</label>
+      <input class="input1" type="text" value="" id="category" />
+    
+    
+        <label  for="input">Quantity</label>
+      <input class="input1" type="text" value="" id="quantity" />
+  
+ 
+         <label  for="input">Price</label>
+         <input class="input1" type="text" value="" id="price" />
+ 
+  
+        <label for="input">Brand</label>
+      <input class="input1" type="text" value="" id="brand" />
+   
+  
+        <label  for="input">Id</label>
+      <input class="input1" type="text" value="" id="Id" />
+ 
+  
+        <label  for="input">Rating</label>
+      <input class="input1" type="text" value="" id="ratings" />
+  
+ 
+        <label  for="input">Description</label>
+      <input class="input1" type="text" value="" id="description" />
+ 
+   
+        <label  for="input">Image Name</label>
+      <input class="input1" type="text" id="itemImage" />   
+   
+    </div>
     <label id="mode" hidden></label>
    
      <input type="submit" value="Add" class="addButton" onclick="add()" style="background: #4caf50; padding: 5px 40px;border-radius: 5px;">
