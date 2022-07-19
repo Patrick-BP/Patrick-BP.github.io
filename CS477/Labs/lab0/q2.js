@@ -14,21 +14,17 @@ class Student {
     }
 
     save(){
-        let obj = {};
-        obj.id = this.id;
-        obj.fname = this.fname;
-        obj.lname = this.lname;
-
-        db.push(obj)
+        let student = db.find(elem => elem.id === this.id)
+        if(student){
+            throw new error("STUDENT ALREADY EXIST")
+        }else
+        db.push(this)
     }
 
     edit(){
-    let obj = {};
-    obj.id = this.id;
-    obj.fname = this.fname;
-    obj.lname = this.lname;  
-    let result = db.find(elem=>elem.id === obj.id);
-    Object.assign(result, obj)
+    
+    let result = db.find(elem=>elem.id === this.id);
+    Object.assign(result, this)
       
  
     }
