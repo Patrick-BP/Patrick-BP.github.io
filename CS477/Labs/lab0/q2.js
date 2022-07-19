@@ -27,7 +27,7 @@ class Student {
     obj.id = this.id;
     obj.fname = this.fname;
     obj.lname = this.lname;  
-    let result = db.find((elem)=>elem.id === obj.id);
+    let result = db.find(elem=>elem.id === obj.id);
     Object.assign(result, obj)
       
  
@@ -45,7 +45,7 @@ class Student {
     }
 
     static deleteById(id){
-        let index  = db.findIndex((elem)=>elem.id === id);
+        let index  = db.findIndex(elem=>elem.id === id);
         if(index == -1){
              throw new Error("element not found");
         }
@@ -58,6 +58,6 @@ class Student {
 
 new Student(4, 'Tina', 'Xing').save(); //save to db
 new Student(4, 'Miss', 'Xing').edit() //edit studentId with id=4
-//Student.deleteById(4); //remove studentId=4 from db
+Student.deleteById(4); //remove studentId=4 from db
 Student.getAll(); //return db;
-//Student.getById(1); //return {id:1, fname: 'John', lname: 'Smith'}
+Student.getById(1); //return {id:1, fname: 'John', lname: 'Smith'}
