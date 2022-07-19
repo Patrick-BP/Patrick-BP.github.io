@@ -14,11 +14,23 @@ class Student {
     }
 
     save(){
-        db.push(this)
+        let obj = {};
+        obj.id = this.id;
+        obj.fname = this.fname;
+        obj.lname = this.lname;
+
+        db.push(obj)
     }
 
     edit(){
-
+    let obj = {};
+    obj.id = this.id;
+    obj.fname = this.fname;
+    obj.lname = this.lname;  
+    let result = db.find((elem)=>elem.id === obj.id);
+    Object.assign(result, obj)
+      
+ 
     }
 
     static getById(id){
