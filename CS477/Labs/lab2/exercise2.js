@@ -13,7 +13,7 @@ for performance. (Try to solve this in many different ways)
 
   // ========= using readfile() =========================
 
-  /* 
+
   http.createServer((req, res)=>{
     res.writeHead(200,{'content-type': 'image/jpg'});
    fs.readFile(path.join(__dirname,'img', '1.jpg'), (err,data)=>{
@@ -26,7 +26,7 @@ for performance. (Try to solve this in many different ways)
   
   }).listen(3000, ()=>{console.log('listening on port 3000....')});
 
-  */
+  
 
   // ========= using stream =========================
 
@@ -43,8 +43,16 @@ for performance. (Try to solve this in many different ways)
 
  */
 
+  // ========= using createReadstream and event listiner =========================
+/*
   http.createServer((req,res)=>{
-        res.writeHead(200, {'content-type':'image/jpg'});
-        let img = fs.createReadStream(path.join(__dirname,'img','1.pjg'));
+    
+    res.writeHead(200, {'Content-type':'image/jpg'});
+    let img = fs.createReadStream(path.join(__dirname, 'img', '1.jpeg'));
+        img.on('data', (chunk)=>{
+            res.write(chunk)
+        })
+        
         
   }).listen(3000, ()=>{console.log("listening on port 3000");});
+  */
