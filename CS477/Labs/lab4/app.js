@@ -9,13 +9,12 @@
 6. Provide your own error handling
 */
 
- const express = require('express')
+const express = require ('express');
 
- const app = express();
+const app = express();
 
- app.set('port', process.env.PORT || 3000);
 
- app.use(express.urlencoded({extended:true}));
+app.set('port', process.env.PORT || 3000);
 
- 
- app.listen(app.get('port'),()=>{console.log("your server is listening at port 9999");})
+
+app.listen(app.get('port'),()=>{console.log("listening on 3000 ...........")})
