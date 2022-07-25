@@ -10,11 +10,37 @@
 */
 
 const express = require ('express');
-
+const fs = require('fs');
+const path = require('path');
 const app = express();
-
 
 app.set('port', process.env.PORT || 3000);
 
+
+app.use(express.urlencoded({extended:true})); // returns req.body
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use('/login',(req, res, next)=>{
+    if(req.body.username === "admin" && req.body.pswd === "admin"){
+        res.redirect('/products');
+    }else{
+        res.sendFile(path.join(__dirname, 'index.html'));
+    }
+   
+});
+app.use('/products', (req, res, next)=>{
+    res.sendFile(path.join(__dirname, 'products.html'));
+   
+});
+
+app.use('/',(req, res, next)=>{
+    res.sendFile(path.join(__dirname, 'index.html'));
+   
+});
+
+app.use((req, res, next)=>{
+    res.status(404).send('<h1>Page Not Found</h1>')
+});
 
 app.listen(app.get('port'),()=>{console.log("listening on 3000 ...........")})
