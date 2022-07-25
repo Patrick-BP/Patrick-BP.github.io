@@ -21,7 +21,7 @@ app.use(express.urlencoded({extended:true})); // returns req.body
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/login',(req, res, next)=>{
+app.post('/login',(req, res, next)=>{
     if(req.body.username === "admin" && req.body.pswd === "admin"){
         res.redirect('/products');
     }else{
@@ -29,17 +29,17 @@ app.use('/login',(req, res, next)=>{
     }
    
 });
-app.use('/products', (req, res, next)=>{
+app.get('/products', (req, res, next)=>{
     res.sendFile(path.join(__dirname, 'products.html'));
    
 });
 
-app.use('/',(req, res, next)=>{
+app.get('/',(req, res, next)=>{
     res.sendFile(path.join(__dirname, 'index.html'));
    
 });
 
-app.use((req, res, next)=>{
+app.all('*',(req, res, next)=>{
     res.status(404).send('<h1>Page Not Found</h1>')
 });
 
