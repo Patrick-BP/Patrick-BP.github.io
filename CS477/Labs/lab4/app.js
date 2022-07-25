@@ -43,4 +43,4 @@ app.all('*',(req, res, next)=>{
     res.status(404).send('<h1>Page Not Found</h1>')
 });
 
-app.listen(app.get('port'),()=>{console.log("listening on 3000 ...........")})
+app.listen(app.get('port'),()=>{console.log("listening on 3000 ......")})
