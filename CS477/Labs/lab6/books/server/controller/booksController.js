@@ -1,22 +1,24 @@
-
 const Book = require('../model/books');
 
-
-exports.getAll = (req, res, next)=>{
-    res.json(Book.getAll());
+exports.getAll = async (req, res, next)=>{
+    res.json(await Book.getAll() );
 };
-exports.getById = (req, res, next)=>{
-    res.json(Book.getById(req.params.id));
+exports.getById = async (req, res, next)=>{
+   res.json(await Book.getById(req.params.id));
 };
-exports.save = (req, res, next)=>{
-    let addBook = new Book(null, req.body.title, req.body.isbn, req.body.publishedDate, req.body.author ).save();
-    res.json(addBook);
+exports.save = async (req, res, next)=>{
+    let prod = new Book(null, req.body.title, req.body.isbn, req.body.publishedDate, req.body.author)
+    const result = await prod.save()
+    prod._id = result.insertedId;
+    res.json(prod);
 };
-exports.update = (req, res, next)=>{
-    let updateBook = new Book(req.params.id, req.body.title, req.body.isbn, req.body.publishedDate, req.body.author).update();
-    res.json(updateBook);
+exports.update = async (req, res, next)=>{
+    let updateProd = new Book(req.params.id, req.body.title, req.body.isbn, req.body.publishedDate, req.body.author);
+    await updateProd.update();
+    res.json(updateProd);
 };
-exports.deleteById = (req, res, next)=>{
-    res.json(Book.deleteById(req.params.id));
+exports.deleteById = async(req, res, next)=>{
+    await Book.deleteById(req.params.id)
+    res.json({_id: req.params.id});
 };
  

@@ -1,10 +1,9 @@
-
 window.onload = function(){
     fetchBooks();
 }
 
 function fetchBooks(){
-    fetch('http://localhost:3000/books')
+    fetch('http://localhost:8888/books')
     .then(response=>response.json())
     .then(books =>{displayBooks(books)})
     .catch(err=>{
@@ -17,14 +16,14 @@ function displayBooks(books){
     let tbody = document.getElementById('tbody');
     books.forEach(element => {
         tbody.innerHTML += `
-        <tr id="tr${element.id}">
-            <th scope="row">${element.id}</th>
+        <tr id="tr${element._id}">
+            <th scope="row">${element._id}</th>
             <td>${element.title}</td>
             <td>${element.isbn}</td>
             <td>${element.publishedDate}</td>
             <td>${element.author}</td>
-            <td><button type="button" class="btn btn-primary" onClick="editBook(${element.id})">Edit</button></td>
-            <td><button type="button" class="btn btn-danger" onClick="deleteBook(${element.id})">Delete</button></td>
+            <td><button type="button" class="btn btn-primary" onClick="editBook('${element._id}')">Edit</button></td>
+            <td><button type="button" class="btn btn-danger" onClick="deleteBook('${element._id}')">Delete</button></td>
           </tr>
         `;
     });
@@ -33,7 +32,7 @@ function displayBooks(books){
 };
 
 function deleteBook(id){
-    fetch('http://localhost:3000/books/'+id,{
+    fetch('http://localhost:8888/books/'+id,{
         method:'DELETE'
     }).then(response=>{
         document.getElementById(`tr${id}`).remove();

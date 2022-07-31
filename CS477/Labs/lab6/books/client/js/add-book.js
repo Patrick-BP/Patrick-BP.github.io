@@ -10,7 +10,7 @@ async function addBook(event){
     const publishedDateInput = document.getElementById('publishedDate');
     const authorInput = document.getElementById('author');
 
-    const response = await fetch('http://localhost:3000/books',{
+    const response = await fetch('http://localhost:8888/books',{
         method:'POST',
         body: JSON.stringify({
             title:titleInput.value,

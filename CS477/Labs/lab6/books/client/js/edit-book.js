@@ -1,4 +1,3 @@
-
 window.onload = function (){
     let url = new URL(location.href);
     const bookId = url.searchParams.get('id');
@@ -11,7 +10,7 @@ window.onload = function (){
 
 function fetchBookById(id){
     console.log(id);
-    fetch('http://localhost:3000/books/'+id)
+    fetch('http://localhost:8888/books/'+id)
         .then(response=>response.json())
         .then(book=>{
             document.getElementById('title').value = book.title;
@@ -24,7 +23,7 @@ function fetchBookById(id){
 
 async function editBookById(id){
     
-    const response = await fetch('http://localhost:3000/books/'+id,{
+    const response = await fetch('http://localhost:8888/books/'+id,{
         method:'PUT',
         body: JSON.stringify(
             {
