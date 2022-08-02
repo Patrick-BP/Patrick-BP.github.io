@@ -397,7 +397,11 @@ button:not(:disabled) {
 }
 
 textarea {
-    resize: vertical
+    resize: vertical;
+    background-color: #16181c;
+    border: 0px;
+    padding: 10px;
+    color: white;
 }
 
 fieldset {
@@ -8248,7 +8252,7 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-    background-color: #53B3F2 !important
+    background-color: #fff !important
 }
 
 .bg-secondary {
