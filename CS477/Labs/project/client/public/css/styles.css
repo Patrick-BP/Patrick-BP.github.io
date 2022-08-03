@@ -32,7 +32,7 @@
   }
   
   .sidebarOption:hover {
-    background-color: rgba(41, 41, 41, 0.458);
+    background-color: #16181C;
     border-radius: 30px;
     color: var(--twitter-color);
     transition: color 100ms ease-out;
@@ -144,7 +144,7 @@
   .tweetBox__tweetButton {
     background-color: var(--twitter-color);
     border: none;
-    color: white;
+    color: rgb(6, 0, 0);
     font-weight: 900;
   
     border-radius: 30px;
