@@ -1,13 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 const cors = require('cors');
 const userRouter = require('./routes/userRouter');
+
 const app = express();
 
 app.use(cors());
 app.use (express.json());
 app.set('port',process.env.PORT || 3000);
-
+app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 
 app.use('/users', userRouter); 
  

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/', userController.saveUser);
 router.get('/', userController.getAllUsers);
-router.post('/', userController.saveUser);
+
 
 // router.get('/:userId/follower/:followerId',userController.getFollower);
 

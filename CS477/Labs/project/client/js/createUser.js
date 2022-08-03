@@ -1,14 +1,17 @@
-window.onload = function () {
-    document.getElementById('create-btn').oninvalid = createAccount;
+window.onload = function(){
+    document.getElementById('create-btn').onclick = createAccount;
+    
 }
-async function createAccount(event) {
+// document.getElementById('create-btn').onclick = createAccount;
+console.log();
+async function createAccount() {
     // add the user to the database
+console.log("object");
+    
+    const usernameInput = document.getElementById('username1');
+    const passwordInput = document.getElementById('password1');
 
-    event.preventDefault();
-    const usernameInput = document.getElementById('username');
-    const passwordInput = document.getElementById('password');
-
-    const response = await fetch('http://localhost:3000/users', {
+    const response = await fetch('http://localhost:8888/users', {
         method: 'POST',
         body: JSON.stringify({
             username: usernameInput.value,
@@ -20,7 +23,6 @@ async function createAccount(event) {
     });
 
     const data = await response.json();
-    document.getElementById('create-user-form').reset();
-    window.location = 'login.html';
+    window.location = 'index.html';
 
 }

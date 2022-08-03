@@ -11,7 +11,9 @@ exports.saveUser = async (req, res, next) => {
     if(usr){
         res.send('username is already taken');
     }else{
-        res.json(await new Users(req.body).save());
+        const result = new Users(req.body).save()
+        Users.followers = [];
+        res.json(await result);
     }
 }
 

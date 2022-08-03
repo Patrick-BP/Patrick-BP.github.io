@@ -8,7 +8,7 @@ async function addUser(event){
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
 
-    const response = await fetch('http://localhost:3000/users',{
+    const response = await fetch('http://localhost:8888/users',{
         method:'POST',
         body: JSON.stringify({
             username: usernameInput.value,
