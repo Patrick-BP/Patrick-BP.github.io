@@ -3,7 +3,6 @@ window.onload = function (){
 }
 
 function logout(){
-    //sessionStorage.removeItem('accessToken');
-    sessionStorage.clear();
+    sessionStorage.removeItem('accessToken');
     window.location='index.html';
 }

@@ -16,7 +16,17 @@
     align-items: center;
     cursor: pointer;
   }
-  
+  #post-twite{
+    width: 619px;
+  }
+
+  .post__headerDescription p{
+    font-size: 0.9rem;
+    color: gray;
+  }
+
+
+
   .sidebarOption .material-icons,
   .fa-twitter {
     padding: 20px;
