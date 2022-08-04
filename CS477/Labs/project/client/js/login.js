@@ -1,26 +1,29 @@
 window.onload = function(){
-    document.getElementById('signin-btn').oninvalid = addUser;
+    document.getElementById('signin-btn').onclick = login;
 }
-async function addUser(event){
-    // add the user to the database
-
-    EventCounts.preventDefault();
-    const usernameInput = document.getElementById('username');
-    const passwordInput = document.getElementById('password');
-
-    const response = await fetch('http://localhost:8888/users',{
+async function login(){
+  
+    const response = await fetch('http://localhost:8888/login',{
         method:'POST',
         body: JSON.stringify({
-            username: usernameInput.value,
-            password: passwordInput.value
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
         }),
         headers:{
             'Content-type': 'application/json'
         }
     });
 
-    const data = await response.json();
-    document.getElementById('login-form').reset();
-    window.location='index.html';
+    const result = await response.json();
+
+    if(result.error){
+        document.getElementById('invalid-feedback').style.display = "block";
+        document.getElementById('invalid-feedback').innerHTML = result.message;
+        console.log(document.getElementById('invalid-feedback'));
+    }else{
+        sessionStorage.setItem('accessToken', result.data.accessToken);
+        window.location='home.html';
+    }
+   
 
 }

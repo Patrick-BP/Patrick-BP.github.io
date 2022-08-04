@@ -1,6 +1,6 @@
 module.exports = class Response{
-    constructor(err, message, data){
-        this.err = err;
+    constructor(error, message, data){
+        this.error = error;
         this.message = message;
         this.data = data
     }
