@@ -1,6 +1,5 @@
 window.onload = function (){
-
-    if(sessionStorage.getItem('accessToken')){   
+    if(sessionStorage.getItem('accessToken')){
          fetchTwites();
     }else{
         window.location='index.html';
