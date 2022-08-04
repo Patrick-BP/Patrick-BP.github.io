@@ -1,5 +1,10 @@
 window.onload = function (){
-    fetchTwites();
+    if(sessionStorage.getItem('accessToken')){
+         fetchTwites();
+    }else{
+        window.location='index.html';
+    }
+   
 }
 
 async function fetchTwites(){

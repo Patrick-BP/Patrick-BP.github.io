@@ -38,7 +38,7 @@ exports.login = async (req, res, next)=>{
 
 exports.authenticate = (req, res, next)=>{
     const [, token] = req.headers.authorization.split(" ");
-    console.log(token);
+    
     try{
         let result = jwt.verify(token, SECRET);
         next();
