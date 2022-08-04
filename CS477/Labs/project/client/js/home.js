@@ -1,9 +1,15 @@
 window.onload = function (){
-    fetchTwites();
+
+    if(sessionStorage.getItem('accessToken')){   
+         fetchTwites();
+    }else{
+        window.location='index.html';
+    }
+   
 }
 
 async function fetchTwites(){
-    const response = await fetch('http://localhost:8888/twites',{
+    const response = await fetch('http://localhost:8888/tweets',{
         headers:{
             Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
         }
@@ -22,7 +28,7 @@ async function fetchTwites(){
             <div class="post__body">
               <div class="post__header">
                 <div class="post__headerText">
-                  <h3>${twite.user}</h3>
+                  <h3>${twite.user}</h3>${twite.createdAt}
                 </div>
                 <div class="post__headerDescription">
                   <p> ${twite.tweet}</p>
@@ -35,7 +41,14 @@ async function fetchTwites(){
             `
         });
         document.getElementById('post-twite').innerHTML = html;
+      
+      let usrname = sessionStorage.getItem('username');
+      document.getElementById('welcomeUsername').innerHTML = `<h2>Welcome ${usrname}</h2>`
+   
     } else {
         document.getElementById('post-twite').innerHTML = result.message;
     }
 }
+
+
+

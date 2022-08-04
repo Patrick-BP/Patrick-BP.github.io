@@ -25,7 +25,7 @@ exports.login = async (req, res, next)=>{
                 iat: Date.now()
             }, SECRET);
 
-            res.status(200).json(new Response(false, null, {accessToken}));
+            res.status(200).json(new Response(false, null, {accessToken, "username":result.username,"userID":result.id}));
         }else{
             res.status(404).json(new Response(true, 'Invalid username and password', null))
         }
@@ -38,7 +38,7 @@ exports.login = async (req, res, next)=>{
 
 exports.authenticate = (req, res, next)=>{
     const [, token] = req.headers.authorization.split(" ");
-    console.log(token);
+    
     try{
         let result = jwt.verify(token, SECRET);
         next();

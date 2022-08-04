@@ -5,8 +5,7 @@ const {Schema} = mongoose;
 
 const tweetSchema = new Schema({
     tweet: String,
-    createdDate: Date,
-    user:{type:Schema.Types.ObjectId, ref:'User'}
+    user:{type: Schema.Types.ObjectId}
 },{timestamps:true},{versionKey: false});
 
 

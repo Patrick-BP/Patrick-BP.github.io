@@ -21,8 +21,15 @@ async function login(){
         document.getElementById('invalid-feedback').innerHTML = result.message;
         console.log(document.getElementById('invalid-feedback'));
     }else{
+       
+        
         sessionStorage.setItem('accessToken', result.data.accessToken);
-        window.location='home.html';
+        sessionStorage.setItem('username', result.data.username);
+        sessionStorage.setItem('userID', result.data.userID);
+        const userid = sessionStorage.getItem('userID');
+        const username = sessionStorage.getItem('username');
+
+        window.location=`home.html?id=${userid}&&username=${username}`;
     }
    
 

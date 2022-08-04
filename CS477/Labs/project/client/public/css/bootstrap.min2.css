@@ -81,7 +81,7 @@
     box-sizing: border-box
 }
 .img{
-    width:100%
+    width:-webkit-fill-available;
 }
 .wrapper{
     position: absolute;
@@ -6088,7 +6088,7 @@ fieldset:disabled .btn {
     --bs-modal-footer-border-width: 1px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -69px;
     z-index: var(--bs-modal-zindex);
     display: none;
     width: 100%;

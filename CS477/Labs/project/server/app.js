@@ -15,12 +15,12 @@ app.use(cors());
 app.use (express.json());
 
 
-app.set('port',process.env.PORT || 3000);
+app.set('port',process.env.PORT || 8888);
 app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 
 app.use(authRouter);
 app.use('/users',  userRouter); 
-app.use('/twites', twitesRouter);
+app.use('/tweets', twitesRouter);
 
 
 

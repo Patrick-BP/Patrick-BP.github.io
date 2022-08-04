@@ -7,6 +7,8 @@ const router = express.Router();
 
 
 router.get('/', authController.authenticate, twitesController.getAll);
-router.post('/', authController.authenticate, twitesController.save);
+router.post('/',authController.authenticate, twitesController.save);
+
+
 
 module.exports = router;
