@@ -11,7 +11,7 @@ exports.getAllUsers = async (req, res, next) => {
 }
 exports.saveUser = async (req, res, next) => {
         const user = await new User(req.body).save();
-        User.followers = [];
+        
         res.status(201).json(new Response(false,null, user));
    
     
