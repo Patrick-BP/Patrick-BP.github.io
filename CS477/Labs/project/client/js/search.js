@@ -31,9 +31,26 @@ function displayTweetsTable(element){
     let tr = `<table id="searchtable"><tr >
     
     <td id="usrname">${element.username}</td>
-    <td  id="follow"><button onclick="addFollower(${element._id})">follow</button></td>
+    <td  id="follow"><button data-follower = "${element._id}" onclick="addFollower(this)">follow</button></td>
     </tr></table>`;
     
     searchresult.innerHTML += tr;
 
+}
+function addFollower(obj){
+    let followerId = obj.getAttribute('data-follower');
+    let userId = sessionStorage.getItem('userID');
+    fetch('http://localhost:8888/users',{
+        method:'POST',
+        body:JSON.stringify({
+            userId: userId,
+            followerId: followerId
+        }),
+        headers:{
+            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json()).catch(err =>{
+        console.log(err);
+    });
 }

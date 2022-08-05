@@ -1,12 +1,12 @@
 const express = require('express');
 
 const userController = require('../controllers/userController');
-const followerController = require('../controllers/followersController');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 
 router.post('/', userController.saveUser);
-router.post('/', followerController.saveFollower);
+router.post('/', userController.saveFollower);
 router.get('/', userController.getAllUsers);
 
 

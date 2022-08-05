@@ -4,9 +4,9 @@ const {Schema} = mongoose;
 
 const userSchema = new Schema({
     fullname: String,
-    username: { type: String, required: true, unique: true},
-    password: { type: String, required: true}
-    
+    username: { type: String, unique: true},
+    password: { type: String },
+    followers:[{type: Schema.Types.ObjectId, ref:'User', unique: true}]
 },{versionKey: false});
 
 userSchema.index({'$**': 'text'});
