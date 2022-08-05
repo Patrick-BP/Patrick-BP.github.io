@@ -9,19 +9,17 @@ exports.getAllUsers = async (req, res, next) => {
 }
 exports.saveUser = async (req, res, next) => {
         const user = await new User(req.body).save();
+      user.followers.push(user._id);
       
         res.status(201).json(new Response(false,null, user));
    
     
     }
 
-
-
     exports.saveFollower = async (req, res, next) => {
-        const usrid =  req.body.userId;
-        const fllwrId = req.body.followerId;
-       const finduser = await User.find({_id: usrid}).populate('followers');
-      const add = finduser.followers.push(fllwrId);
-        res.status(201).json(new Response(false,null, add));
+        
+       const updatefollowers = await User.findByIdAndUpdate({_id: req.body.userId},{$push:{follwers:req.body.followerId}});
+      
+        res.status(201).json(new Response(false,null, updatefollowers));
     
     };
