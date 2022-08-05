@@ -14,24 +14,26 @@ async function addTweet(event){
     const username = sessionStorage.getItem('username');
     const body = document.getElementById('tweet-body');
     console.log(body.value);
-    console.log(username);
+    console.log(userid);
     const response = await fetch('http://localhost:8888/tweets',{
         method:'POST',
-        headers:{
-            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
-        },
         body: JSON.stringify({
             tweet: body.value,
             user: userid
 
-        })
+        }),
+        headers:{
+            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+            'Content-Type': 'application/json'
+        }
         
     });
     
     const result = await response.json();
     if(result.error){
-        alert('error')
+        alert('failed')
     }else{
-        alert('tweet saved')
+        document.getElementById('tweet-body').value = " ";
+        location.reload()
     }
 }

@@ -6,7 +6,7 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 
-router.get('/', authController.authenticate, twitesController.getAll);
+router.get('/:id', authController.authenticate, twitesController.getAll);
 router.post('/',authController.authenticate, twitesController.save);
 
 

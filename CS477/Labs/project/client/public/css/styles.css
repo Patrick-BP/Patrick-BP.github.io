@@ -25,8 +25,19 @@
     color: gray;
   }
 
-
-
+  #search-result{
+    display: none;
+  }
+  #usrname{
+    color:#e6ecf0;
+  }
+  #follow{
+    text-align: end;
+    padding: 11px;
+  }
+  #searchtable{
+    width: 100%;
+  }
   .sidebarOption .material-icons,
   .fa-twitter {
     padding: 20px;

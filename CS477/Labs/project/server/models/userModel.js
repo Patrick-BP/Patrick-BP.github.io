@@ -7,5 +7,5 @@ const userSchema = new Schema({
     password: { type: String, required: true},
     followers: [{type: Schema.Types.ObjectId, ref:'User'}]
 },{versionKey: false});
-
+userSchema.index({'$**': 'text'});
 module.exports = mongoose.model('User', userSchema);

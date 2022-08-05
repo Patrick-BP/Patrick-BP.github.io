@@ -18,6 +18,7 @@
   <script src="./js/logout.js" type="text/javascript"></script>
   <script src="./js/home.js" type="text/javascript"></script>
   <script src="./js/addtweet.js" type="text/javascript"></script>
+  
 </head>
 
 <body>
@@ -104,10 +105,14 @@
   <!-- widgets starts -->
   <div class="widgets">
     <div class="widgets__input">
-      <span class="material-icons widgets__searchIcon"> search </span>
-      <input type="text" placeholder="Search Twitter" />
+      <span class="material-icons widgets__searchIcon" > search </span>
+      <input id="search-input" type="text" placeholder="Search User" oninput="searchUserName()"/>
     </div>
-
+    <div class="widgets__widgetContainer"  id="search-result">
+     
+      
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
     <div class="widgets__widgetContainer">
       <h2>Following</h2>
         
@@ -126,15 +131,13 @@
         </li>
       </ul>
       
-      <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
-    <div class="widgets__widgetContainer">
-      <h2>What's happening?</h2>
-      
-      <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-    </div>
+    
   </div>
   <!-- widgets ends -->
+  <script src="./js/search.js" type="text/javascript"></script>
+  <script src="./js/follow.js" type="text/javascript"></script>
 </body>
 
 </html>
