@@ -28,7 +28,7 @@ async function fetchTwites(){
             <div class="post__body">
               <div class="post__header">
                 <div class="post__headerText">
-                  <h3>${twite.user.username}</h3>${twite.createdAt}
+                  <h3>${twite.user.username}<span class="time">@${twite.createdAt}</span></h3>
                 </div>
                 <div class="post__headerDescription">
                   <p> ${twite.tweet}</p>

@@ -22,7 +22,8 @@
 
   .post__headerDescription p{
     font-size: 0.9rem;
-    color: gray;
+    color: rgb(255, 252, 252);
+    font-family: inherit;
   }
 
   #search-result{
@@ -211,11 +212,17 @@
     font-size: 12px;
     color: gray;
   }
-  
+  .time{
+    font-size: 0.9rem;
+    color: #2f3644;
+    margin-left: 10px;
+    font-weight: lighter;
+  }
   .post__headerText h3 {
     font-size: 15px;
     margin-bottom: 5px;
     color: #e6ecf0;
+    font-weight: bolder;
   }
   
   .post__headerDescription {
