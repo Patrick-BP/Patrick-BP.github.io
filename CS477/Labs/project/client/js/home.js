@@ -28,7 +28,7 @@ async function fetchTwites(){
             <div class="post__body">
               <div class="post__header">
                 <div class="post__headerText">
-                  <h3>${twite.user.username}<span class="time">@${twite.createdAt}</span></h3>
+                  <h3>${twite.user.fullname}<span class="time">@${twite.createdAt}</span></h3>
                 </div>
                 <div class="post__headerDescription">
                   <p> ${twite.tweet}</p>
@@ -42,8 +42,8 @@ async function fetchTwites(){
         });
         document.getElementById('post-twite').innerHTML = html;
       
-      let usrname = sessionStorage.getItem('username');
-      document.getElementById('welcomeUsername').innerHTML = `<h2>Welcome ${usrname}</h2>`
+      let fllname = sessionStorage.getItem('fullname');
+      document.getElementById('welcomeUsername').innerHTML = `<h2>Welcome ${fllname}</h2>`
    
     } else {
         document.getElementById('post-twite').innerHTML = result.message;

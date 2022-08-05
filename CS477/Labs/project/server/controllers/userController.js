@@ -17,8 +17,8 @@ exports.saveUser = async (req, res, next) => {
     }
 
     exports.saveFollower = async (req, res, next) => {
-        
-       const updatefollowers = await User.findByIdAndUpdate({_id: req.body.userId},{$push:{follwers:req.body.followerId}});
+        console.log(req.body);
+       const updatefollowers = await User.findByIdAndUpdate({_id: req.body.userId},{$push:{followers:req.body.followerId}});
       
         res.status(201).json(new Response(false,null, updatefollowers));
     

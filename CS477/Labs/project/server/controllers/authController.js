@@ -20,12 +20,13 @@ exports.login = async (req, res, next)=>{
         
         if(result){
          const accessToken = jwt.sign({
+                fullname:result.fullname,
                 id: result._id,
                 username: result.username,
                 iat: Date.now()
             }, SECRET);
 
-            res.status(200).json(new Response(false, null, {accessToken, "username":result.username,"userID":result.id}));
+            res.status(200).json(new Response(false, null, {accessToken, "fullname":result.fullname, "username":result.username,"userID":result.id}));
         }else{
             res.status(404).json(new Response(true, 'Invalid username and password', null))
         }

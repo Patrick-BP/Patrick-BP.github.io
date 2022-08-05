@@ -40,7 +40,7 @@ function displayTweetsTable(element){
 function addFollower(obj){
     let followerId = obj.getAttribute('data-follower');
     let userId = sessionStorage.getItem('userID');
-    fetch('http://localhost:8888/users',{
+    fetch('http://localhost:8888/users/follow',{
         method:'POST',
         body:JSON.stringify({
             userId: userId,
