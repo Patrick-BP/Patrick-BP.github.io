@@ -10,7 +10,20 @@
     --twitter-background: #e6ecf0;
      background-color: #000;
   }
-  
+  .tweetsDate{
+    color: #555a64;
+    font-size: 12px;
+    
+  }
+  .mytweets{
+    font-size: 12px;
+    color: #fff
+  }
+  .tweetdelbtn{
+    width: 50px;
+    margin-top: 10px;
+  }
+ 
   .sidebarOption {
     display: flex;
     align-items: center;

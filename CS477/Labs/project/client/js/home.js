@@ -1,9 +1,11 @@
 
  let displayDiv = document.getElementById('displayFlowers');
+ let displaytweet = document.getElementById('displayMyTweets');
   if (sessionStorage.getItem('accessToken')) {
     
     fetchTwites();
-    fetchFollowers() 
+    fetchFollowers();
+    fetchMyTweets() 
   } else {
     window.location = 'index.html';
   }
@@ -90,6 +92,47 @@ async function fetchFollowers(){
   } else {
 
     document.getElementById('displayFlowers').innerHTML = result.message;
+
+  }
+
+}
+
+
+
+
+//=============================================================
+
+
+async function fetchMyTweets(){
+  let usrid = sessionStorage.getItem('userID');
+  
+  const response = await fetch('http://localhost:8888/tweets/'+usrid, {
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+      'Content-Type':'application/json'
+    }
+  });
+
+  const result = await response.json();
+
+  if (!result.error) {
+    
+    result.data.forEach(follower => {
+      let str = follower.tweet;
+      if(str.length > 10) str = str.substring(0,70)+"...";
+      displaytweet.innerHTML +=`
+            
+                <div class="mytweets">${str}</div> <div class="tweetsDate">${follower.createdAt}</div>
+                <span class="tweetdelbtn badge bg-primary rounded-pill" data-deltweet=${follower._id}  onclick="delTweet(this)">delete</span>
+              <hr>`
+
+    });
+
+    
+    
+  } else {
+
+    document.getElementById('displayMyTweets').innerHTML = result.message;
 
   }
 
