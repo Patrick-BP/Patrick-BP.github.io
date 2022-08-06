@@ -5497,7 +5497,7 @@ fieldset:disabled .btn {
 .list-group-item {
     position: relative;
     display: block;
-    padding: .5rem 1rem;
+    /* padding: .5rem 1rem; */
     color: #fff;
     text-decoration: none;
     

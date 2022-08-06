@@ -8,6 +8,9 @@
     window.location = 'index.html';
   }
 
+
+  //=============================================================
+
 async function fetchTwites() {
   let usrid = sessionStorage.getItem('userID');
   const response = await fetch('http://localhost:8888/tweets/' + usrid, {
@@ -61,7 +64,8 @@ async function fetchFollowers(){
   
   const response = await fetch('http://localhost:8888/followers/'+usrid, {
     headers: {
-      Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
+      Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+      'Content-Type':'application/json'
     }
   });
 
@@ -72,11 +76,11 @@ async function fetchFollowers(){
     result.data.followers.forEach(follower => {
       displayDiv.innerHTML +=`
             <li class="list-group-item d-flex justify-content-between align-items-center">
-            <div class="post__avatar">
+            <div class="post__avatar2">
               <img src="public/images/profile.png" alt="" />
             </div>
                 ${follower.fullname}
-                <span class="badge bg-primary rounded-pill">Unfollow</span>
+                <span class="badge bg-primary rounded-pill" data-unfollow=${follower._id}  onclick="delFollower(this)">Unfollow</span>
               </li> `
 
     });

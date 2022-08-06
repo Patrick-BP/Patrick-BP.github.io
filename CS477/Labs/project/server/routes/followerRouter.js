@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.get('/:id', followerController.getFollowed);
-
+router.post('/', followerController.delFollow);
 
 
 module.exports = router;

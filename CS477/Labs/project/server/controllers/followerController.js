@@ -7,3 +7,10 @@ const Response = require('../models/responseobj');
        
         res.status(200).json( new Response(false, null, follwr));
     };
+
+
+    exports.delFollow = async(req, res, next) =>{
+       
+        const findusr = await User.updateOne({_id:req.body.userId},{$pull:{followers:req.body.followId}});
+        res.status(200).json( new Response(false, null, findusr));
+    };

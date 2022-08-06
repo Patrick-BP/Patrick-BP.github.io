@@ -181,6 +181,10 @@
     border-radius: 50%;
     height: 40px;
   }
+  .post__avatar2 img {
+    border-radius: 50%;
+    height: 20px;
+  }
   
   .post {
     display: flex;
@@ -239,7 +243,9 @@
   .post__avatar {
     padding: 20px;
   }
-  
+  .post__avatar2 {
+    padding: 10px;
+  }
   /* widgets */
   .widgets {
     flex: 0.3;
