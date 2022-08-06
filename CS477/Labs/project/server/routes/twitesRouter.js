@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.get('/:id', authController.authenticate, twitesController.getAll);
 router.post('/',authController.authenticate, twitesController.save);
+router.get('/:id', authController.authenticate, twitesController.displayOneUserTweets);
+//router.post('/:id', authController.authenticate, twitesController.delTweet);
 
 
 
