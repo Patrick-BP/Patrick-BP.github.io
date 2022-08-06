@@ -175,7 +175,9 @@
     border-radius: 10px;
     padding: 40px;
   }
-  
+  h4{
+    color: #fff;
+  }
   .tweetBox__tweetButton {
     background-color: var(--twitter-color);
     border: none;
@@ -297,7 +299,8 @@
   
   .widgets__widgetContainer h2 {
     font-size: 18px;
-    font-weight: 800;
-    color:#f5f8fa
+    font-weight: 400;
+    color:#f5f8fa;
+    margin-bottom: 26px;
   }
  

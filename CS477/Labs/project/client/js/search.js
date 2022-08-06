@@ -83,25 +83,3 @@ function delFollower(obj){
 }
 
 
-//==============================DELETE A TWEET ===============================
-
-// function delTweet(obj){
-//     let followingId = obj.getAttribute('data-deltweet');
-//     let userId = sessionStorage.getItem('userID');
-//     console.log(userId);
-//     fetch('http://localhost:8888/followers',{
-//         method:'POST',
-//         body:JSON.stringify({
-//             userId: userId,
-//             followId: followingId
-//         }),
-//         headers:{
-//             Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
-//             'Content-Type': 'application/json'
-//         }
-//     }).then(res => res.json()).then(res=>{
-//         location.reload()
-//     }).catch(err =>{
-//         console.log(err.message);
-//     });
-// }
