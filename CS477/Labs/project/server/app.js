@@ -5,6 +5,7 @@ const cors = require('cors');
 const twitesRouter = require('./routes/twitesRouter')
 
 const userRouter = require('./routes/userRouter');
+const followerRouter = require('./routes/followerRouter');
 const authRouter = require('./routes/authRouter');
 
 
@@ -21,7 +22,7 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 app.use(authRouter);
 app.use('/users',  userRouter); 
 app.use('/tweets', twitesRouter);
-
+app.use('/followers', followerRouter);
 
 
 app.use((err, req, res, next)=>{

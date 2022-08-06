@@ -10,6 +10,6 @@ router.post('/follow', userController.saveFollower);
 router.get('/', userController.getAllUsers);
 
 
-// router.get('/:userId/follower/:followerId',userController.getFollower);
+
 
 module.exports = router;

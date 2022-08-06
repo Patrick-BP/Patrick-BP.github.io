@@ -7,14 +7,14 @@ async function createAccount(event) {
     event.preventDefault();
 const usrname = document.getElementById('usrname');
 const fullname = document.getElementById('fullname');
-console.log(usrname);
 const psword = document.getElementById('pssword');
     const response = await fetch('http://localhost:8888/users', {
         method: 'POST',
         body: JSON.stringify({
             fullname: fullname.value,
             username:usrname.value,
-            password: psword.value
+            password: psword.value,
+            
         }),
         headers: {
             'Content-type': 'application/json'

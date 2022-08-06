@@ -6,7 +6,7 @@ const userSchema = new Schema({
     fullname: String,
     username: { type: String, unique: true},
     password: { type: String },
-    followers:[{type: Schema.Types.ObjectId, ref:'User', unique: true}]
+    followers:[{type: Schema.Types.ObjectId, unique:true,  ref:'User'}]
 },{versionKey: false});
 
 userSchema.index({'$**': 'text'});
