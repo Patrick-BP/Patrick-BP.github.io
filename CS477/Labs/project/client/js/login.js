@@ -31,7 +31,7 @@ async function login(){
         const username = sessionStorage.getItem('username');
         const fllname = sessionStorage.getItem('fullname');
 
-        window.location=`home.html?id=${userid}&&username=${fllname}`;
+        window.location=`home.html`;
     }
    
 
