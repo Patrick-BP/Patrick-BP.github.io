@@ -8,7 +8,7 @@ const userSchema = new Schema({
     phone: String,
     skype: String,
     username: { type: String, unique: true},
-    password: { type: String },
+    password: String,
     createdAt: String,
     followers:[{type: Schema.Types.ObjectId, ref:'User'}]
 },{versionKey: false});

@@ -8,16 +8,10 @@ exports.getAllUsers = async (req, res, next) => {
     
 }
 
-    exports.saveUser = (req, res, next) => {
+    exports.saveUser = async (req, res, next) => {
         console.log(req.body);
-        let prod = new User(req.body)
-        prod.save()
-            .then(result => {
-                
-                result.followers.push(prod._id);
-                //console.log(result);
-                res.json(prod);
-            });
+        let newAccount = await new User(req.body).save()
+       res.status(201).json( new Response(false, null, newAccount)); 
         }
 
 

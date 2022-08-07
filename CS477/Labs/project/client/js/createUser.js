@@ -1,40 +1,62 @@
 
     document.getElementById('create-btn').onclick = createAccount;
-   
-    
 
-async function createAccount(event) {
+  const  fullname= document.getElementById('fullname');
+  const email= document.getElementById('email');
+  const  phone= document.getElementById('phone');
+  const skype= document.getElementById('skype');
+  const username= document.getElementById('usrname');
+  const  password= document.getElementById('pssword');
+
+  async function createAccount(event) {
     event.preventDefault();
+    document.getElementById('invalid-feedback2').style.display = "none";
 
-
-    const timeElapsed = Date.now();
-    const today = new Date(timeElapsed);
-console.log(document.getElementById('username').value);
-    const response = await fetch('http://localhost:8888/users', {
-        method: 'POST',
-        body: JSON.stringify({
-            fullname: document.getElementById('fullname').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            skype: document.getElementById('skype').value,
-            username: document.getElementById('usrname').value,
-            password: document.getElementById('pssword').value,
-            createdAt: today.toDateString()
+  if(fullname.value && email.value && phone.value && skype.value && username.value && password.value){
+    if(password.value.length >=8){
+        const timeElapsed = Date.now();
+        const today = new Date(timeElapsed);
+    console.log(document.getElementById('username').value);
+        const response = await fetch('http://localhost:8888/users', {
+            method: 'POST',
+            body: JSON.stringify({
+                fullname:fullname.value,
+                email:email.value,
+                phone:phone.value,
+                skype:skype.value,
+                username:username.value,
+                password:password.value,
+                createdAt: today.toDateString()
+                
+            }),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+    
+        const result = await response.json();
+        if(result.error) {
+            document.getElementById('invalid-feedback2').style.display = "block";
+            document.getElementById('invalid-feedback2').innerHTML = result.message;
             
-        }),
-        headers: {
-            'Content-type': 'application/json'
+        } else {
+            
+            window.location = 'index.html';
         }
-    });
 
-    const result = await response.json();
-    if(result.error) {
+    }else{
         document.getElementById('invalid-feedback2').style.display = "block";
-        document.getElementById('invalid-feedback2').innerHTML = result.message;
-        
-    } else {
-        
-        window.location = 'index.html';
+        document.getElementById('invalid-feedback2').innerHTML = '<p style="color:red">*Password must be atleast 8 charactors</p>';
     }
+    
+  }else{
+    document.getElementById('invalid-feedback2').style.display = "block";
+    document.getElementById('invalid-feedback2').innerHTML = '<p style="color:red">*All Fields are required</p>';
+    document.getElementById('formreset').reset()
+  }
+
+
+
+   
 
 }

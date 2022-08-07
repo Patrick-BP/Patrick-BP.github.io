@@ -7,7 +7,7 @@ const Response = require('../models/responseobj');
 exports.getAll = async (req, res, next) =>{
  const user = await User.findById(req.params.id);
  const arr = user.followers;
-const twite = await Twite.find({user:{$in: arr} }).sort({createdAt: -1}).populate('user');
+const twite = await Twite.find({user:{$in: arr} }).sort({_id: -1}).populate('user');
 res.status(200).json(new Response(false, null, twite));
 };
 
@@ -23,7 +23,7 @@ exports.save = async (req, res, next) =>{
 
 
 exports.displayOneUserTweets = async (req, res, next) =>{
-const mytwit = await Twite.find({user:req.params.id}).sort({createdAt: -1}).populate('user');
+const mytwit = await Twite.find({user:req.params.id}).sort({_id: -1}).populate('user');
 res.status(200).json(new Response(false, null, mytwit));
 };
 
