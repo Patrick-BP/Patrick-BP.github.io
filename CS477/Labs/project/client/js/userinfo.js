@@ -1,5 +1,49 @@
 
- let displayDiv = document.getElementById('displayFlowers');
+      if(sessionStorage.getItem('accessToken')){
+        fetchUserInfo()
+           
+      }else{
+          window.location='index.html';
+      }
+
+
+      async function fetchUserInfo(){
+        let id = sessionStorage.getItem('userID');
+        
+        const response = await fetch('http://localhost:8888/users/info/'+id, {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+            'Content-Type':'application/json'
+          }
+        });
+      
+        const result = await response.json();
+      
+        if (!result.error) {
+        const numFlwrs = result.data.followers.length;
+        const email = result.data.email;
+        const phone = result.data.phone;
+        const skype = result.data.skype;
+        const createdAt = result.data.createdAt;
+
+        document.getElementById('numberOfFollwers').innerText = numFlwrs;
+        document.getElementById('email').value =email ;
+        document.getElementById('phone').value = phone;
+        document.getElementById('skype').value = skype;
+        document.getElementById('createddate').innerText = createdAt;
+
+
+        } 
+      
+      }
+      
+      
+
+
+
+
+
+      let displayDiv = document.getElementById('displayFlowers');
  let displaytweet = document.getElementById('displayMyTweets');
   if (sessionStorage.getItem('accessToken')) {
     
@@ -47,14 +91,8 @@ async function fetchTwites() {
           </div>
             `
     });
-    document.getElementById('post-twite').innerHTML = html;
-
-    let fllname = sessionStorage.getItem('fullname');
-    document.getElementById('welcomeUsername').innerHTML = `<h2>Welcome ${fllname}</h2>`
-
-  } else {
-    document.getElementById('post-twite').innerHTML = result.message;
-  }
+    
+  } 
 }
 
 //=============================================================

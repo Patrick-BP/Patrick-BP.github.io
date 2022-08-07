@@ -3,20 +3,13 @@ const Response = require('../models/responseobj');
 
 exports.getAllUsers = async (req, res, next) => {
     
-    // res.json(await User.find({username:{$search: req.query.search}}));
+   
     res.json(await User.find({$text: {$search : req.query.search}}));
     
 }
-// exports.saveUser = async (req, res, next) => {
-//         const user = await new User(req.body).save();
-//       user.followers=user.insertedId;
-//       console.log(User.insertedId);
-//         res.status(201).json(new Response(false,null, user));
-   
-    
-//     }
 
     exports.saveUser = (req, res, next) => {
+        console.log(req.body);
         let prod = new User(req.body)
         prod.save()
             .then(result => {
@@ -36,4 +29,7 @@ exports.getAllUsers = async (req, res, next) => {
     
     };
 
-   
+    exports.getUserInfo = async (req, res, next)=>{
+        const find = await User.findOne({_id: req.params.id});
+        res.status(201).json(new Response(false,null, find));
+    }

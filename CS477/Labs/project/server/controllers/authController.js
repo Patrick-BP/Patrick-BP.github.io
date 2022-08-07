@@ -8,8 +8,7 @@ const SECRET = 'this is a big secret';
 
 exports.login = async (req, res, next)=>{
     const {username, password} = req.body;
-
-    if(username && password){
+        if(username && password){
         let result;
         try{
         result = await User.findOne({username, password});

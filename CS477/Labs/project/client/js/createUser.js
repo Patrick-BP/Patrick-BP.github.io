@@ -5,16 +5,19 @@
 
 async function createAccount(event) {
     event.preventDefault();
-const usrname = document.getElementById('usrname');
-const fullname = document.getElementById('fullname');
-const psword = document.getElementById('pssword');
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+console.log(document.getElementById('username').value);
     const response = await fetch('http://localhost:8888/users', {
         method: 'POST',
         body: JSON.stringify({
-            fullname: fullname.value,
-            username:usrname.value,
-            password: psword.value,
-            
+            fullname: document.getElementById('fullname').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            skype: document.getElementById('skype').value,
+            username: document.getElementById('usrname').value,
+            password: document.getElementById('pssword').value,
+            createdAt: today.toDateString()
             
         }),
         headers: {
