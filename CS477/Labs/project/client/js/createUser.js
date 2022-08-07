@@ -5,6 +5,8 @@
 
 async function createAccount(event) {
     event.preventDefault();
+
+
     const timeElapsed = Date.now();
     const today = new Date(timeElapsed);
 console.log(document.getElementById('username').value);

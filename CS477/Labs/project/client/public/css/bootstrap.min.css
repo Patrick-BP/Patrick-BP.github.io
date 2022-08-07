@@ -5462,7 +5462,8 @@ fieldset:disabled .btn {
     flex-direction: column;
     padding-left: 0;
     margin-bottom: 0;
-    border-radius: .25rem
+    border-radius: .25rem;    
+    list-style: none;
 }
 
 .list-group-numbered {

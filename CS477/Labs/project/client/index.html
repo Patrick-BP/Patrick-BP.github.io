@@ -20,6 +20,7 @@
 
 
       <!-- <link href="./public/css/signin.css" rel="stylesheet"> -->
+      
 </head>
 
 <body>
@@ -138,22 +139,19 @@
                 <div class="position-sticky top-0" id="header"></div>
         
                 <main class="form-signin w-100 m-auto">
-                    <form  class="needs-validation" novalidate  
-                    data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
-                    data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
-                    data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                    <form  class="needs-validation" novalidate  >
                       <h1 class="h3 mb-3 fw-normal">Create your account</h1>
 
                       <div class="form-floating">
-                        <input type="text" id="fullname" class="form-control" id="floatingInput" placeholder="Full name"  />
+                        <input type="text" id="fullname" class="form-control" id="floatingInput" placeholder="Full name" required />
                         <label for="floatingInput">Full name</label>
                       </div><br>
                       <div class="form-floating">
-                        <input type="email" id="email" class="form-control" id="floatingInput" placeholder="Email"  />
+                        <input type="email" id="email" class="form-control" id="floatingInput" placeholder="Email"  required />
                         <label for="floatingInput">email</label>
                       </div><br>
                       <div class="form-floating">
-                        <input type="text" id="phone" class="form-control" id="floatingInput" placeholder="Phone Number"  />
+                        <input type="text" id="phone" class="form-control" id="floatingInput" placeholder="Phone Number"  required />
                         <label for="floatingInput">phone</label>
                       </div><br>
                       <div class="form-floating">
@@ -162,12 +160,12 @@
                       </div><br>
                   
                       <div class="form-floating">
-                        <input type="text" id="usrname" class="form-control" id="floatingInput" placeholder="username"  />
+                        <input type="text" id="usrname" class="form-control" id="floatingInput" placeholder="username" required  />
                         <label for="floatingInput">username</label>
                       </div>
                       <br>
                       <div class="form-floating">
-                        <input type="password" id="pssword" class="form-control" id="floatingPassword" placeholder="Password" >
+                        <input type="password" id="pssword" class="form-control" id="floatingPassword" placeholder="Password" required >
                         <label for="floatingPassword">Password</label>
                       </div>
                   <div id="invalid-feedback2"></div>

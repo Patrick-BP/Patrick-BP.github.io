@@ -27,10 +27,7 @@ async function login(){
         sessionStorage.setItem('fullname', result.data.fullname);
         sessionStorage.setItem('username', result.data.username);
         sessionStorage.setItem('userID', result.data.userID);
-        const userid = sessionStorage.getItem('userID');
-        const username = sessionStorage.getItem('username');
-        const fllname = sessionStorage.getItem('fullname');
-
+       
         window.location=`home.html`;
     }
    
