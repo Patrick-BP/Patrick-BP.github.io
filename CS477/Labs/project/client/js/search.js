@@ -16,7 +16,7 @@ function searchUserName(){
         }
     }).then(res => res.json())
         .then(data =>{
-            searchresult.innerHTML = ` <h2 >Search result</h2>`;
+            searchresult.innerHTML = `<h2 >Search result</h2>`;
             data.forEach(element => {
 
                 displayTweetsTable(element);

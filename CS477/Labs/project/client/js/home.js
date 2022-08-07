@@ -56,8 +56,6 @@ async function fetchTwites() {
   }
 }
 
-
-
 //=============================================================
 
 
@@ -87,8 +85,6 @@ async function fetchFollowers(){
 
     });
 
-    
-    
   } else {
 
     document.getElementById('displayFlowers').innerHTML = result.message;
@@ -133,14 +129,10 @@ displaytweet.innerHTML = " ";
     }else{
       displaytweet.innerHTML = `<h4>You haven't tweeted yet</h4>`;
     }
-    
-
-    
+  
     
   } else {
-
     document.getElementById('displayMyTweets').innerHTML = result.message;
-
   }
 
 }

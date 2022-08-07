@@ -12,12 +12,14 @@ async function addTweet(event){
     const userid = sessionStorage.getItem('userID');
     const username = sessionStorage.getItem('username');
     const body = document.getElementById('tweet-body');
-  
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
     const response = await fetch('http://localhost:8888/tweets',{
         method:'POST',
         body: JSON.stringify({
             tweet: body.value,
-            user: userid
+            user: userid,
+            createdAt: today.toDateString()
 
         }),
         headers:{
