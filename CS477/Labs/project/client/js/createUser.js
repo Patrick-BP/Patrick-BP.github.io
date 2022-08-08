@@ -37,7 +37,7 @@
         const result = await response.json();
         if(result.error) {
             document.getElementById('invalid-feedback2').style.display = "block";
-            document.getElementById('invalid-feedback2').innerHTML = result.message;
+            document.getElementById('invalid-feedback2').innerHTML = `<p style="color:red">${result.message}</p>`;
             
         } else {
             

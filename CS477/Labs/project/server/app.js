@@ -3,11 +3,24 @@ const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 const twitesRouter = require('./routes/twitesRouter')
+const multer = require('multer');
 
 const userRouter = require('./routes/userRouter');
 const followerRouter = require('./routes/followerRouter');
 const authRouter = require('./routes/authRouter');
 
+
+// ============for uploading image
+const storage = multer.diskStorage({
+    destination:(req, file, cb)=>{
+        cb(null, 'uploads')
+    },
+    filename:(req, file, cb)=>{
+        cb(null,file.fieldname + '-' + Date.now())
+    }
+});
+const upload= multer({ storage:storage});
+// ============End for uploading image
 
 
 const app = express();

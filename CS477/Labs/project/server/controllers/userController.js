@@ -10,16 +10,28 @@ exports.getAllUsers = async (req, res, next) => {
 
     exports.saveUser = async (req, res, next) => {
         // console.log(req.body);
-        let newAccount = await new User(req.body).save()
-       res.status(201).json( new Response(false, null, newAccount)); 
+        try{
+           let newAccount = await new User(req.body).save();
+           res.status(201).json( new Response(false, null, newAccount)); 
+        }catch(error){
+            res.status(500).json( new Response(true, 'The usename is already taken', error));
+        }
+        
+       
         }
 
 
+
     exports.saveFollower = async (req, res, next) => {
-        // console.log(req.body);
-       const updatefollowers = await User.findByIdAndUpdate({_id: req.body.userId},{$push:{followers:req.body.followerId}});
-      
-        res.status(201).json(new Response(false,null, updatefollowers));
+        const findusr = await User.findById({_id: req.body.userId});
+        
+        if(findusr.followers.indexOf(req.body.followerId) === -1 || req.body.userId !== req.body.followerId ){
+            const updatefollowers = await User.findByIdAndUpdate({_id: req.body.userId},{$push:{followers:req.body.followerId}});
+            res.status(201).json(new Response(false,null, updatefollowers));
+        }else{
+            
+        }
+       
     
     };
 

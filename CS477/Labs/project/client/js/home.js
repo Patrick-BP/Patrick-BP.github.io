@@ -26,6 +26,8 @@ async function fetchTwites() {
   if (!result.error) {
     let html = "";
     result.data.forEach(twite => {
+      const date = twite.createdAt;
+      const age = moment(date, "YYYYMMDD").fromNow()
       html += `
             <div class="post">
             <div class="post__avatar">
@@ -35,7 +37,7 @@ async function fetchTwites() {
             <div class="post__body">
               <div class="post__header">
                 <div class="post__headerText">
-                  <h3>${twite.user.fullname}<span class="time">@${twite.createdAt}</span></h3>
+                  <h3>${twite.user.fullname}<span class="time">@${age}</span></h3>
                 </div>
                 <div class="post__headerDescription">
                   <p> ${twite.tweet}</p>
