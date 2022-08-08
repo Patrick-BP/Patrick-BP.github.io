@@ -31,7 +31,9 @@ function displayTweetsTable(element){
     let tr = `<table id="searchtable"><tr >
     
     <td id="usrname">${element.fullname}</td>
-    <td  id="follow"><button data-follower = "${element._id}" onclick="addFollower(this)">follow</button></td>
+    <td  id="follow">
+    <span class="badge bg-primary rounded-pill" data-follower = "${element._id}"   onclick="addFollower(this)">follow</span>
+    </td>
     </tr></table>`;
     
     searchresult.innerHTML += tr;
