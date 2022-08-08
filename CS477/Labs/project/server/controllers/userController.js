@@ -9,7 +9,7 @@ exports.getAllUsers = async (req, res, next) => {
 }
 
     exports.saveUser = async (req, res, next) => {
-        console.log(req.body);
+        // console.log(req.body);
         let newAccount = await new User(req.body).save()
        res.status(201).json( new Response(false, null, newAccount)); 
         }
@@ -26,4 +26,11 @@ exports.getAllUsers = async (req, res, next) => {
     exports.getUserInfo = async (req, res, next)=>{
         const find = await User.findOne({_id: req.params.id});
         res.status(201).json(new Response(false,null, find));
+    }
+
+
+    exports.deleteUser = async (req, res, next)=>{
+        const del = await User.findOneAndDelete({_id:req.params.id});
+        
+        res.status(201).json(new Response(false, null, del));
     }
