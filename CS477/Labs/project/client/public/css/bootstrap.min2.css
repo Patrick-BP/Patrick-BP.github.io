@@ -82,6 +82,7 @@
 }
 .img{
     width:-webkit-fill-available;
+    height: inherit;
 }
 .wrapper{
     position: absolute;
@@ -98,7 +99,7 @@
     float: right;
     height: 100%;
     width: 40%;
-    padding: 10px 80px;
+    padding: 0px 20px;
 }
 .sign:hover{
     background-color: #030F18 !important;
