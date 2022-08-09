@@ -20,7 +20,7 @@ res.status(200).json(new Response(false, null, twite));
 exports.save = async (req, res, next) =>{
     // console.log(req.body);
     const twite = await new Twite(req.body).save();
-    res.status(200).json( new Response(false, null, twite));
+    res.status(201).json( new Response(false, null, twite));
     };
 
 
@@ -35,5 +35,5 @@ res.status(200).json(new Response(false, null, mytwit));
 
 exports.delTweet = async (req, res, next) =>{
         const twite = await Twite.findByIdAndDelete({_id:req.params.id});
-        res.status(200).json( new Response(false, null, twite));
+        res.status(201).json( new Response(false, null, twite));
         };    
