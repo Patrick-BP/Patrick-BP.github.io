@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
 const twitesRouter = require('./routes/twitesRouter')
-const multer = require('multer');
+
 
 const userRouter = require('./routes/userRouter');
 const followerRouter = require('./routes/followerRouter');
