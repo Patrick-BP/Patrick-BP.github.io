@@ -1,10 +1,10 @@
 
- let displayDiv = document.getElementById('displayFlowers');
+ let displayFlowers = document.getElementById('displayFlowers');
  let displaytweet = document.getElementById('displayMyTweets');
   if (sessionStorage.getItem('accessToken')) {
     
-    fetchTwites();
-    fetchFollowers();
+    
+    
     fetchMyTweets();
     
   } else {
@@ -12,7 +12,7 @@
   }
 
 
-  //=============================================================
+  //========================= display tweet from followings ====================================
 
 async function fetchTwites() {
   let usrid = sessionStorage.getItem('userID');
@@ -25,8 +25,11 @@ async function fetchTwites() {
 // console.log(result);
   if (!result.error) {
     let html = "";
+   
     result.data.forEach(twite => {
-      
+      console.log(twite);
+       let time = twite.createdAt;
+    let createdAt = moment(time).fromNow();
       html += `
             <div class="post">
             <div class="post__avatar">
@@ -36,7 +39,7 @@ async function fetchTwites() {
             <div class="post__body">
               <div class="post__header">
                 <div class="post__headerText">
-                  <h3>${twite.user.fullname}<span class="time">@${twite.createdAt}</span></h3>
+                  <h3>${twite.user.fullname}<span class="time">@${createdAt}</span></h3>
                 </div>
                 <div class="post__headerDescription">
                   <p> ${twite.tweet}</p>
@@ -60,47 +63,48 @@ async function fetchTwites() {
   }
 }
 
-//=============================================================
+// //=========================  Display followings ====================================
 
 
-async function fetchFollowers(){
-  let usrid = sessionStorage.getItem('userID');
+// async function fetchtFollowers(){
+//   let usrid = sessionStorage.getItem('userID');
   
-  const response = await fetch('http://localhost:8888/followers/'+usrid, {
-    headers: {
-      Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
-      'Content-Type':'application/json'
-    }
-  });
+//   const response = await fetch('http://localhost:8888/twites/'+usrid, {
+//     headers: {
+//       Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+//       'Content-Type':'application/json'
+//     }
+//   });
 
-  const result = await response.json();
+//   const result = await response.json();
 
-  if (!result.error) {
+//   if (!result.error) {
     
-    result.data.followers.forEach(follower => {
-      displayDiv.innerHTML +=`
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-            <div class="post__avatar2">
-              <img src="public/images/profile.png" alt="" />
-            </div>
-                ${follower.fullname}
-                <span class="badge bg-primary rounded-pill" data-unfollow=${follower._id}  onclick="delFollower(this)">Unfollow</span>
-              </li> `
+//     result.data.twites.forEach(twite => {
+      
+//       displayFlowers.innerHTML +=`
+//             <li class="list-group-item d-flex justify-content-between align-items-center">
+//             <div class="post__avatar2">
+//               <img src="public/images/profile.png" alt="" />
+//             </div>
+//                 ${twite.fullname}
+//                 <span class="badge bg-primary rounded-pill" data-unfollow=${twite._id}  onclick="deltwite(this)">Unfollow</span>
+//               </li> `
 
-    });
+//     });
 
-  } else {
+//   } else {
 
-    document.getElementById('displayFlowers').innerHTML = result.message;
+//     document.getElementById('displayFlowers').innerHTML = result.message;
 
-  }
+//   }
 
-}
-
-
+// }
 
 
-//=============================================================
+
+
+//=========================Display My Tweets====================================
 
 
 async function fetchMyTweets(){
@@ -118,15 +122,16 @@ async function fetchMyTweets(){
   if (!result.error) {
     if(result.data.length > 0){
 displaytweet.innerHTML = " ";
-    result.data.forEach(follower => {
-      
-      let str = follower.tweet;
+    result.data.forEach(twite => {
+      let time = twite.createdAt;
+    let createdAt = moment(time).fromNow();
+      let str = twite.tweet;
       if(str.length > 10){str = str.substring(0,150)+"...";} 
 
       displaytweet.innerHTML +=`<li>
-      <div class="mytweets" style="font-weight:bolder;font-size:1rem">${follower.user.fullname}</div>
-                <div class="mytweets">${str}</div> <div class="tweetsDate">${follower.createdAt}</div>
-                <span class="tweetdelbtn badge bg-primary rounded-pill hide" data-deltweet=${follower._id}  onclick="delTweet(this)">delete</span>
+      <div class="mytweets" style="font-weight:bolder;font-size:1rem">${twite.user.fullname}</div>
+                <div class="mytweets">${str}</div> <div class="tweetsDate">${createdAt}</div>
+                <span class="tweetdelbtn badge bg-primary rounded-pill hide" data-deltweet=${twite._id}  onclick="delTweet(this)">delete</span>
               <div style="border:1px solid; margin-top:5px"></div></li>`
 
     });
@@ -173,7 +178,7 @@ const profileusername = document.getElementById('profileusername');
 const fllname = sessionStorage.getItem('fullname');
 const username = sessionStorage.getItem('username');
 
-profilename.innerText = fllname;
-profileusername.innerText = "@" +username; 
+// profilename.innerText = fllname;
+// profileusername.innerText = "@" +username; 
 
 

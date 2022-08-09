@@ -47,7 +47,7 @@
  let displaytweet = document.getElementById('displayMyTweets');
   if (sessionStorage.getItem('accessToken')) {
     
-    fetchTwites();
+ 
     fetchFollowers();
     fetchMyTweets();
     
@@ -57,43 +57,45 @@
 
 
   //=============================================================
-
-async function fetchTwites() {
-  let usrid = sessionStorage.getItem('userID');
-  const response = await fetch('http://localhost:8888/tweets/' + usrid, {
-    headers: {
-      Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`
-    }
-  });
-  const result = await response.json();
-// console.log(result);
-  if (!result.error) {
-    let html = "";
-    result.data.forEach(twite => {
-      html += `
-            <div class="post">
-            <div class="post__avatar">
-              <img src="public/images/profile.png" alt="" />
-            </div>
-      
-            <div class="post__body">
-              <div class="post__header">
-                <div class="post__headerText">
-                  <h3>${twite.user.fullname}<span class="time">@${twite.createdAt}</span></h3>
-                </div>
-                <div class="post__headerDescription">
-                  <p> ${twite.tweet}</p>
-                </div>
-              </div>
-              
-              
-            </div>
-          </div>
-            `
-    });
+  async function fetchMyTweets(){
+    let id = sessionStorage.getItem('userID');
     
-  } 
-}
+    const response = await fetch('http://localhost:8888/tweets/my/'+id, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+        'Content-Type':'application/json'
+      }
+    });
+  
+    const result = await response.json();
+  
+    if (!result.error) {
+      if(result.data.length > 0){
+  displaytweet.innerHTML = " ";
+      result.data.forEach(follower => {
+        let time = follower.createdAt;
+        let createdAt = moment(time).fromNow();
+        let str = follower.tweet;
+        if(str.length > 10){str = str.substring(0,200)+"...";} 
+  
+        displaytweet.innerHTML +=`<li>
+        <div class="mytweets" style="font-weight:bolder;font-size:1rem">${follower.user.fullname}</div>
+                  <div class="mytweets">${str}</div> <div class="tweetsDate">${createdAt}</div>
+                  <span class="tweetdelbtn badge bg-primary rounded-pill hide" data-deltweet=${follower._id}  onclick="delTweet(this)">delete</span>
+                <div style="border:1px solid; margin-top:5px"></div></li>`
+  
+      });
+      }else{
+        displaytweet.innerHTML = `<h4>You haven't tweeted yet</h4>`;
+      }
+    
+      
+    } else {
+      document.getElementById('displayMyTweets').innerHTML = result.message;
+    }
+  
+  }
+
 
 //=============================================================
 
@@ -138,43 +140,7 @@ async function fetchFollowers(){
 //=============================================================
 
 
-async function fetchMyTweets(){
-  let id = sessionStorage.getItem('userID');
-  
-  const response = await fetch('http://localhost:8888/tweets/my/'+id, {
-    headers: {
-      Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
-      'Content-Type':'application/json'
-    }
-  });
 
-  const result = await response.json();
-
-  if (!result.error) {
-    if(result.data.length > 0){
-displaytweet.innerHTML = " ";
-    result.data.forEach(follower => {
-      
-      let str = follower.tweet;
-      if(str.length > 10){str = str.substring(0,150)+"...";} 
-
-      displaytweet.innerHTML +=`<li>
-      <div class="mytweets" style="font-weight:bolder;font-size:1rem">${follower.user.fullname}</div>
-                <div class="mytweets">${str}</div> <div class="tweetsDate">${follower.createdAt}</div>
-                <span class="tweetdelbtn badge bg-primary rounded-pill hide" data-deltweet=${follower._id}  onclick="delTweet(this)">delete</span>
-              <div style="border:1px solid; margin-top:5px"></div></li>`
-
-    });
-    }else{
-      displaytweet.innerHTML = `<h4>You haven't tweeted yet</h4>`;
-    }
-  
-    
-  } else {
-    document.getElementById('displayMyTweets').innerHTML = result.message;
-  }
-
-}
 
 //==============================DELETE A TWEET ===============================
 

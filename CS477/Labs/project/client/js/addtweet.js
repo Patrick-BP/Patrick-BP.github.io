@@ -17,13 +17,14 @@ async function addTweet(event){
     const body = document.getElementById('tweet-body');
     
     
-
+const timestamps = new Date(Date.now())
+console.log(timestamps);
     const response = await fetch('http://localhost:8888/tweets',{
         method:'POST',
         body: JSON.stringify({
             tweet: body.value,
-            user: userid
-
+            user: userid,
+            createdAt: timestamps
         }),
         headers:{
             Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
