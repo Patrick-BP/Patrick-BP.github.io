@@ -20,18 +20,7 @@ exports.getAllUsers = async (req, res, next) => {
 
 
 
-    exports.saveFollower = async (req, res, next) => {
-        const findusr = await User.findById({_id: req.body.userId});
-        
-        if(findusr.followers.indexOf(req.body.followerId) === -1 || req.body.userId !== req.body.followerId ){
-            const updatefollowers = await User.findByIdAndUpdate({_id: req.body.userId},{$push:{followers:req.body.followerId}});
-            res.status(201).json(new Response(false,null, updatefollowers));
-        }else{
-            
-        }
-       
     
-    };
 
     exports.getUserInfo = async (req, res, next)=>{
         const find = await User.findOne({_id: req.params.id});

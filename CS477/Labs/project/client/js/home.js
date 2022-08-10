@@ -27,7 +27,7 @@ async function fetchTwites() {
     let html = "";
    
     result.data.forEach(twite => {
-      console.log(twite);
+     
        let time = twite.createdAt;
     let createdAt = moment(time).fromNow();
       html += `

@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.get('/:id', followerController.getFollowed);
 router.post('/', followerController.delFollow);
-
+router.post('/follow', followerController.saveFollower);
 
 module.exports = router;
