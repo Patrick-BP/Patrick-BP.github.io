@@ -8,7 +8,7 @@ exports.saveFollower = async (req, res, next) => {
         const updatefollowers = await User.findByIdAndUpdate({_id: req.body.userId},{$push:{followers:req.body.followerId}});
         res.status(201).json(new Response(false,null, updatefollowers));
     }else{
-        console.log("already exist")
+        res.status(400).json(new Response(true,'you follow this user', null));
     }
    
 
