@@ -1,6 +1,11 @@
 const HOSTNAME = "http://localhost:3000";
 window.onload = function(){
-    fetchBooks();
+    if(sessionStorage.getItem('accessToken')){
+        fetchBooks();
+    }else{
+        window.location = 'index.html'
+    }
+    
 }
 
 function fetchBooks(){
@@ -52,4 +57,9 @@ function deleteBook(id){
 }
 function editBook(id){
     window.location = 'edit-book.html?id='+id;
+}
+
+function logout(){
+    sessionStorage.clear();
+window.location  = 'index.html'
 }

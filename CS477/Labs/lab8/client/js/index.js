@@ -2,6 +2,7 @@ import { HOSTNAME } from './config.js';
 
 window.onload = function () {
     document.getElementById('signinBtn').onclick = signIn;
+   
 }
 
 async function signIn() {
@@ -25,3 +26,7 @@ async function signIn() {
     }
 
 }
+
+
+
+
