@@ -1,4 +1,4 @@
-
+const HOSTNAME = "http://localhost:3000";
 window.onload = function (){
     document.getElementById('add-button').onclick = addBook;
 }
@@ -10,7 +10,7 @@ async function addBook(event){
     const publishedDateInput = document.getElementById('publishedDate');
     const authorInput = document.getElementById('author');
 
-    const response = await fetch('http://localhost:8888/books',{
+    const response = await fetch(`${HOSTNAME}/books`,{
         method:'POST',
         body: JSON.stringify({
             title:titleInput.value,
@@ -20,13 +20,14 @@ async function addBook(event){
 
         }),
         headers:{
+            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
             'content-type':'application/json'
         }
     });
     const data = await response.json();
     document.getElementById('book-add-form').reset();
     console.log(data);
-    window.location = 'index.html';
+    window.location = 'books.html';
 
 }
 

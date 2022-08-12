@@ -4,9 +4,8 @@ window.onload = function () {
     document.getElementById('signinBtn').onclick = signIn;
 }
 
-async function signIn(event) {
-    event.preventDefault();
-    console.log(document.getElementById('formusername').value);
+async function signIn() {
+ 
     const response = await fetch(`${HOSTNAME}/login`, {
         method: 'POST',
         body: JSON.stringify({

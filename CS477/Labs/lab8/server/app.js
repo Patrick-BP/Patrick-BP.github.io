@@ -23,8 +23,8 @@ app.use((err, req, res, next)=>{
     res.status(500).json(new Response(true, err.message, null));
 });
 
-mongoose.connect('mongodb://localhost:27017/shopping')
+mongoose.connect('mongodb://localhost:27017/booksdb')
 .then(()=>{
-    app.listen(app.get('port'));
+    app.listen(app.get('port'),()=> console.log(app.get('port')));
 });
 

@@ -1,19 +1,25 @@
+const HOSTNAME = "http://localhost:3000";
 window.onload = function(){
     fetchBooks();
 }
 
 function fetchBooks(){
-    fetch('http://localhost:8888/books')
+    fetch(`${HOSTNAME}/books`,{
+        headers:{
+            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+        }
+    })
     .then(response=>response.json())
     .then(books =>{displayBooks(books)})
     .catch(err=>{
-        console.log('inside err');
+        console.log(err.message);
     });
 
 }
 
 function displayBooks(books){
     let tbody = document.getElementById('tbody');
+    console.log(books);
     books.forEach(element => {
         tbody.innerHTML += `
         <tr id="tr${element._id}">
@@ -32,11 +38,16 @@ function displayBooks(books){
 };
 
 function deleteBook(id){
-    fetch('http://localhost:8888/books/'+id,{
-        method:'DELETE'
+    console.log(id);
+    fetch(`${HOSTNAME}/books/`+id,{
+        method:'DELETE',
+        headers:{
+            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+            'content-type':'application/json'
+        }
     }).then(response=>{
         document.getElementById(`tr${id}`).remove();
-    }).catch(err=>console.log(err));
+    }).catch(err=>console.log(err.message));
 
 }
 function editBook(id){

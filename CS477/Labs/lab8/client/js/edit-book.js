@@ -1,3 +1,4 @@
+const HOSTNAME = "http://localhost:3000";
 window.onload = function (){
     let url = new URL(location.href);
     const bookId = url.searchParams.get('id');
@@ -10,20 +11,27 @@ window.onload = function (){
 
 function fetchBookById(id){
     console.log(id);
-    fetch('http://localhost:8888/books/'+id)
+    fetch(`${HOSTNAME}/books/`+id,{
+        headers:{
+            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+        }
+    })
         .then(response=>response.json())
         .then(book=>{
+           
             document.getElementById('title').value = book.title;
             document.getElementById('isbn').value = book.isbn;
             document.getElementById('publishedDate').value = book.publishedDate;
             document.getElementById('author').value = book.author;
 
-        })
+        }).catch(err =>{
+            console.log(err.message);
+})
 }
 
 async function editBookById(id){
     
-    const response = await fetch('http://localhost:8888/books/'+id,{
+    const response = await fetch(`${HOSTNAME}/books/`+id,{
         method:'PUT',
         body: JSON.stringify(
             {
@@ -34,11 +42,12 @@ async function editBookById(id){
 
             }),
         headers:{
+            Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
             'content-type':'application/json'
         }
     });
     if(response.ok) {
-        window.location = 'index.html';
+        window.location = 'books.html';
     }
    
     
