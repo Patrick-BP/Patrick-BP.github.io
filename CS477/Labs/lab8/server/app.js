@@ -3,8 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bookRouter = require('./router/bookRouter');
-const authRouter = require('./routes/authRouter');
-const Response = require('./models/responseobj');
+const authRouter = require('./router/authRouter');
+const Response = require('./model/responseobj');
+const userRouter = require('./router/userRouter');
 const app = express();
 
 
